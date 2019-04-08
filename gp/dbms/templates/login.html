@@ -1,20 +1,114 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>登录页面</title>
-</head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0044)http://appj.nimte.ac.cn/Magmiss/LoginServlet -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<!--<base href="http://appj.nimte.ac.cn:80/Magmiss/">--><base href=".">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>登陆页面</title>
 
-<body>
-<h1>登陆页面：</h1>
-<form method = 'post' enctype="multipart/form-data">
-    {% csrf_token %}
-    {{uf.as_p}}
-    <input type="submit" value = "ok" />
-</form>
-<br>
-<a href="http://39.106.148.96/dbms/regist/">注册</a>
-</body>
-</html>
+        <!-- CSS -->
+        <link rel="stylesheet" href="39.106.148.96/static/css/css">
+        <link rel="stylesheet" href="39.106.148.96/static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="39.106.148.96/static/css/font-awesome.min.css">
+		<link rel="stylesheet" href="39.106.148.96/static/css/form-elements.css">
+        <link rel="stylesheet" href="39.106.148.96/static/css/style.css">
 
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="http://appj.nimte.ac.cn/Magmiss/assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://appj.nimte.ac.cn/Magmiss/assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://appj.nimte.ac.cn/Magmiss/assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://appj.nimte.ac.cn/Magmiss/assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="http://appj.nimte.ac.cn/Magmiss/assets/ico/apple-touch-icon-57-precomposed.png">
+		<script type="text/javascript">
+            function change(){
+                var img =document.getElementById("verify");
+                img.src="VerifyCodeServlet?a="+new Date().getTime();
+            }
+		</script>
+    </head>
+
+    <body>
+		<!-- Top menu -->
+		<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="http://appj.nimte.ac.cn/Magmiss/index.jsp">Bootstrap Registration Form Template</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+		</div></nav>
+
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-7 text">
+                            <h1><strong>核包壳材料基因</strong> 数据库管理系统</h1>
+                        </div>
+                        <div class="col-sm-5 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>账号登陆</h3>
+                            		<p>请填写下面信息进行访问:</p>
+                        		</div>
+                        		<!-- <div class="form-top-right">
+                        			<i class="fa fa-pencil"></i>
+                        		</div> -->
+                            </div>
+                            <div class="form-bottom">
+			                    <form role="form" action="http://appj.nimte.ac.cn/Magmiss/LoginServlet" method="post" class="registration-form">
+			                    	<div class="form-group">
+			                    		<label class="sr-only" for="form-first-name">账号</label>
+			                        	<input type="text" name="username" placeholder="账号..." class="form-first-name form-control" id="form-first-name">
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-last-name">密码</label>
+			                        	<input type="password" name="password" placeholder="密码..." class="form-last-name form-control" id="form-last-name">
+			                        </div>
+			                        <div class="form-group">
+										<a href="javascript:change()"><img src="./登陆页面_files/VerifyCodeServlet" id="verify" border="0"></a>
+			                        	<label class="sr-only" for="form-email">验证码</label>
+			                        	<input type="text" name="verifycode" placeholder="验证码..." class="form-email form-control" id="form-email">
+
+			                        </div>
+			                        <button type="submit" class="btn">登陆</button>
+                                    <button type="submit" class="zc">注册</button>
+			                    </form>
+								<font color="red" size="2"> 验证码错误！</font>
+		                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Javascript -->
+        <script src="39.106.148.96/static/js/jquery-1.11.1.min.js"></script>
+        <script src="39.106.148.96/static/js/bootstrap.min.js"></script>
+        <script src="39.106.148.96/static/js/jquery.backstretch.min.js"></script>
+        <script src="39.106.148.96/static/js/retina-1.1.0.min.js"></script>
+        <script src="39.106.148.96/static/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="http://appj.nimte.ac.cn:80/Magmiss/assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    
+
+<div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 100%; width: 1362px; z-index: -999999; position: fixed;"><img src="39.106.148.96/static/img/login_background.jpg" style="position: absolute; margin: 0px; padding: 0px; border: none; width: 1362px; height: 1021.5px; max-height: none; max-width: none; z-index: -999999; left: 0px; top: -201.75px;"></div></body></html>
