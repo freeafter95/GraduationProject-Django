@@ -35,6 +35,7 @@ class Login(View):
             return_dict = {'error': ''}
         else:
             return_dict = Login.add_verify()
+            print('!!!' + str(Login.cache.get(_verify_code_key)))
             return_dict['error'] = "验证码错误!"
 
         return render(request, 'login.html', return_dict)
