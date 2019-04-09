@@ -38,7 +38,7 @@ class Login(View):
             u = request.POST.get('username')
             p = request.POST.get('password')
             check = models.UserInfo.objects.filter(username=u, password=p).first()
-            if obj:
+            if check:
                 return render(request, mainterface.html)
             else:
                 error_msg = "用户名或密码错误!"
