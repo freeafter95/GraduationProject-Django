@@ -13,7 +13,7 @@ cache = Cache()
 VERIFY_IMG_DIR = '/static/verify_code'
 
 def login(request):
-    error_msg = {}
+    error_msg = ''
     today_str = datetime.date.today().strftime("%Y%m%d")
     verify_path = "%s/%s" % (VERIFY_IMG_DIR, today_str)
     if not os.path.isdir(verify_path):
@@ -30,7 +30,7 @@ def login(request):
         if cache.get(_verify_code_key) == _verify_code:
             print("code verification pass!")
         else:
-            error_msg['error'] = "验证码错误!"
+            error_msg = "验证码错误!"
 
     return render(request,'login.html',{"filename":random_filename, "today_str":today_str, "error":error_msg})
 
