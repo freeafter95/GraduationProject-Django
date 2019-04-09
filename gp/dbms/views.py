@@ -21,7 +21,7 @@ def login(request):
     print("session:",request.session.session_key)
     random_filename = "".join(random.sample(string.ascii_lowercase,4))
     random_code = generate_code.gene_code(verify_path,random_filename)
-    cache.set(random_filename, random_code, ttl=30)
+    cache.set(cache, random_filename, random_code, ttl=30)
 
     if request.method == 'POST':
 
