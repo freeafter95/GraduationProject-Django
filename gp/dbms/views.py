@@ -32,7 +32,7 @@ def login(request):
         else:
             error_msg['error'] = "验证码错误!"
 
-    return render(request,'login.html',{"filename":random_filename, "today_str":today_str, "error":err_msg})
+    return render(request,'login.html',{"filename":random_filename, "today_str":today_str, "error":error_msg})
 
 
 
