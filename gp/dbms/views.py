@@ -6,7 +6,7 @@ from django.shortcuts import render,render_to_response
 from django.http import HttpResponse,HttpResponseRedirect
 from django.template import RequestContext
 from tools import generate_code
-import datatime
+import datetime
 
 VERIFY_IMG_DIR = '/static/verify_code'
 
