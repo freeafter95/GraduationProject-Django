@@ -22,17 +22,11 @@
         <![endif]-->
 
         <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="http://appj.nimte.ac.cn/Magmiss/assets/ico/favicon.png">
+        <!-- <link rel="shortcut icon" href="http://appj.nimte.ac.cn/Magmiss/assets/ico/favicon.png">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://appj.nimte.ac.cn/Magmiss/assets/ico/apple-touch-icon-144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://appj.nimte.ac.cn/Magmiss/assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://appj.nimte.ac.cn/Magmiss/assets/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="http://appj.nimte.ac.cn/Magmiss/assets/ico/apple-touch-icon-57-precomposed.png">
-		<script type="text/javascript">
-            function change(){
-                var img =document.getElementById("verify");
-                img.src="VerifyCodeServlet?a="+new Date().getTime();
-            }
-		</script>
+        <link rel="apple-touch-icon-precomposed" href="http://appj.nimte.ac.cn/Magmiss/assets/ico/apple-touch-icon-57-precomposed.png"> -->
     </head>
 
     <body>
@@ -81,15 +75,16 @@
 			                        	<input type="password" name="password" placeholder="密码..." class="form-last-name form-control" id="form-last-name">
 			                        </div>
 			                        <div class="form-group">
-										<a href="javascript:change()"><img src="./登陆页面_files/VerifyCodeServlet" id="verify" border="0"></a>
-			                        	<label class="sr-only" for="form-email">验证码</label>
-			                        	<input type="text" name="verifycode" placeholder="验证码..." class="form-email form-control" id="form-email">
+										<div class="input-group-addon">
+                                            <img height="30px" src="/static/verify_code/{{ today_str }}/{{ filename }}.png">
+                                        </div>
+                                        <input style="height: 50px" type="text" name="verify_code" class="form-control" placeholder="验证码">
+                                        <input  type="hidden" name="verify_code_key" value="{{ filename }}" >
 
 			                        </div>
 			                        <button type="submit" class="btn">登陆</button>
-                                    <button type="submit" class="zc">注册</button>
 			                    </form>
-								<font color="red" size="2"> 验证码错误！</font>
+								<font color="red" size="2">{{ error }}</font>
 		                    </div>
                         </div>
                     </div>
