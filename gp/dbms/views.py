@@ -7,6 +7,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.template import RequestContext
 from tools import generate_code
 from django.views import View 
+from . import models
 import random, datetime, os, string
 from cacheout import Cache
 
@@ -34,11 +35,19 @@ class Login(View):
         print(cache.get(_verify_code_key))
         print(_verify_code)
         if cache.get(_verify_code_key) is not None and cache.get(_verify_code_key).lower() == _verify_code.lower():
-            return render(request, 'mainterface.html')
+            u = request.POST.get('username')
+            p = request.POST.get('password')
+            check = models.UserInfo.objects.filter(username=u, password=p).first()
+            if obj:
+                return render(request, mainterface.html)
+            else:
+                error_msg = "用户名或密码错误!"
         else:
-            return_dict = Login.add_verify()
-            print('!!!' + str(Login.cache.get(_verify_code_key)))
-            return_dict['error'] = "验证码错误!"
+            error_msg = "验证码错误!"
+
+        return_dict = Login.add_verify()
+        print('!!!' + str(Login.cache.get(_verify_code_key)))
+        return_dict['error'] = error_msg
 
         return render(request, 'login.html', return_dict)
 
@@ -47,10 +56,10 @@ class Login(View):
 
         return render(request, 'login.html', return_dict)
 
-def mainterface(request):
-    if request.method == 'POST':
-        return render(request, 'mainterface.html')
-    return render(request, 'login.html', {'error': ''})
+# def mainterface(request):
+#     if request.method == 'POST':
+#         return render(request, 'mainterface.html')
+#     return render(request, 'login.html', {'error': ''})
 
 
 # cache = Cache()
