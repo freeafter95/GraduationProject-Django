@@ -34,8 +34,7 @@ class Login(View):
         print(cache.get(_verify_code_key))
         print(_verify_code)
         if cache.get(_verify_code_key) is not None and cache.get(_verify_code_key).lower() == _verify_code.lower():
-            print("code verification pass!")
-            return_dict = {'error': ''}
+            return render(request, 'mainterface.html')
         else:
             return_dict = Login.add_verify()
             print('!!!' + str(Login.cache.get(_verify_code_key)))
@@ -47,6 +46,11 @@ class Login(View):
         return_dict = Login.add_verify()
 
         return render(request, 'login.html', return_dict)
+
+def mainterface(request):
+    if request.method == 'POST':
+        return render(request, 'mainterface.html')
+    return render(request, 'login.html', return_dict)
 
 
 # cache = Cache()
