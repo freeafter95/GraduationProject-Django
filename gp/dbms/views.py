@@ -6,11 +6,42 @@ from django.shortcuts import render,render_to_response
 from django.http import HttpResponse,HttpResponseRedirect
 from django.template import RequestContext
 from tools import generate_code
+from django.views import View 
 import random, datetime, os, string
 from cacheout import Cache
 
-cache = Cache()
-VERIFY_IMG_DIR = os.path.dirname(os.path.dirname(__file__)) + '/static/verify_code'
+class Login(View):
+    VERIFY_IMG_DIR = os.path.dirname(os.path.dirname(__file__)) + '/static/verify_code'
+    cache = Cache()
+
+    def post(self, request):
+        _verify_code = request.POST.get('verify_code')
+        _verify_code_key  = request.POST.get('verify_code_key')
+        print(cache.get(_verify_code_key))
+        print(_verify_code)
+        if cache.get(_verify_code_key) is not None and cache.get(_verify_code_key).lower() == _verify_code.lower():
+            print("code verification pass!")
+        else:
+            error_msg = "验证码错误!"
+
+        return render(request,'login.html',{"filename":random_filename, "today_str":today_str, "error":error_msg})
+
+    def get(self, request):
+        error_msg = ''
+        today_str = datetime.date.today().strftime("%Y%m%d")
+        verify_path = "%s/%s" % (VERIFY_IMG_DIR, today_str)
+        if not os.path.isdir(verify_path):
+            os.makedirs(verify_path, exist_ok=True)
+        print("session:",request.session.session_key)
+        random_filename = "".join(random.sample(string.ascii_lowercase,4))
+        random_code = generate_code.gene_code(verify_path,random_filename)
+        cache.set(random_filename, random_code, ttl=30)
+
+        return render(request,'login.html',{"filename":random_filename, "today_str":today_str, "error":error_msg})
+
+
+# cache = Cache()
+# VERIFY_IMG_DIR = os.path.dirname(os.path.dirname(__file__)) + '/static/verify_code'
 
 def login(request):
     error_msg = ''
