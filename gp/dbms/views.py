@@ -7,6 +7,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.template import RequestContext
 from tools import generate_code
 import datetime
+import os
 
 VERIFY_IMG_DIR = '/static/verify_code'
 
