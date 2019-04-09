@@ -50,7 +50,7 @@ class Login(View):
 def mainterface(request):
     if request.method == 'POST':
         return render(request, 'mainterface.html')
-    return render(request, 'login.html', return_dict)
+    return render(request, 'login.html', {'error': ''})
 
 
 # cache = Cache()
