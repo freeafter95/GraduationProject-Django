@@ -27,6 +27,8 @@ def login(request):
 
         _verify_code = request.POST.get('verify_code')
         _verify_code_key  = request.POST.get('verify_code_key')
+        print(cache.get(_verify_code_key))
+        print(_verify_code)
         if cache.get(_verify_code_key) == _verify_code:
             print("code verification pass!")
         else:
