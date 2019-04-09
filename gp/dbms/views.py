@@ -34,13 +34,13 @@ class Login(View):
             print("code verification pass!")
             return_dict = {'error': ''}
         else:
-            return_dict = add_verify()
+            return_dict = Login.add_verify()
             return_dict['error'] = "验证码错误!"
 
         return render(request, 'login.html', return_dict)
 
     def get(self, request):
-        return_dict = add_verify()
+        return_dict = Login.add_verify()
 
         return render(request, 'login.html', return_dict)
 
