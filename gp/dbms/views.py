@@ -14,6 +14,17 @@ class Login(View):
     VERIFY_IMG_DIR = os.path.dirname(os.path.dirname(__file__)) + '/static/verify_code'
     cache = Cache()
 
+    def add_verify():
+        today_str = datetime.date.today().strftime("%Y%m%d")
+        verify_path = "%s/%s" % (Login.VERIFY_IMG_DIR, today_str)
+        if not os.path.isdir(verify_path):
+            os.makedirs(verify_path, exist_ok=True)
+        #print("session:",request.session.session_key)
+        random_filename = "".join(random.sample(string.ascii_lowercase,4))
+        random_code = generate_code.gene_code(verify_path,random_filename)
+        Login.cache.set(random_filename, random_code, ttl=30)
+        return {"filename":random_filename, "today_str":today_str, 'error': ''}
+
     def post(self, request):
         _verify_code = request.POST.get('verify_code')
         _verify_code_key  = request.POST.get('verify_code_key')
@@ -21,23 +32,17 @@ class Login(View):
         print(_verify_code)
         if Login.cache.get(_verify_code_key) is not None and Login.cache.get(_verify_code_key).lower() == _verify_code.lower():
             print("code verification pass!")
+            return_dict = {'error': ''}
         else:
-            error_msg = "验证码错误!"
+            return_dict = add_verify()
+            return_dict['error'] = "验证码错误!"
 
-        return render(request,'login.html',{"filename":random_filename, "today_str":today_str, "error":error_msg})
+        return render(request, 'login.html', return_dict)
 
     def get(self, request):
-        error_msg = ''
-        today_str = datetime.date.today().strftime("%Y%m%d")
-        verify_path = "%s/%s" % (Login.VERIFY_IMG_DIR, today_str)
-        if not os.path.isdir(verify_path):
-            os.makedirs(verify_path, exist_ok=True)
-        print("session:",request.session.session_key)
-        random_filename = "".join(random.sample(string.ascii_lowercase,4))
-        random_code = generate_code.gene_code(verify_path,random_filename)
-        Login.cache.set(random_filename, random_code, ttl=30)
+        return_dict = add_verify()
 
-        return render(request,'login.html',{"filename":random_filename, "today_str":today_str, "error":error_msg})
+        return render(request, 'login.html', return_dict)
 
 
 # cache = Cache()
