@@ -29,7 +29,7 @@ def login(request):
         _verify_code_key  = request.POST.get('verify_code_key')
         print(cache.get(_verify_code_key))
         print(_verify_code)
-        if cache.get(_verify_code_key) == _verify_code:
+        if cache.get(_verify_code_key).lower() == _verify_code.lower():
             print("code verification pass!")
         else:
             error_msg = "验证码错误!"
