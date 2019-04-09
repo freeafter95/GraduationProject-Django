@@ -10,7 +10,7 @@ import random, datetime, os, string
 from cacheout import Cache
 
 cache = Cache()
-VERIFY_IMG_DIR = '/static/verify_code'
+VERIFY_IMG_DIR = os.path.dirname(os.path.dirname(__file__)) + '/verify_code'
 
 def login(request):
     error_msg = ''
