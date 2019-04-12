@@ -14,11 +14,11 @@ from cacheout import Cache
 cache = Cache()
 
 def check_login(func):
-    def wrapper(*args, **kwargs):
-        if args[0].COOKIES.get('username'):
+    def wrapper(request):
+        if request.COOKIES.get('username'):
             return redirect('/dbms/mainterface/')
         else:
-            return func(args, kwargs)
+            return func(request)
     return wrapper
 
 class Login(View):
@@ -69,9 +69,7 @@ class Login(View):
 
 @check_login
 def mainterface(request):
-    if not request.COOKIES.get('username'):
-        return redirect(request, 'login.html')
-    return render(request, 'mainterface.html')
+    return redirect(request, 'login.html')
 
 
 # cache = Cache()
