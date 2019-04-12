@@ -38,7 +38,7 @@ class Login(View):
         cache.set(random_filename, random_code, ttl=30)
         return {"filename":random_filename, "today_str":today_str, 'error': ''}
 
-    @check_login
+    @check_login('class')
     def post(self, request):
         global cache
         _verify_code = request.POST.get('verify_code')
@@ -63,7 +63,7 @@ class Login(View):
 
         return render(request, 'login.html', return_dict)
 
-    @check_login
+    @check_login('class')
     def get(self, request):
         return_dict = Login.add_verify()
 
