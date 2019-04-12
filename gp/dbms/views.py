@@ -89,7 +89,9 @@ def mainterface(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('/login/')
+    response =  redirect('/dbms/login/')
+    response.delete_cookie('username')
+    return response
 
 
 # cache = Cache()
