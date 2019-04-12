@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 #coding=utf-8
-from django.shortcuts import render,render_to_response
+from django.shortcuts import render,render_to_response,redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.template import RequestContext
 from tools import generate_code
@@ -39,7 +39,7 @@ class Login(View):
             p = request.POST.get('password')
             check = models.UserInfo.objects.filter(username=u, password=p).first()
             if check:
-                return render(request, 'mainterface.html')
+                return redirect('/mainterface/')
             else:
                 error_msg = "用户名或密码错误!"
         else:
@@ -56,10 +56,8 @@ class Login(View):
 
         return render(request, 'login.html', return_dict)
 
-# def mainterface(request):
-#     if request.method == 'POST':
-#         return render(request, 'mainterface.html')
-#     return render(request, 'login.html', {'error': ''})
+def mainterface(request):
+    return render(request, 'mainterface.html')
 
 
 # cache = Cache()
