@@ -39,7 +39,7 @@ class Login(View):
             p = request.POST.get('password')
             check = models.UserInfo.objects.filter(username=u, password=p).first()
             if check:
-                return redirect('/mainterface/')
+                return redirect('/dbms/mainterface/')
             else:
                 error_msg = "用户名或密码错误!"
         else:
@@ -57,6 +57,7 @@ class Login(View):
         return render(request, 'login.html', return_dict)
 
 def mainterface(request):
+    print('login')
     return render(request, 'mainterface.html')
 
 
