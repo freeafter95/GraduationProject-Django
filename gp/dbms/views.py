@@ -15,7 +15,7 @@ cache = Cache()
 
 def check_login(func_type='func'):
     def decorator(func):
-        def wrapper(*args[1]):
+        def wrapper(*args):
             if func_type == 'class' and args[1].COOKIES.get('username') or
             (func_type == 'func' and args[0].COOKIES.get('username')):
                 return redirect('/dbms/mainterface/')
