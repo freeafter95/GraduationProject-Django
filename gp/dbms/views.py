@@ -13,6 +13,14 @@ from cacheout import Cache
 
 cache = Cache()
 
+def check_login(func):
+    def wrapper(*args, **kwargs):
+        if args[0].COOKIES.get('username'):
+            return redirect('/dbms/mainterface/')
+        else:
+            return func(args, kwargs)
+    return wrapper
+
 class Login(View):
     VERIFY_IMG_DIR = os.path.dirname(os.path.dirname(__file__)) + '/static/verify_code'
 
@@ -28,6 +36,7 @@ class Login(View):
         cache.set(random_filename, random_code, ttl=30)
         return {"filename":random_filename, "today_str":today_str, 'error': ''}
 
+    @check_login
     def post(self, request):
         global cache
         _verify_code = request.POST.get('verify_code')
@@ -52,14 +61,16 @@ class Login(View):
 
         return render(request, 'login.html', return_dict)
 
+    @check_login
     def get(self, request):
         return_dict = Login.add_verify()
 
         return render(request, 'login.html', return_dict)
 
+@check_login
 def mainterface(request):
     if not request.COOKIES.get('username'):
-        return render(request, 'login.html')
+        return redirect(request, 'login.html')
     return render(request, 'mainterface.html')
 
 
