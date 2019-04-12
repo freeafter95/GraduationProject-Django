@@ -39,6 +39,7 @@ class Login(View):
             p = request.POST.get('password')
             check = models.UserInfo.objects.filter(username=u, password=p).first()
             if check:
+                request.set_cookie('username', u)
                 return redirect('/dbms/mainterface/')
             else:
                 error_msg = "用户名或密码错误!"
@@ -57,7 +58,8 @@ class Login(View):
         return render(request, 'login.html', return_dict)
 
 def mainterface(request):
-    print('login')
+    if not request.COOKIES.get('username')
+        return render(request, 'login.html')
     return render(request, 'mainterface.html')
 
 
