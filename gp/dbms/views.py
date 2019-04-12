@@ -7,6 +7,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.template import RequestContext
 from tools import generate_code
 from django.views import View 
+from django.contrib import auth
 from . import models
 import random, datetime, os, string
 from cacheout import Cache
@@ -85,6 +86,10 @@ class Login(View):
 @check_login( )
 def mainterface(request):
     return render(request, 'mainterface.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/login/')
 
 
 # cache = Cache()
