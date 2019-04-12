@@ -51,8 +51,9 @@ class Login(View):
             p = request.POST.get('password')
             check = models.UserInfo.objects.filter(username=u, password=p).first()
             if check:
-                request.set_cookie('username', u)
-                return redirect('/dbms/mainterface/')
+                response = redirect('/dbms/mainterface/')
+                response.set_cookie('username', u)
+                return response
             else:
                 error_msg = "用户名或密码错误!"
         else:
