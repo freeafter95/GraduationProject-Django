@@ -17,6 +17,17 @@ def check_login(func_type='func'):
     def decorator(func):
         def wrapper(*args):
             print(args)
+            if (func_type == 'class' and args[1].COOKIES.get('username') is None) or \
+            (func_type == 'func' and args[0].COOKIES.get('username') is None):
+                return redirect('/dbms/login/')
+            return func(*args)
+        return wrapper
+    return decorator
+
+def to_mainterface(func_type='func'):
+    def decorator(func):
+        def wrapper(*args):
+            print(args)
             if (func_type == 'class' and args[1].COOKIES.get('username')) or \
             (func_type == 'func' and args[0].COOKIES.get('username')):
                 return redirect('/dbms/mainterface/')
@@ -39,7 +50,7 @@ class Login(View):
         cache.set(random_filename, random_code, ttl=30)
         return {"filename":random_filename, "today_str":today_str, 'error': ''}
 
-    @check_login('class')
+    @to_mainterface('class')
     def post(self, request):
         global cache
         _verify_code = request.POST.get('verify_code')
@@ -65,15 +76,15 @@ class Login(View):
 
         return render(request, 'login.html', return_dict)
 
-    @check_login('class')
+    @to_mainterface('class')
     def get(self, request):
         return_dict = Login.add_verify()
 
         return render(request, 'login.html', return_dict)
 
-@check_login()
+@check_login( )
 def mainterface(request):
-    return redirect(request, 'login.html')
+    return renser(request, 'mainterface.html')
 
 
 # cache = Cache()
