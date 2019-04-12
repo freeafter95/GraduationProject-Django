@@ -13,13 +13,15 @@ from cacheout import Cache
 
 cache = Cache()
 
-def check_login(func):
-    def wrapper(request):
-        if request.COOKIES.get('username'):
-            return redirect('/dbms/mainterface/')
-        else:
-            return func(request)
-    return wrapper
+def check_login(func_type='func'):
+    def decorator(func):
+        def wrapper(*args[1]):
+            if func_type == 'class' and args[1].COOKIES.get('username') or
+            (func_type == 'func' and args[0].COOKIES.get('username')):
+                return redirect('/dbms/mainterface/')
+            return func(*args)
+        return wrapper
+    return decorator
 
 class Login(View):
     VERIFY_IMG_DIR = os.path.dirname(os.path.dirname(__file__)) + '/static/verify_code'
