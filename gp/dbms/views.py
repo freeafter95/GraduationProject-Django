@@ -84,7 +84,7 @@ class Login(View):
 
 @check_login( )
 def mainterface(request):
-    return renser(request, 'mainterface.html')
+    return render(request, 'mainterface.html')
 
 
 # cache = Cache()
