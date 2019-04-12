@@ -71,7 +71,7 @@ class Login(View):
 
         return render(request, 'login.html', return_dict)
 
-@check_login
+@check_login()
 def mainterface(request):
     return redirect(request, 'login.html')
 
