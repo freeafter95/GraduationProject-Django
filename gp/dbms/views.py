@@ -58,7 +58,7 @@ class Login(View):
         return render(request, 'login.html', return_dict)
 
 def mainterface(request):
-    if not request.COOKIES.get('username')
+    if not request.COOKIES.get('username'):
         return render(request, 'login.html')
     return render(request, 'mainterface.html')
 
