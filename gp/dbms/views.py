@@ -18,8 +18,8 @@ def check_login(func_type='func'):
     def decorator(func):
         def wrapper(*args):
             print(args)
-            if (func_type == 'class' and args[1].COOKIES.get('username') is None) or \
-            (func_type == 'func' and args[0].COOKIES.get('username') is None):
+            if (func_type == 'class' and args[1].session.get('username') is None) or \
+            (func_type == 'func' and args[0].session.get('username') is None):
                 return redirect('/dbms/login/')
             return func(*args)
         return wrapper
@@ -29,8 +29,8 @@ def to_mainterface(func_type='func'):
     def decorator(func):
         def wrapper(*args):
             print(args)
-            if (func_type == 'class' and args[1].COOKIES.get('username')) or \
-            (func_type == 'func' and args[0].COOKIES.get('username')):
+            if (func_type == 'class' and args[1].session.get('username')) or \
+            (func_type == 'func' and args[0].session.get('username')):
                 return redirect('/dbms/mainterface/')
             return func(*args)
         return wrapper
@@ -63,9 +63,11 @@ class Login(View):
             p = request.POST.get('password')
             check = models.UserInfo.objects.filter(username=u, password=p).first()
             if check:
-                response = redirect('/dbms/mainterface/')
-                response.set_cookie('username', u)
-                return response
+                request.session['username'] = u
+                return redirect('/dbms/mainterface/')
+                # response = redirect('/dbms/mainterface/')
+                # response.set_cookie('username', u)
+                # return response
             else:
                 error_msg = "用户名或密码错误!"
         else:
@@ -89,9 +91,14 @@ def mainterface(request):
 
 def logout(request):
     auth.logout(request)
-    response =  redirect('/dbms/login/')
-    response.delete_cookie('username')
-    return response
+    try:
+        del request.session['username']
+    except KeyError:
+        pass
+    return redirect('/dbms/login/')
+    # response = redirect('/dbms/login/')
+    # response.delete_cookie('username')
+    # return response
 
 
 # cache = Cache()
