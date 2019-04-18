@@ -19,7 +19,8 @@ from gp import views
 
 
 urlpatterns = [
-    path('dbms/',include('dbms.urls')),
+    path('', include('dbms.urls')),
+    path('dbms/', include('dbms.urls')),
     path('admin/', admin.site.urls),
     path('hello/', views.hello, name='hello'),
     path('time/', views.current_datetime, name='time'),

@@ -24,9 +24,6 @@ draw_line = True
 #加入干扰线条数的上下限
 line_number = (1,5)
 
-
-
-
 def gen_text():
     source = list(string.ascii_letters)
     for index in range(0,10):
@@ -63,6 +60,7 @@ def gene_code(save_path,filename):
     image = image.transform((width + 20, height +10), Image.AFFINE, (1, -0.3, 0, -0.1, 1, 0), Image.BILINEAR)  # 创建扭曲
     image = image.filter(ImageFilter.EDGE_ENHANCE_MORE)  # 滤镜，边界加强
     image.save('%s/%s.png' %(save_path,filename))  # 保存验证码图片
+    image.save('%s/%s@2x.png' %(save_path,filename))
     print("savepath:",save_path)
     return text
 
