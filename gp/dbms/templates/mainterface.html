@@ -276,7 +276,7 @@
                         <a>材料晶体信息<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level collapse">
                             <li>
-                                <a href="http://appj.nimte.ac.cn/Magmiss/ForwardServlet?name=crystalbasic_natu"><font color="blue">材料晶体信息查询</font></a>
+                                <a pageto="http://39.106.148.96/dbms/templates/crystal_select.html" href="javascript:void();" onclick="document.getElementById('iframe').src = this.pageto"><font color="blue">材料晶体信息查询</font></a>
                             </li>
                             <li>
                                 <a href="http://appj.nimte.ac.cn/Magmiss/ForwardServlet?name=addate"><font color="blue">材料晶体信息添加</font></a>
@@ -335,14 +335,10 @@
     <div id="wrapper">
         <div id="page-wrapper">
             <div class="row">
-                <div class="panel-body">
-                        <img src="http://39.106.148.96/static/img/main_graph.jpg" alt="picture" width="100%" height="auto" max-width="100%" display:block="">
-                </div>
+                <iframe id="iframe" src="http://39.106.148.96/dbms/templates/maingraph.html" class="panel-body"></iframe>
             </div>
         </div>
     </div>
-
-
 
 
 </body></html>
