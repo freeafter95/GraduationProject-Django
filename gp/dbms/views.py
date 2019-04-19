@@ -101,9 +101,11 @@ def logout(request):
     # return response
 
 def main_graph(request):
+    print(request.path)
     return render(request, 'maingraph.html')
 
 def crystal_select(request):
+    print(request.path)
     return render(request, 'crystalselect.html')
 
 
