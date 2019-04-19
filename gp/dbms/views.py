@@ -100,6 +100,9 @@ def logout(request):
     # response.delete_cookie('username')
     # return response
 
+def crystal_select(request):
+    return render(request, 'mainterface.html')
+
 
 # cache = Cache()
 # VERIFY_IMG_DIR = os.path.dirname(os.path.dirname(__file__)) + '/static/verify_code'
