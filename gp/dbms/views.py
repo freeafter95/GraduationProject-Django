@@ -100,8 +100,11 @@ def logout(request):
     # response.delete_cookie('username')
     # return response
 
+def main_graph(request):
+    return render(request, 'maingraph.html')
+
 def crystal_select(request):
-    return render(request, 'mainterface.html')
+    return render(request, 'crystalselect.html')
 
 
 # cache = Cache()
