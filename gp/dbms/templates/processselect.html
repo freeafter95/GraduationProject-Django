@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0067)http://appj.nimte.ac.cn/Magmiss/ForwardServlet?name=WorkBeforeAfter -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--<base href="http://appj.nimte.ac.cn:80/Magmiss/">--><base href=".">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>材料加工信息查询</title>
+
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/metisMenu.min.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/sb-admin-2.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/morris.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/font-awesome.min.css">
+
+    
+</head>
+
+<body>
+<div id="wrapper">
+
+<!-- jQuery -->
+<script src="http://39.106.148.96/static/js/jquery.min.js"></script>
+<script src="http://39.106.148.96/static/js/bootstrap.min.js"></script>
+<script src="http://39.106.148.96/static/js/metisMenu.min.js"></script>
+<script src="http://39.106.148.96/static/js/raphael.min.js"></script>
+<script src="http://39.106.148.96/static/js/morris.min.js"></script>
+<script src="http://39.106.148.96/static/js/morris-data.js"></script>
+<script src="http://39.106.148.96/static/js/sb-admin-2.js"></script>
+
+
+
+        
+    
+    <div id="page-wrapper" style="min-height: 589px; margin-left: 0">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><font color="steelblue">材料加工信息查询</font></h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    
+                        
+                    
+
+                    <div class="panel-body">
+                        <div class="row" style="width: 100%">
+                            
+                            <form role="form" id="dataForm" action="http://39.106.148.96/dbms/processselect/" method="post">
+
+                                <label><font color="steelblue" size="5px">选择查询的性质</font></label>
+                                <div class="checkbox">
+                                    
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="alloy_grade1" title="" value="alloy_grade1">合金牌号
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="chem_formula1" title="" value="chem_formula1">化学式
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="main_elem1" title="" value="main_elem1">主要元素
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="second_elem1" title="" value="second_elem1">次要元素
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="trace_elem1" title="" value="trace_elem1">微量元素
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="literature1" title="" value="literature1">文献
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="info_source1" title="" value="info_source1">信息来源
+                                    </label>
+                                   
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="smelting_vacuum1" title="" value="smelting_vacuum1">熔炼真空度
+                                    </label>
+
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="smelting_voltage1" title="" value="smelting_voltage1">熔炼电压
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="smelting_current1" title="" value="smelting_current1">熔炼电流
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="smelting_times1" title="" value="smelting_times1">熔炼次数
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="ingot_diameter1" title="" value="ingot_diameter1">铸锭直径
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="nominal_ability1" title="" value="nominal_ability1">公称能力
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="heat_temp1" title="" value="heat_temp1">加热温度
+                                    </label>
+                                     <label style="width: 120px">
+                                        <input type="checkbox" name="quenching_medium1" title="" value="quenching_medium1">淬火介质
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="quenching_temp1" title="" value="quenching_temp1">淬火温度
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="annealing_type1" title="" value="annealing_type1">退火种类
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="annealing_temp1" title="" value="annealing_temp1">退火温度
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="annealing_time1" title="" value="annealing_time1">退火时间
+                                    </label>
+
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="bw_time1" title="" value="bw_time1">保温时间
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="qProcessing_sample1" title="" value="qProcessing_sample1">加工前试样
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="qSample_size1" title="" value="qSample_size1">加工前试样尺寸
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="qsyx_com1" title="" value="qsyx_com1"><font size="1">加工前试样相组成</font>
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="qsyjld1" title="" value="qsyjld1"><font size="1">加工前试样晶粒度</font>
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="qsyzg1" title="" value="qsyzg1">加工前试样织构
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hProcessing_sample1" title="" value="hProcessing_sample1">加工后试样
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hSample_size1" title="" value="hSample_size">加工后试样尺寸
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hsyx_com1" title="" value="hsyx_com"><font size="1">加工后试样相组成</font>
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hsyjld1" title="" value="hsyjld"><font size="1">加工后试样晶粒度</font>
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hsyzg1" title="" value="hsyzg">加工后试样织构
+                                    </label>
+                                     
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="process_tech1" title="" value="process_tech1">加工工艺
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="extruder_tonnage1" title="" value="extruder_tonnage1">挤压机吨位
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="jyt_diameter1" title="" value="jyt_diameter1">挤压筒直径
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="jy_heattemp1" title="" value="jy_heattemp1">挤压加热温度
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="jy_bwtime1" title="" value="jy_bwtime1">挤压保温时间
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="yz_jjrtime1" title="" value="yz_jjrtime1">轧制加热温度
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="yz_bwtime1" title="" value="yz_bwtime1">轧制保温时间
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="dc_maxprorate1" title="" value="dc_maxprorate1">道次最大加工率
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="all_prorate1" title="" value="all_prorate1">总加工率
+                                    </label>
+                                   
+                                </div>
+
+
+                                <label><font color="steelblue" size="5px">输入查询条件</font></label>
+                                <div class="form-group">
+                                    <label style="width: 10%;">文献</label>
+                                     <input class="form-control" name="literature" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">信息来源</label>
+                                    <input class="form-control" name="info_source" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%">合金牌号</label>
+                                    <input class="form-control" name="alloy_grade" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">化学式</label>
+                                    <input class="form-control" name="chem_formula" value="" style="width: 13%;display: inline">
+                                </div>
+                                <div class="form-group">
+                                    
+                                    <label style="width: 10%;">主元素及含量</label>
+                                     <input class="form-control" name="main_elem" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">次元素及含量</label>
+                                    <input class="form-control" name="second_elem" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">微量元素及含量</label>
+                                    <input class="form-control" name="trace_elem" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">加工前试样</label>
+                                    <input class="form-control" name="qProcessing_sample" value="" style="width: 13%;display: inline">
+                                </div>
+                                <div class="form-group">
+                                    
+                                    
+                                    <label style="width: 10%;">加工前试样尺寸</label>
+                                    <input class="form-control" name="qSample_size" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">加工前试样相组成</label>
+                                    <input class="form-control" name="qsyx_com" value="" style="width: 13%;display: inline">
+                                     <label style="width: 10%;">加工前试样晶粒度</label>
+                                     <input class="form-control" name="qsyjld" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">加工前试样织构</label>
+                                    <input class="form-control" name="qsyzg" value="" style="width: 13%;display: inline">
+                                </div>
+
+                                <div class="form-group">
+                                   
+                                    <label style="width: 10%;">加工工艺</label>
+                                      <input class="form-control" name="process_tech" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">熔炼真空度(Pa)</label>
+                                    <input class="form-control" name="smelting_vacuum" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">熔炼电压(V)</label>
+                                    <input class="form-control" name="smelting_voltage" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">熔炼电流(kA)</label>
+                                     <input class="form-control" name="smelting_current" value="" style="width: 13%;display: inline">
+                                </div>
+
+                                <div class="form-group">
+                                    
+                                    <label style="width: 10%;">熔炼次数(次)</label>
+                                     <input class="form-control" name="smelting_times" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">铸锭直径(mm)</label>
+                                    <input class="form-control" name="ingot_diameter" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">公称能力(MN)</label>
+                                     <input class="form-control" name="nominal_ability" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">加热温度(℃)</label>
+                                    <input class="form-control" name="heat_temp" value="" style="width: 13%;display: inline">
+                                </div>
+                                 <div class="form-group">
+                                    
+                                    <label style="width: 10%;">总加工率(%)</label>
+                                    <input class="form-control" name="all_prorate" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">淬火介质</label>  
+                                    <input class="form-control" name="quenching_medium" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">淬火温度(℃)</label>
+                                    <input class="form-control" name="quenching_temp" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">退火种类</label>
+                                     <input class="form-control" name="annealing_type" value="" style="width: 13%;display: inline">
+                                </div>
+
+                                <div class="form-group">
+                                    <label style="width: 10%;">退火温度(℃)</label>
+                                    <input class="form-control" name="annealing_temp" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">退火时间</label>
+                                    <input class="form-control" name="annealing_time" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">加工后试样</label>
+                                    <input class="form-control" name="hProcessing_sample" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">加工后试样尺寸</label>
+                                    <input class="form-control" name="annealing_time" value="" style="width: 13%;display: inline">
+                                 </div>
+                                <div class="form-group">
+                                    <label style="width: 10%;">保温时间(min)</label>
+                                    <input class="form-control" name="bw_time" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">挤压机吨位(t)</label>
+                                     <input class="form-control" name="extruder_tonnage" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">挤压筒直径(mm)</label>
+                                    <input class="form-control" name="jyt_diameter" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">挤压加热温度(℃)</label>
+                                    <input class="form-control" name="jy_heattemp" value="" style="width: 13%;display: inline">
+                                </div>
+
+                                <div class="form-group">
+                                    
+                                    <label style="width: 10%;">挤压保温时间(min)</label>
+                                    <input class="form-control" name="jy_bwtime" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">轧制加热温度(℃)</label>
+                                    <input class="form-control" name="yz_jjrtime" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">轧制保温时间(min)</label>
+                                    <input class="form-control" name="yz_bwtime" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">道次最大加工率(%)</label>
+                                </div>
+
+                               
+
+                                <div class="form-group">
+                                    <label style="width: 10%;">加工后试样相组成</label>
+                                    <input class="form-control" name="hsyx_com" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">加工后试样晶粒度</label>
+                                    <input class="form-control" name="hsyjld" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">加工后试样织构</label>
+                                    <input class="form-control" name="hsyzg" value="" style="width: 13%;display: inline">
+
+                                </div>
+                                <div class="form-group">
+                                    <input class="form action=" name="select"  style="width: 18%;text-align: center; display: inline; color: white; background-color: steelblue; margin: 0 40%" type="submit">
+                                </div>
+                                
+                            </form>
+
+
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+<!-- /#page-wrapper -->
+
+
+</body></html>

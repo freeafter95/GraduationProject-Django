@@ -110,6 +110,18 @@ def crystal_select(request):
 def crystal_insert(request):
     return render(request, 'crystalinsert.html')
 
+def process_select(request):
+    return render(request, 'processselect.html')
+
+def process_insert(request):
+    return render(request, 'processinsert.html')
+
+def test_select(request):
+    return render(request, 'testselect.html')
+
+def test_insert(request):
+    return render(request, 'testinsert.html')
+
 
 # cache = Cache()
 # VERIFY_IMG_DIR = os.path.dirname(os.path.dirname(__file__)) + '/static/verify_code'

@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0066)http://appj.nimte.ac.cn/Magmiss/ForwardServlet?name=workAfterLixue -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--<base href="http://appj.nimte.ac.cn:80/Magmiss/">--><base href=".">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>材料测试信息查询</title>
+
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/metisMenu.min.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/sb-admin-2.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/morris.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/font-awesome.min.css">
+
+</head>
+
+<body>
+<div id="wrapper">
+
+<!-- jQuery -->
+<script src="http://39.106.148.96/static/js/jquery.min.js"></script>
+<script src="http://39.106.148.96/static/js/bootstrap.min.js"></script>
+<script src="http://39.106.148.96/static/js/metisMenu.min.js"></script>
+<script src="http://39.106.148.96/static/js/raphael.min.js"></script>
+<script src="http://39.106.148.96/static/js/morris.min.js"></script>
+<script src="http://39.106.148.96/static/js/morris-data.js"></script>
+<script src="http://39.106.148.96/static/js/sb-admin-2.js"></script>
+    
+    <div id="page-wrapper" style="min-height: 589px; margin-left: 0">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><font color="steelblue">材料测试信息查询</font></h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    
+                        
+                    
+                    <div class="panel-body">
+                        <div class="row" style="width: 100%">
+                            
+                            <form role="form" id="dataForm" action="http://appj.nimte.ac.cn/Magmiss/servlet/walSelectServlet" method="post">
+
+                                <label><font color="steelblue" size="5px">选择查询性质</font></label>
+                                <div class="checkbox">
+
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="bulk_modulu" title="" value="bulk_modulu">体模量
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="shear_modulus" title="" value="shear_modulus">切变模量
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="young_modulus" title="" value="young_modulus">杨氏模量
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="tensile_strength" title="" value="tensile_strength">抗拉强度
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="yield_strength" title="" value="yield_strength">屈服强度
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="breaking_strength" title="" value="breaking_strength">断裂强度
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="dhys_rate" title="" value="dhys_rate">断后延伸速率
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hPoisson_rate" title="" value="hPoisson_rate">微观泊松比
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="heat_rate" title="" value="heat_rate">热导率
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="bheat_capa" title="" value="bheat_capa">比热容
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="alloy_grade1" title="" value="alloy_grade">合金牌号
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="chem_formula1" title="" value="chem_formula">化学式
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="rswell_modu" title="" value="rswell_modu">热膨胀系数
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="rfs_rate" title="" value="rfs_rate">热辐射率
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="conductivity" title="" value="conductivity">电导率
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="dielectric_con" title="" value="dielectric_con">介电常数
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="work_fun" title="" value="work_fun">功函数
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="coercivity" title="" value="coercivity">矫顽力
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="magnetic_rate" title="" value="magnetic_rate">磁导率
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="bhmagnetic_str" title="" value="bhmagnetic_str">饱和磁感应强度
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="curie_temp" title="" value="curie_temp">居里温度
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="main_elem1" title="" value="main_elem">主要元素
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="second_elem1" title="" value="second_elem">次要元素
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="trace_elem1" title="" value="trace_elem">微量元素
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="literature1" title="" value="literature">文献
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="info_source1" title="" value="info_source">信息来源
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hProcess_sample1" title="" value="hProcess_sample">加工后试样
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hSample_size1" title="" value="hSample_size">试样尺寸
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hsyx_com1" title="" value="hsyx_com">试样组成
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hsyjld1" title="" value="hsyjld">试样晶粒度
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hsyzg1" title="" value="hsyzg">试样织构
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="xntest_cond1" title="" value="xntest_cond">性能测试条件
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="xntest_temp1" title="" value="xntest_temp">性能测试温度
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="xndeform_rate1" title="" value="xndeform_rate">性能变形速率
+                                    </label>
+                                </div>
+
+
+                                <label><font color="steelblue" size="5px">输入查询条件</font></label>
+                                <div class="form-group">
+                                    <label style="width: 10%; height: 28px;text-align: right;">文献</label>
+                                    <input class="form-control" name="literature" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">信息来源</label>
+                                     <input class="form-control" name="info_source" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">化学式</label>
+                                    <input class="form-control" name="chem_formula" value="" style="width: 13%;display: inline">
+                                      <label style="width: 10%; height: 28px;text-align: right;">合金牌号</label>
+                                     <input class="form-control" name="alloy_grade"value="" style="width: 13%;display: inline">
+                                      </div>
+                                <div class="form-group"> 
+                                    <label style="width: 10%; height: 28px;text-align: right;">主元素及含量</label>
+                                    <input class="form-control" name="main_elem" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">次元素及含量</label>
+                                    <input class="form-control" name="second_elem" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">微量元素及含量</label>
+                                    <input class="form-control" name="trace_elem" value="" style="width: 13%;display: inline">
+                                     <label style="width: 10%; height: 28px;text-align: right;">加工后试样</label>
+                                     <input class="form-control" name="hProcess_sample" value="" style="width: 13%;display: inline">
+
+                                </div>
+                                <div class="form-group">
+                                    <label style="width: 10%; height: 28px;text-align: right;">试样晶粒度(μm)</label>
+                                    <input class="form-control" name="hsyjld" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">试样织构</label>
+                                    <input class="form-control" name="hsyzg" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">试样尺寸</label>
+                                     <input class="form-control" name="hSample_size" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">试样组成</label>
+                                    <input class="form-control" name="hsyx_com" value="" style="width: 13%;display: inline">
+                                </div>
+
+                                <div class="form-group">
+                                    
+                                    <label style="width: 10%; height: 28px;text-align: right;">性能测试条件</label>
+                                     <input class="form-control" name="xntest_cond" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">性能测试温度(k)</label>
+                                    <input class="form-control" name="xntest_temp" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">性能变形速率</label>
+                                    <input class="form-control" name="xndeform_rate" value="" style="width: 13%;display: inline">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form action=" name="select" style="width: 18%;text-align: center; display: inline; color: white; background-color: steelblue; margin: 0 40%" type="submit">
+                                </div>
+                                
+                            </form>
+
+
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+<!-- /#page-wrapper -->
+
+
+</body></html>

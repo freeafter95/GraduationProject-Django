@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0068)http://appj.nimte.ac.cn/Magmiss/ForwardServlet?name=AddWorkAfterNatu -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--<base href="http://appj.nimte.ac.cn:80/Magmiss/">--><base href=".">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>材料测试信息添加</title>
+
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/metisMenu.min.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/sb-admin-2.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/morris.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/font-awesome.min.css">
+
+</head>
+
+<body>
+<div id="wrapper">
+
+<!-- jQuery -->
+<script src="http://39.106.148.96/static/js/jquery.min.js"></script>
+<script src="http://39.106.148.96/static/js/bootstrap.min.js"></script>
+<script src="http://39.106.148.96/static/js/metisMenu.min.js"></script>
+<script src="http://39.106.148.96/static/js/raphael.min.js"></script>
+<script src="http://39.106.148.96/static/js/morris.min.js"></script>
+<script src="http://39.106.148.96/static/js/morris-data.js"></script>
+<script src="http://39.106.148.96/static/js/sb-admin-2.js"></script>
+
+    <div id="page-wrapper" style="min-height: 589px; margin-left: 0">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><font color="steelblue">材料测试信息添加</font></h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row" style="width: 100%">
+                            
+                            
+                            
+                            <form role="form" class="addForm" method="post">
+                                <div class="form-group">
+                                     <label style="width: 10%; height: 28px;text-align: right;">文献</label>
+                                    <input class="form-control" name="literature" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">信息来源</label>
+                                    <input class="form-control" name="info_source" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">化学式</label>
+                                    <input class="form-control" name="chem_formula" style="width: 13%;display: inline">
+                                    <label style="width: 10% ;height: 28px;text-align: right;">合金牌号</label>
+                                    <input class="form-control" name="alloy_grade" style="width: 13%;display: inline">
+                                </div>
+                                <div class="form-group">
+
+                                    <label style="width: 10%; height: 28px;text-align: right;">主元素及含量(atom%)</label>
+                                     <input class="form-control" name="main_elem" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">次元素及含量(atom%)</label>
+                                     <input class="form-control" name="second_elem" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">微量元素及含量(atom%)</label>
+                                    <input class="form-control" name="trace_elem" style="width: 13%;display: inline">
+                                     <label style="width: 10%; height: 28px;text-align: right;">加工后试样</label>
+                                     <input class="form-control" name="hProcess_sample" style="width: 13%;display: inline">
+                                </div>
+                                <div class="form-group">
+
+                                   
+                                   
+                                    <label style="width: 10%; height: 28px;text-align: right;">试样尺寸</label>
+                                    <input class="form-control" name="hSample_size" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">试样组成</label>
+                                    <input class="form-control" name="hsyx_com" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">试样晶粒度(μm)</label>
+                                    <input class="form-control" name="hsyjld" style="width: 13%;display: inline">
+                                     <label style="width: 10%; height: 28px;text-align: right;">试样织构</label>
+                                    <input class="form-control" name="hsyzg" style="width: 13%;display: inline">
+                                </div>
+                                <div class="form-group">
+
+                                    <label style="width: 10%; height: 28px;text-align: right;">性能测试条件</label>
+                                    <input class="form-control" name="xntest_cond" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">性能测试温度(k)</label>
+                                     <input class="form-control" name="xntest_temp" style="width: 13%;display: inline">
+                                    <label style="width: 10%; height: 28px;text-align: right;">性能测试速率</label>
+                                    <input class="form-control" name="xndeform_rate" style="width: 13%;display: inline">
+
+                                </div>
+
+                                <div class="form-group" style="width: 65%">
+                                    <label><font color="steelblue" size="5px">物理性质</font></label>
+                                    <select class="form-control" id="phase-select">
+                                        <option>力学性质</option>
+                                        <option>热学性质</option>
+                                        <option>电磁学性质</option>
+                                    </select>
+                                </div>
+                                <div class="form-group input-group">
+                                        <span class="input-group-addon">泊松比</span>
+                                        <input type="text" class="form-control" name="hPoisson_rate" style="width: 400px">
+                                    </div>
+                                
+                                <div class="form-group" id="origin1" style="width:400px color:blue">
+                                    <div class="form-group input-group">
+                                        <div class="form-group input-group">
+                                        <span class="input-group-addon">矫顽力(G)</span>
+                                        <input type="text" class="form-control" name="coercivity" style="width:400px">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">功函数(V)</span>
+                                        <input type="text" class="form-control" name="work_fun" style="width:400px">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">体模量(Pa)</span>
+                                        <input type="text" class="form-control" name="bulk_modulu" style="width: 400px">
+                                    </div>
+                                    
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">磁导率(H/m)</span>
+                                        <input type="text" class="form-control" name="magnetic_rate" style="width:400px">
+                                    </div>
+                                     <div class="form-group input-group">
+                                        <span class="input-group-addon">电导率(S/m)</span>
+                                        <input type="text" class="form-control" name="conductivity" style="width:400px">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">剪切模量(Pa)</span>
+                                        <input type="text" class="form-control" name="shear_modulus" style="width: 400px">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">居里温度(℃)</span>
+                                        <input type="text" class="form-control" name="curie_temp" style="width:400px">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">杨氏模量(Pa)</span>
+                                        <input type="text" class="form-control" name="young_modulus" style="width:400px">
+                                    </div>
+                                     <div class="form-group input-group">
+                                        <span class="input-group-addon">热导率(W/m·k)</span>
+                                        <input type="text" class="form-control" name="heat_rate" style="width:400px">
+                                </div>
+                                <div class="form-group input-group">
+                                        <span class="input-group-addon">比热容(J/kg·K)</span>
+                                        <input type="text" class="form-control" name="bheat_capa" style="width:400px">
+                                </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">抗拉强度(MPa)</span>
+                                        <input type="text" class="form-control" name="tensile_strength" style="width:400px">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">屈服强度(MPa)</span>
+                                        <input type="text" class="form-control" name="yield_strength" style="width:400px">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">断裂强度(MPa)</span>
+                                        <input type="text" class="form-control" name="breaking_strength" style="width:400px">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">断后延伸速率(%)</span>
+                                        <input type="text" class="form-control" name="dhys_rate" style="width: 400px">
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group" id="origin2" style="width:400px">
+                                  
+                                   
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">热膨胀系数(1/℃)</span>
+                                        <input type="text" class="form-control" name="rswell_modu" style="width:400px">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">热辐射率(W/m2)</span>
+                                        <input type="text" class="form-control" name="rfs_rate" style="width:400px">
+                                    </div>
+
+                                </div>
+                                <div class="form-group" id="origin3" style="width: 400px">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">介电常数(C2/N·m2)</span>
+                                        <input type="text" class="form-control" name="dielectric_con" style="width:400px">
+                                    </div>   
+                                   
+                                    
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">饱和磁感应强度(A/m)</span>
+                                        <input type="text" class="form-control" name="bhmagnetic_str" style="width:400px">
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <input class="form action=" name="add" style="width: 18%;text-align: center; display: inline; color: white; background-color: steelblue; margin: 0 40%" type="submit" value="添加数据">
+                                </div>
+                            </form>
+
+                            
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+<!-- /#page-wrapper -->
+
+
+</body></html>
