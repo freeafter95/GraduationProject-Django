@@ -105,8 +105,10 @@ def main_graph(request):
     return render(request, 'maingraph.html')
 
 def crystal_select(request):
-    print(request.path)
     return render(request, 'crystalselect.html')
+
+def crystal_insert(request):
+    return render(request, 'crystalinsert.html')
 
 
 # cache = Cache()

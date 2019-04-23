@@ -7,6 +7,7 @@ urlpatterns = [
   path('mainterface/', views.mainterface, name='mainterface'),
   path('logout/', views.logout, name='logout'),
   path('crystalselect/', views.crystal_select, name='crystal_select'),
+  path('crystalinsert/', views.crystal_insert, name='crystal_insert'),
   path('maingraph/', views.main_graph, name='maingraph'),
   # path('regist/',views.regist, name='regist'),
   # path('index/',views.index,name = 'index'),
