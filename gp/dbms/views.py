@@ -122,8 +122,8 @@ def test_select(request):
 def test_insert(request):
     return render(request, 'testinsert.html')
 
-def first(request):
-    return render(request, str(request.GET.get('p1', 123)))
+def first(request, p1, p2):
+    return render(request, str(p1) + '-' + str(p2))
 
 
 # cache = Cache()
