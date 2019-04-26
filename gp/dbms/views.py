@@ -122,6 +122,9 @@ def test_select(request):
 def test_insert(request):
     return render(request, 'testinsert.html')
 
+def first(request):
+    return render(request, str(request.GET.get('p1', 123)))
+
 
 # cache = Cache()
 # VERIFY_IMG_DIR = os.path.dirname(os.path.dirname(__file__)) + '/static/verify_code'

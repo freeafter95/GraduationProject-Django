@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+
+
+<head>
+    <base href=".">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>加工工艺类别</title>
+
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/metisMenu.min.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/sb-admin-2.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/morris.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <div id="wrapper">
+
+    <script src="http://39.106.148.96/static/js/jquery.min.js"></script>
+    <script src="http://39.106.148.96/static/js/bootstrap.min.js"></script>
+    <script src="http://39.106.148.96/static/js/metisMenu.min.js"></script>
+    <script src="http://39.106.148.96/static/js/raphael.min.js"></script>
+    <script src="http://39.106.148.96/static/js/morris.min.js"></script>
+    <script src="http://39.106.148.96/static/js/morris-data.js"></script>
+    <script src="http://39.106.148.96/static/js/sb-admin-2.js"></script>
+
+    <div id="page-wrapper" style="min-height: 589px; margin-left: 0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">加工工艺类别</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6" >
+                                    <form role="form" enctype="multipart/form-data" action="JggyServlet" method="post">
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" id="check-1-1" name="SolidiFication"value="1"/>凝  固
+                                                </label>
+                                                    
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" id="check-1-2" name="Sintering"value="2" />烧  结
+                                                </label>
+                                                
+                                           <label class="checkbox-inline">
+                                                    <input type="checkbox" id="check-1-3" name="Rolling" value="3" class=""/>轧  制
+                                           </label>
+                                                    
+                                              <label class="checkbox-inline">
+                                                    <input type="checkbox" id="check-1-4" name="HeatTreatment"value="4" checked/>热处理
+                                              </label>
+                                                    
+                                            <label class="checkbox-inline">
+                                                    <input type="checkbox" id="check-1-5" name="Forging" value="5" />锻  造
+                                            </label>
+                                                    
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" id="check-1-6" name="Piggyback" value="6" />甩  带
+                                                </label>
+                                                    
+                                                <label class="checkbox-inline">
+                                                    <input type="checkbox" id="check-1-7" name="DeeplyCold" value="7" />深过冷
+                                                    
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>温度(K)</label>
+                                                <input class="form-control" name="wd" value="300">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>压力(Gpa)</label>
+                                                <input class="form-control" name="yl" value="0.0001">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>加热时间(h)</label>
+                                                <input class="form-control" name="jrsj" value="1.0">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>载荷(Gpa) (3*3)</label>
+                                                <textarea class="form-control" rows="3" id="zaiheid" name="zaihe"></textarea>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-default">保  存</button>
+                                        <button type="reset" class="btn btn-default">恢 复</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+<script>
+    document.getElementById("zaiheid").value="1 0 0 \n0 1 0 \n0 0 1"
+</script>
+</body>
+
+</html>
+
