@@ -123,7 +123,7 @@ def test_insert(request):
     return render(request, 'testinsert.html')
 
 def first(request, p1, p2):
-    return render(request, str(p1) + '-' + str(p2))
+    return render(request, 'first%d-%d' % (p1, p2))
 
 
 # cache = Cache()
