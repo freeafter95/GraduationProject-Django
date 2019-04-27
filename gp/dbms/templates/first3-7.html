@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+
+
+<head>
+    <base href=".">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>模型原子搭建</title>
+
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/metisMenu.min.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/sb-admin-2.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/morris.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <div id="wrapper">
+
+    <script src="http://39.106.148.96/static/js/jquery.min.js"></script>
+    <script src="http://39.106.148.96/static/js/bootstrap.min.js"></script>
+    <script src="http://39.106.148.96/static/js/metisMenu.min.js"></script>
+    <script src="http://39.106.148.96/static/js/raphael.min.js"></script>
+    <script src="http://39.106.148.96/static/js/morris.min.js"></script>
+    <script src="http://39.106.148.96/static/js/morris-data.js"></script>
+    <script src="http://39.106.148.96/static/js/sb-admin-2.js"></script>
+
+    <div id="page-wrapper" style="min-height: 589px; margin-left: 0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">模型原子搭建</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        
+                            
+                        
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form" enctype="multipart/form-data" action="yzmxdjServlet" method="post">
+                                        <div class="form-group">
+                                            <label>模型原子数量级</label>
+                                            <input class="form-control" name="ATOMNUM" value="1e4">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>单晶构建：</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="width: 50%;">晶格结构</label>
+                                            <label style="width: 24%;">晶格常数(埃)</label>
+                                            <input class="form-control" name="MOTIF" style="width: 50%;display: inline" value="bcc">
+                                            <input class="form-control" name="LP" style="width: 24%;display: inline" value="2.83 2.83 2.83">
+                                        </div>
+                                        <div class="form-group" >
+                                            <label>位错类型列表</label>
+                                            <input type="file" name="wclxlb">
+                                        </div>
+                                        <div class="form-group" >
+                                            <label>其他缺陷列表</label>
+                                            <input type="file" name="qtqxlb">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>晶界构建：</label>
+                                        </div>
+                                        <div class="form-group" >
+                                            <label>晶界类型列表</label>
+                                            <input type="file" name="jjlxlb">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>物理性质</label>
+                                            <input class="form-control" name="PROPERTY" value="all">
+                                        </div>
+                                        <div class="form-group" >
+                                            <label>自定义模型文件：</label>
+                                            <input type="file" name="selffile">
+                                        </div>
+                                        <button type="submit" class="btn btn-default">保 存</button>
+                                        <button type="reset" class="btn btn-default">恢 复</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+
+</body>
+
+</html>
+
+

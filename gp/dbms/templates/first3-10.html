@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+
+
+<head>
+    <base href=".">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>相基本性质</title>
+
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/metisMenu.min.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/sb-admin-2.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/morris.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <div id="wrapper">
+
+    <script src="http://39.106.148.96/static/js/jquery.min.js"></script>
+    <script src="http://39.106.148.96/static/js/bootstrap.min.js"></script>
+    <script src="http://39.106.148.96/static/js/metisMenu.min.js"></script>
+    <script src="http://39.106.148.96/static/js/raphael.min.js"></script>
+    <script src="http://39.106.148.96/static/js/morris.min.js"></script>
+    <script src="http://39.106.148.96/static/js/morris-data.js"></script>
+    <script src="http://39.106.148.96/static/js/sb-admin-2.js"></script>
+
+    <div id="page-wrapper" style="min-height: 589px; margin-left: 0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">相基本性质</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form" enctype="multipart/form-data" action="pfPhaseBasicPropertiesServlet" method="post" id="phase-form">
+                                        <div class="form-group">
+                                            <label>相数目</label>
+                                            <select class="form-control" id="phase-select" name="PhaseNumber">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group" id="origin">
+                                        <!-- 重复START -->
+                                            <div class="form-group" >
+                                                <label>相名称</label>
+                                                <input class="form-control" name="PhaseName" type="text">
+                                            </div>
+                                            <div class="form-group" >
+                                                <label>元素数目</label>
+                                                <input class="form-control" name="ElementNumber">
+                                            </div>
+                                            <div class="form-group" >
+                                                <label>元素名</label>
+                                                <input class="form-control" name="Element">
+                                            </div>
+                                            <div class="form-group" >
+                                                <label>组分</label>
+                                                <input class="form-control" name="Composition">
+                                            </div>
+                                            <div class="form-group" >
+                                                <label>相状态</label>
+                                                <input class="form-control" name="PhaseState">
+                                            </div>
+                                            <div class="form-group" >
+                                                
+                                                <tr>
+                                                    <td align="right"><label>是否为晶体</label></td>
+                                                    <td align="left">
+                                                        <div class="button-holder">
+                                                            <input type="radio" id="radio-1-1" name="isCrystal" value="Y" class="regular-radio big-radio" checked/>
+                                                            <label for="radio-1-1">是</label>
+                                                            <input type="radio" id="radio-1-2" name="isCrystal" value ="N" class="regular-radio big-radio" />
+                                                            <label for="radio-1-2">否</label>
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </div>
+                                            
+                                                
+                                                
+                                            
+                                            <div class="form-group" >
+                                                <label>晶体结构</label>
+                                                <input class="form-control" name="CrystalStructure">
+                                            </div>
+                                            <div class="form-group" >
+                                                <label>点阵常数</label>
+                                                <input class="form-control" name="ILatticeConstant">
+                                            </div>
+                                            <div class="form-group" >
+                                                <label>弹性常数分量个数</label>
+                                                <input class="form-control" name="CijNumber">
+                                            </div>
+                                            <div class="form-group" >
+                                                <label>弹性常数</label>
+                                                <input class="form-control" name="Cij">
+                                            </div>
+                                            <div class="form-group" >
+                                                <label>File input</label>
+                                                <input type="file" name="file1">
+                                            </div>
+                                        <!-- 重复END -->
+                                        </div>
+                                        <div class="form-group" >
+                                            <label>溶质数目</label>
+                                            <input class="form-control" name="SoluteNumber">
+                                        </div>
+                                        <div class="form-group" >
+                                            <label>溶质名称</label>
+                                            <input class="form-control" name="SoluteName">
+                                        </div>
+                                        <div class="form-group" >
+                                            <label>扩散参数</label>
+                                            <input class="form-control" name="D3">
+                                        </div>
+                                        <div class="form-group" >
+                                            <label>晶界参数</label>
+                                            <input class="form-control" name="GB">
+                                        </div>
+                                        <div class="form-group" >
+                                            <label>表面参数</label>
+                                            <input class="form-control" name="GS">
+                                        </div>
+
+                                        <button type="submit" class="btn btn-default">保 存</button>
+                                        <button type="reset" class="btn btn-default">恢 复</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+<script>
+    //获取循环的内容
+    var content=$("#origin").html();
+    $("#phase-select").change(function(){
+        // select选中的值
+        var select_val = $("#phase-select option:selected").val();
+        // 每次追加前先清空后根据次数追加
+        $("#origin").html("");
+        for(var i=0; i<select_val; i++){
+            $("#origin").append(content);
+        }
+    });
+</script>
+</body>
+
+</html>
+
+
+
