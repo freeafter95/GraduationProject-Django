@@ -14,13 +14,16 @@ from cacheout import Cache
 
 cache = Cache()
 
-def check_login(func_type='func'):
+def check_login(per_type='3', func_type='func'):
     def decorator(func):
         def wrapper(*args):
             print(args)
             if (func_type == 'class' and args[1].session.get('username') is None) or \
             (func_type == 'func' and args[0].session.get('username') is None):
                 return redirect('/dbms/login/')
+            if ((func_type == 'class' and int(per_type) < int(args[1].session.get('permission'))) or \
+                (func_type == 'func' and int(per_type) < int(args[0].session.get('permission')))):
+                return redirect('/dbms/mainterface/')
             return func(*args)
         return wrapper
     return decorator
@@ -63,8 +66,8 @@ class Login(View):
             p = request.POST.get('password')
             check = models.UserInfo.objects.filter(username=u, password=p).first()
             if check:
-                print(check.permission)
                 request.session['username'] = u
+                request.session['permission'] = check.permission
                 return redirect('/dbms/mainterface/')
                 # response = redirect('/dbms/mainterface/')
                 # response.set_cookie('username', u)
@@ -86,14 +89,22 @@ class Login(View):
 
         return render(request, 'login.html', return_dict)
 
-@check_login( )
+@check_login()
 def mainterface(request):
-    return render(request, 'mainterface.html')
+    if request.session.get("permission") == '1':
+        return render(request, 'mainterface_admin.html')
+    elif request.session.get("permission") == '2':
+        return render(request, 'mainterface_user.html')
+    elif request.session.get("permission") == '3':
+        return render(request, 'mainterface_reader.html')
+    else:
+        return redirect('/dbms/login/')
 
 def logout(request):
     auth.logout(request)
     try:
         del request.session['username']
+        del request.session['permission']
     except KeyError:
         pass
     return redirect('/dbms/login/')
@@ -101,30 +112,42 @@ def logout(request):
     # response.delete_cookie('username')
     # return response
 
+@check_login()
 def main_graph(request):
     print(request.path)
     return render(request, 'maingraph.html')
 
+@check_login()
 def crystal_select(request):
     return render(request, 'crystalselect.html')
 
+@check_login(2)
 def crystal_insert(request):
     return render(request, 'crystalinsert.html')
 
+@check_login()
 def process_select(request):
     return render(request, 'processselect.html')
 
+@check_login(2)
 def process_insert(request):
     return render(request, 'processinsert.html')
 
+@check_login()
 def test_select(request):
     return render(request, 'testselect.html')
 
+@check_login(2)
 def test_insert(request):
     return render(request, 'testinsert.html')
 
+@check_login(2)
 def first(request, p1, p2):
     return render(request, 'first%d-%d.html' % (p1, p2))
+
+@check_login(1)
+def usermanage(request, p1, p2):
+    return render(request, 'usermanage.html')
 
 
 # cache = Cache()

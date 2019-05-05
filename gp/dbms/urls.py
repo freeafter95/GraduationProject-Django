@@ -13,6 +13,7 @@ urlpatterns = [
   path('testselect/', views.test_select, name='test_select'),
   path('testinsert/', views.test_insert, name='test_insert'),
   path('maingraph/', views.main_graph, name='maingraph'),
+  path('usermanage/', views.main_graph, name='usermanage'),
   path('first<int:p1>-<int:p2>/', views.first, name='first'),
   # path('regist/',views.regist, name='regist'),
   # path('index/',views.index,name = 'index'),
