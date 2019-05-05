@@ -63,7 +63,7 @@ class Login(View):
             p = request.POST.get('password')
             check = models.UserInfo.objects.filter(username=u, password=p).first()
             if check:
-                print(check)
+                print(check.permission)
                 request.session['username'] = u
                 return redirect('/dbms/mainterface/')
                 # response = redirect('/dbms/mainterface/')
