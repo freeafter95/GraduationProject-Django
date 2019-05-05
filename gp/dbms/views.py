@@ -34,6 +34,7 @@ def check_login(per_type='3', func_type='func'):
                 del_session(req)
                 return redirect('/dbms/login/')
             if int(per_type) < int(req.session.get('permission')):
+                print('No permission!')
                 return redirect('/dbms/mainterface/')
             # if (func_type == 'class' and args[1].session.get('username') is None) or \
             # (func_type == 'func' and args[0].session.get('username') is None):
@@ -160,6 +161,7 @@ def first(request, p1, p2):
 
 @check_login(1)
 def usermanage(request):
+    print('ok')
     return render(request, 'usermanage.html')
 
 
