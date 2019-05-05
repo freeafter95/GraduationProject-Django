@@ -14,16 +14,33 @@ from cacheout import Cache
 
 cache = Cache()
 
+def del_session(request):
+    try:
+        del request.session['username']
+        del request.session['permission']
+    except KeyError:
+        pass
+
 def check_login(per_type='3', func_type='func'):
     def decorator(func):
         def wrapper(*args):
-            print(args)
-            if (func_type == 'class' and args[1].session.get('username') is None) or \
-            (func_type == 'func' and args[0].session.get('username') is None):
+            if func_type == 'class':
+                req = args[1]
+            else:
+                req = args[0]
+
+            if req.session.get('username') is None or \
+            req.session.get('permission') is None:
+                del_session(req)
                 return redirect('/dbms/login/')
-            if ((func_type == 'class' and (args[1].session.get('permission') is None or int(per_type) < int(args[1].session.get('permission')))) or \
-            (func_type == 'func' and (args[1].session.get('permission') is None or int(per_type) < int(args[0].session.get('permission'))))):
+            if int(per_type) < int(req.session.get('permission')):
                 return redirect('/dbms/mainterface/')
+            # if (func_type == 'class' and args[1].session.get('username') is None) or \
+            # (func_type == 'func' and args[0].session.get('username') is None):
+            #     return redirect('/dbms/login/')
+            # if ((func_type == 'class' and (args[1].session.get('permission') is None or int(per_type) < int(args[1].session.get('permission')))) or \
+            # (func_type == 'func' and (args[0].session.get('permission') is None or int(per_type) < int(args[0].session.get('permission'))))):
+            #     return redirect('/dbms/mainterface/')
             return func(*args)
         return wrapper
     return decorator
@@ -102,11 +119,7 @@ def mainterface(request):
 
 def logout(request):
     auth.logout(request)
-    try:
-        del request.session['username']
-        del request.session['permission']
-    except KeyError:
-        pass
+    del_session(request)
     return redirect('/dbms/login/')
     # response = redirect('/dbms/login/')
     # response.delete_cookie('username')
