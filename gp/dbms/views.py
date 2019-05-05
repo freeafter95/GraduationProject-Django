@@ -159,7 +159,7 @@ def first(request, p1, p2):
     return render(request, 'first%d-%d.html' % (p1, p2))
 
 @check_login(1)
-def usermanage(request, p1, p2):
+def usermanage(request):
     return render(request, 'usermanage.html')
 
 
