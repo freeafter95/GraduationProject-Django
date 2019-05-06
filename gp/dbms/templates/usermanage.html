@@ -42,13 +42,27 @@
         <div>
             <label style="width: 10%;">用户名</label>
             <input class="form-control" name="" value="" style="width: 13%">
-            <div class="form-group">
-                <input class="form action=" name="select"  style="width: 18%;text-align: center; display: inline; color: white; background-color: steelblue; margin: 0 40%" type="submit">
-            </div>
             <div class="buttonType">搜索</div>
-            <div class="buttonType">添加</div>
         </div>
         <div>{{ users }}</div>
+        <table width="100%"  id="dataTables-example" class="table table-striped table-bordered table-hover">
+            <thead>
+            <tr>
+                <th style="text-align: center;width: 100px">用户名</th>
+                <th style="text-align: center;width: 100px">权限</th>
+                <th style="text-align: center;width: 100px">修改</th>
+                <th style="text-align: center;width: 100px">删除</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr class="odd gradeX">
+                    <td style="text-align: center;width: 100px">Fe 80</td>
+                    <td style="text-align: center;width: 100px">Cr 0 Al 20</td>
+                    <td style="text-align: center;width: 100px"><a href="javaScript:void(0)" data-id="11" class="btn_delete">修改</a></td>
+                    <td style="text-align: center;width: 100px"><a href="javaScript:void(0)" data-id="11" class="btn_delete">删除</a></td>
+                </tr>
+            </tbody>
+        </table>
 
 
 
