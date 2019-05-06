@@ -180,6 +180,8 @@ def user_manage(request):
 def add_user(request):
     if request.method == 'GET':
         return render(request, 'adduser.html')
+    else:
+        print(request.POST)
 
 @check_login('usermanage', 1)
 def del_user(request, username):
