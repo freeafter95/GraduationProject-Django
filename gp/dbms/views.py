@@ -170,11 +170,16 @@ def first(request, p1, p2):
     return res
 
 @check_login('usermanage', 1)
-def usermanage(request):
+def user_manage(request):
     select_users = models.UserInfo.objects.all()
     users = [{'name': user.username, 'permission': user.permission} for user in select_users]
     print(type(users))
     return render(request, 'usermanage.html', {'users': users})
+
+@check_login('usermanage', 1)
+def add_user(request):
+    if request.method == 'GET':
+        return render(request, 'adduser.html')
 
 @check_login('usermanage', 1)
 def del_user(request, username):
