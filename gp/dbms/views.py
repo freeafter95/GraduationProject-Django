@@ -203,7 +203,7 @@ def add_user(request):
             return render(request, 'adduser.html', ret_dic)
 
 
-@check_login('usermanage', 1)
+@check_login('user_manage', 1)
 def del_user(request, username):
     models.UserInfo.objects.filter(username=username).delete()
     return usermanage(request)
