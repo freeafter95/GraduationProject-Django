@@ -167,6 +167,7 @@ def test_insert(request):
 def first(request, p1, p2):
     res = render(request, 'first%d-%d.html' % (p1, p2))
     res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
+    return res
 
 @check_login('usermanage', 1)
 def usermanage(request):
