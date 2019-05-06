@@ -112,6 +112,7 @@ class Login(View):
 
 @check_login('')
 def mainterface(request):
+    print(request.COOKIES)
     if request.COOKIES.get('current_page') is not None:
         iframeurl = 'http://39.106.148.96/dbms/%s/' % request.session.get('current_page')
     else:
@@ -162,9 +163,10 @@ def test_select(request):
 def test_insert(request):
     return render(request, 'testinsert.html')
 
-@check_login('maingraph', 2)
+@check_login('', 2)
 def first(request, p1, p2):
-    return render(request, 'first%d-%d.html' % (p1, p2))
+    res = render(request, 'first%d-%d.html' % (p1, p2))
+    res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
 
 @check_login('usermanage', 1)
 def usermanage(request):
