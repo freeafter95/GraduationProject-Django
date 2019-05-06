@@ -178,12 +178,24 @@ def user_manage(request):
     print(type(users))
     return render(request, 'usermanage.html', {'users': users})
 
-@check_login('usermanage', 1)
+@check_login('adduser', 1)
 def add_user(request):
     if request.method == 'GET':
         return render(request, 'adduser.html')
     else:
-        print(request.POST)
+        error_dic = {}
+        u = request.POST.get('username')
+        p = request.POST.get('password')
+        per = request.POST.get('permission')
+        if models.UserInfo.objects.filter(username=u).first():
+            error_dic['user_error'] = '用户名已存在'
+        if len(p) < 3:
+            error_dic['password_error'] = '密码太短'
+        if len(error_dic) == 0:
+            return render(request, 'adduser.html')
+        else:
+            return render(request, 'adduser.html', error_dic)
+
 
 @check_login('usermanage', 1)
 def del_user(request, username):

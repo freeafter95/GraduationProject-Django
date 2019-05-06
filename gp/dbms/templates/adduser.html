@@ -44,17 +44,19 @@
                 <div class="form-group">
                     <label style="width: 10%; text-align: right;">用户名</label>
                     <input class="form-control" name="username" value="" style="width: 20%;display: inline; height: 28px">
+                    <font color="red" size="2">{{ user_error }}</font>
                 </div>
                 <div class="form-group">
                     <label style="width: 10%; text-align: right;">密码</label>
                     <input class="form-control" name="password" value="" style="width: 20%;display: inline; height: 28px">
+                    <font color="red" size="2">{{ password_error }}</font>
                 </div>
                 <div class="form-group">
                     <label style="width: 10%; text-align: right;">权限</label>
                     <select class="form-control" name="permission" id="permission-select" style="width: 20%; display: inline">
-                        <option value='3'>只读用户</option>
-                        <option value='3'>普通用户</option>
-                        <option value='3'>管理员</option>
+                        <option value="3">只读用户</option>
+                        <option value="2">普通用户</option>
+                        <option value="1">管理员</option>
                     </select>
                 </div>
                 <button type="submit" class="btn">添加</button>
