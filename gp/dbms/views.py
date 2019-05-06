@@ -21,7 +21,7 @@ def del_session(request):
     except KeyError:
         pass
 
-def check_login(per_type='3', func_type='func'):
+def check_login(cookie_name, per_type='3', func_type='func'):
     def decorator(func):
         def wrapper(*args, **kwargs):
             if func_type == 'class':
@@ -42,7 +42,10 @@ def check_login(per_type='3', func_type='func'):
             # if ((func_type == 'class' and (args[1].session.get('permission') is None or int(per_type) < int(args[1].session.get('permission')))) or \
             # (func_type == 'func' and (args[0].session.get('permission') is None or int(per_type) < int(args[0].session.get('permission'))))):
             #     return redirect('/dbms/mainterface/')
-            return func(*args, **kwargs)
+            res = func(*args, **kwargs)
+            if cookie_name != '':
+                res.COOKIES.set_cookie('current_page', cookie_name)
+            return res
         return wrapper
     return decorator
 
@@ -107,14 +110,18 @@ class Login(View):
 
         return render(request, 'login.html', return_dict)
 
-@check_login()
+@check_login('')
 def mainterface(request):
+    if request.session.get('current_page') is not None:
+        iframeurl = 'http://39.106.148.96/dbms/%s/' % request.session.get('current_page')
+    else:
+        iframeurl = 'http://39.106.148.96/dbms/maingraph/'
     if request.session.get("permission") == '1':
-        return render(request, 'mainterface_admin.html')
+        return render(request, 'mainterface_admin.html', {'iframeurl': iframeurl})
     elif request.session.get("permission") == '2':
-        return render(request, 'mainterface_user.html')
+        return render(request, 'mainterface_user.html', {'iframeurl': iframeurl})
     elif request.session.get("permission") == '3':
-        return render(request, 'mainterface_reader.html')
+        return render(request, 'mainterface_reader.html', {'iframeurl': iframeurl})
     else:
         return redirect('/dbms/login/')
 
@@ -126,46 +133,47 @@ def logout(request):
     # response.delete_cookie('username')
     # return response
 
-@check_login()
+@check_login('maingraph')
 def main_graph(request):
     print(request.path)
     return render(request, 'maingraph.html')
 
-@check_login()
+@check_login('crystalselect')
 def crystal_select(request):
     return render(request, 'crystalselect.html')
 
-@check_login(2)
+@check_login('crystalinsert', 2)
 def crystal_insert(request):
     return render(request, 'crystalinsert.html')
 
-@check_login()
+@check_login('processselect')
 def process_select(request):
     return render(request, 'processselect.html')
 
-@check_login(2)
+@check_login('processinsert', 2)
 def process_insert(request):
     return render(request, 'processinsert.html')
 
-@check_login()
+@check_login('testselect')
 def test_select(request):
     return render(request, 'testselect.html')
 
-@check_login(2)
+@check_login('testinsert', 2)
 def test_insert(request):
     return render(request, 'testinsert.html')
 
-@check_login(2)
+@check_login('maingraph', 2)
 def first(request, p1, p2):
     return render(request, 'first%d-%d.html' % (p1, p2))
 
-@check_login(1)
+@check_login('usermanage', 1)
 def usermanage(request):
     select_users = models.UserInfo.objects.all()
     users = [{'name': user.username, 'permission': user.permission} for user in select_users]
     print(type(users))
     return render(request, 'usermanage.html', {'users': users})
 
+@check_login('usermanage', 1)
 def del_user(request, username):
     models.UserInfo.objects.filter(username=username).delete()
     return usermanage(request)
