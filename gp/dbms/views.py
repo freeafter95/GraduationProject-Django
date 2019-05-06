@@ -161,7 +161,7 @@ def first(request, p1, p2):
 
 @check_login(1)
 def usermanage(request):
-    users = models.UserInfo.objects.filter()
+    users = models.UserInfo.objects.all()
     print(type(users))
     return render(request, 'usermanage.html', {'users': users})
 
