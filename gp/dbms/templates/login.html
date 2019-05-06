@@ -99,7 +99,13 @@
         <script src="http://39.106.148.96/static/js/jquery.backstretch.min.js"></script>
         <script src="http://39.106.148.96/static/js/retina-1.1.0.min.js"></script>
         <script src="http://39.106.148.96/static/js/scripts.js"></script>
-        
+        <script language="javascript">
+            //防止页面后退
+            history.pushState(null, null, document.URL);
+            window.addEventListener('popstate', function () {
+                    history.pushState(null, null, document.URL);
+            });
+        </script>
         <!--[if lt IE 10]>
             <script src="http://appj.nimte.ac.cn:80/Magmiss/assets/js/placeholder.js"></script>
         <![endif]-->
