@@ -86,7 +86,7 @@ class Login(View):
             if check:
                 request.session['username'] = u
                 request.session['permission'] = check.permission
-                return redirect('/dbms/mainterface/')
+                return redirect('/dbms/mainterface/', {'iframeurl': 'http://39.106.148.96/dbms/maingraph/'})
                 # response = redirect('/dbms/mainterface/')
                 # response.set_cookie('username', u)
                 # return response
@@ -166,6 +166,8 @@ def usermanage(request):
     print(type(users))
     return render(request, 'usermanage.html', {'users': users})
 
+def del_user(request, username):
+    pass
 
 # cache = Cache()
 # VERIFY_IMG_DIR = os.path.dirname(os.path.dirname(__file__)) + '/static/verify_code'
