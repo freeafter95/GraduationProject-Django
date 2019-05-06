@@ -41,10 +41,9 @@
             <!-- /.row -->
         <div>
             <label style="width: 10%;">用户名</label>
-            <input class="form-control" name="" value="" style="width: 13%">
-            <div class="buttonType">搜索</div>
+            <input id="search" class="form-control" name="" value="" style="width: 13%" type="submit" onclick="search()">
+            
         </div>
-        <div>{{ users }}</div>
         <table width="100%"  id="dataTables-example" class="table table-striped table-bordered table-hover">
             <thead>
             <tr>
@@ -115,7 +114,12 @@
 
 
 </body>
-
+<script type="text/javascript">
+    function search(){
+       var a = document.getElementById('search').value
+       console.log(a)
+    }
+</script>>
 
 </html>
 
