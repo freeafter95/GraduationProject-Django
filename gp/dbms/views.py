@@ -162,7 +162,7 @@ def first(request, p1, p2):
 @check_login(1)
 def usermanage(request):
     select_users = models.UserInfo.objects.all()
-    users = [(user.username, user.permission) for user in select_users]
+    users = [{'name': user.username, 'permission': user.permission} for user in select_users]
     print(type(users))
     return render(request, 'usermanage.html', {'users': users})
 
