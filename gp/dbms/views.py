@@ -23,7 +23,7 @@ def del_session(request):
 
 def check_login(per_type='3', func_type='func'):
     def decorator(func):
-        def wrapper(*args):
+        def wrapper(*args, **kwargs):
             if func_type == 'class':
                 req = args[1]
             else:
@@ -42,7 +42,7 @@ def check_login(per_type='3', func_type='func'):
             # if ((func_type == 'class' and (args[1].session.get('permission') is None or int(per_type) < int(args[1].session.get('permission')))) or \
             # (func_type == 'func' and (args[0].session.get('permission') is None or int(per_type) < int(args[0].session.get('permission'))))):
             #     return redirect('/dbms/mainterface/')
-            return func(*args)
+            return func(*args, **kwargs)
         return wrapper
     return decorator
 
