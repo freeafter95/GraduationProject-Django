@@ -183,18 +183,24 @@ def add_user(request):
     if request.method == 'GET':
         return render(request, 'adduser.html')
     else:
-        error_dic = {}
+        ret_dic = {}
         u = request.POST.get('username')
         p = request.POST.get('password')
         per = request.POST.get('permission')
         if models.UserInfo.objects.filter(username=u).first():
-            error_dic['user_error'] = '用户名已存在'
+            ret_dic['user_error'] = '用户名已存在'
         if len(p) < 3:
-            error_dic['password_error'] = '密码太短'
-        if len(error_dic) == 0:
-            return render(request, 'adduser.html')
+            ret_dic['password_error'] = '密码太短'
+        if len(ret_dic) == 0:
+            ret_dic['success'] = '添加成功'
+            user_insert = models.UserInfo()
+            user_insert.username = u
+            user_insert.password = p
+            user_insert.permission = per
+            user_insert.save()
+            return render(request, 'adduser.html', ret_dic)
         else:
-            return render(request, 'adduser.html', error_dic)
+            return render(request, 'adduser.html', ret_dic)
 
 
 @check_login('usermanage', 1)
