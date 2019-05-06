@@ -173,7 +173,10 @@ def first(request, p1, p2):
 
 @check_login('usermanage', 1)
 def user_manage(request):
-    select_users = models.UserInfo.objects.all()
+    if request.method == 'GET':
+        select_users = models.UserInfo.objects.all()
+    else:
+        select_users = models.UserInfo.objects.filter(username__icontains=request.POST.get('usersearch'))
     users = [{'name': user.username, 'permission': user.permission} for user in select_users]
     print(type(users))
     return render(request, 'usermanage.html', {'users': users})
