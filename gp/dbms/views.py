@@ -44,7 +44,7 @@ def check_login(cookie_name, per_type='3', func_type='func'):
             #     return redirect('/dbms/mainterface/')
             res = func(*args, **kwargs)
             if cookie_name != '':
-                res.COOKIES.set_cookie('current_page', cookie_name)
+                res.set_cookie('current_page', cookie_name)
             return res
         return wrapper
     return decorator
@@ -112,7 +112,7 @@ class Login(View):
 
 @check_login('')
 def mainterface(request):
-    if request.session.get('current_page') is not None:
+    if request.COOKIES.get('current_page') is not None:
         iframeurl = 'http://39.106.148.96/dbms/%s/' % request.session.get('current_page')
     else:
         iframeurl = 'http://39.106.148.96/dbms/maingraph/'
