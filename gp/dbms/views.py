@@ -167,7 +167,9 @@ def usermanage(request):
     return render(request, 'usermanage.html', {'users': users})
 
 def del_user(request, username):
-    pass
+    models.UserInfo.objects.filter(username=username).delete()
+    return usermanage(request)
+
 
 # cache = Cache()
 # VERIFY_IMG_DIR = os.path.dirname(os.path.dirname(__file__)) + '/static/verify_code'

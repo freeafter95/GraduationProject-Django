@@ -15,6 +15,7 @@ urlpatterns = [
   path('maingraph/', views.main_graph, name='maingraph'),
   path('usermanage/', views.usermanage, name='usermanage'),
   path('first<int:p1>-<int:p2>/', views.first, name='first'),
+  path('deluser-<str:username>/', views.del_user, name='first'),
   # path('regist/',views.regist, name='regist'),
   # path('index/',views.index,name = 'index'),
   # path('test/',views.test,name = 'test'),
