@@ -114,7 +114,7 @@ class Login(View):
 def mainterface(request):
     print(request.COOKIES)
     if request.COOKIES.get('current_page') is not None:
-        iframeurl = 'http://39.106.148.96/dbms/%s/' % request.session.get('current_page')
+        iframeurl = 'http://39.106.148.96/dbms/%s/' % request.COOKIES.get('current_page')
     else:
         iframeurl = 'http://39.106.148.96/dbms/maingraph/'
     if request.session.get("permission") == '1':
@@ -129,7 +129,9 @@ def mainterface(request):
 def logout(request):
     auth.logout(request)
     del_session(request)
-    return redirect('/dbms/login/')
+    res = redirect('/dbms/login/')
+    res.delete_cookie('current_page')
+    return res
     # response = redirect('/dbms/login/')
     # response.delete_cookie('username')
     # return response
