@@ -259,16 +259,38 @@ def crystal_query(request):
         res.set_cookie('select_conditions', json.dumps(select_conditions))
         return res
 
-@check_login('crystaldelete', 1)
+@check_login('crystaldelete', 2)
 def crystal_delete(request, id):
     models.Djbasicnatu.objects.filter(id=id).delete()
-    return redirect('/dbms/crystalquery')
+    return redirect('/dbms/crystalquery', {'success': '删除成功'})
 
-@check_login('crystalupdate', 1)
+@check_login('crystalupdate', 2)
 def crystal_update(request, id):
-    result = model_to_dict(models.Djbasicnatu.objects.filter(id=id).first())
-    print(result)
-    return render(request, 'crystalupdate.html', {'result': result})
+    if request.method == 'GET':
+        result = model_to_dict(models.Djbasicnatu.objects.filter(id=id).first())
+        for (k, v) in result.items():
+            if v is None:
+                result[k] = ''
+
+        return render(request, 'crystalupdate.html', {'result': result})
+    else:
+        ret_dic = {}
+        input_dic = {}
+        for attr in input_lists['crystal_list'].keys():
+            if attr == 'insert_time':
+                continue
+            content = request.POST.get(attr).strip()
+            if content is not None and content != '':
+                input_dic[attr] = content
+
+        if (input_dic.get('main_elem') is not None \
+        and input_dic.get('second_elem') is not None) \
+        or input_dic.get('alloy_grade') is not None:
+            models.Djbasicnatu.objects.filter(id=id).update(**input_dic)
+            ret_dic['success'] = '修改成功'
+        else:
+            ret_dic['error'] = '修改失败，合金牌号或主元素与次元素必须填写'
+        return redirect('/dbms/crystalquery', ret_dic)
 
 @check_login('processselect')
 def process_select(request):
