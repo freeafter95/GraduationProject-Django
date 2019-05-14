@@ -11,7 +11,7 @@ from django.contrib import auth
 from . import models
 import random, datetime, os, string
 from cacheout import Cache
-import copy
+import json
 
 cache = Cache()
 
@@ -203,8 +203,8 @@ def crystal_insert(request):
 @check_login('crystalquery')
 def crystal_query(request):
     if request.method == 'GET':
-        select_fields = request.COOKIES.get('select_fields')
-        select_conditions = request.COOKIES.get('select_conditions')
+        select_fields = json.loads(request.COOKIES.get('select_fields'))
+        select_conditions = json.loads(request.COOKIES.get('select_conditions'))
         if select_fields is None or select_conditions is None:
             return render(request, 'crystalquery.html')
         select_result = models.Djbasicnatu.objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
@@ -247,8 +247,8 @@ def crystal_query(request):
             res = render(request, 'crystalquerylow.html', {'fields': field_names, 'result': result})
         else:
             res = render(request, 'crystalqueryhigh.html', {'fields': field_names, 'result': result})
-        res.set_cookie('select_fields', select_fields)
-        res.set_cookie('select_conditions', select_conditions)
+        res.set_cookie('select_fields', json.dumps(select_fields))
+        res.set_cookie('select_conditions', json.dumps(select_conditions))
         return res
 
 @check_login('crystaldelete', 1)
