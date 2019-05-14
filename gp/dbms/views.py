@@ -211,7 +211,7 @@ def crystal_query(request):
                 if v.strip() != '':
                     select_fields.add(k[0:-1])
                     if k == 'second_elem1':
-                        select_conditions['second_elem__icontains'] = '%'.join(v.strip().split(' '))
+                        select_conditions['second_elem__icontains'] = '[%]'.join(v.strip().split(' '))
                         print(select_conditions['second_elem__icontains'])
                     else:
                         select_conditions[k[0:-1] + '__icontains'] = v.strip()
