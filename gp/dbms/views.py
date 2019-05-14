@@ -49,8 +49,8 @@ input_lists = {
 
 def del_session(request):
     try:
-        del request.session['username']
-        del request.session['permission']
+        for k in request.session.keys():
+            del request.session[k]
     except KeyError:
         pass
 
@@ -274,7 +274,6 @@ def crystal_update(request, id):
 
         return render(request, 'crystalupdate.html', {'result': result})
     else:
-        ret_dic = {}
         input_dic = {}
         for attr in input_lists['crystal_list'].keys():
             if attr == 'insert_time':
@@ -287,10 +286,14 @@ def crystal_update(request, id):
         and input_dic.get('second_elem') is not None) \
         or input_dic.get('alloy_grade') is not None:
             models.Djbasicnatu.objects.filter(id=id).update(**input_dic)
-            ret_dic['success'] = '修改成功'
+            return redirect('/dbms/crystalquery', ret_dic)
         else:
-            ret_dic['error'] = '修改失败，合金牌号或主元素与次元素必须填写'
-        return redirect('/dbms/crystalquery', ret_dic)
+            result = model_to_dict(models.Djbasicnatu.objects.filter(id=id).first())
+            for (k, v) in result.items():
+                if v is None:
+                    result[k] = ''
+            return render(request, 'crystalupdate.html', {'result': result, 'error': '修改失败，合金牌号或主元素与次元素必须填写'})
+        
 
 @check_login('processselect')
 def process_select(request):
