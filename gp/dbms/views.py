@@ -211,9 +211,9 @@ def crystal_query(request):
                 if v.strip() != '':
                     select_fields.add(k[0:-1])
                     if k == 'second_elem1':
-                        select_conditions['second_elem__icontains'] = '%'.join(v.strip().split(' '))
+                        select_conditions['second_elem__contains'] = '%'.join(v.strip().split(' '))
                     else:
-                        select_conditions[k[0:-1] + '__icontains'] = v.strip()
+                        select_conditions[k[0:-1] + '__contains'] = v.strip()
             else:
                 select_fields.add(k)
 
@@ -252,7 +252,7 @@ def user_manage(request):
     if request.method == 'GET':
         select_users = models.UserInfo.objects.all()
     else:
-        select_users = models.UserInfo.objects.filter(username__icontains=request.POST.get('usersearch'))
+        select_users = models.UserInfo.objects.filter(username__contains=request.POST.get('usersearch'))
     users = [{'name': user.username, 'permission': user.permission} for user in select_users]
     print(type(users))
     return render(request, 'usermanage.html', {'users': users})
