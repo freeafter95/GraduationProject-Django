@@ -9,6 +9,7 @@ from tools import generate_code
 from django.views import View 
 from django.contrib import auth
 from . import models
+from django.forms.models import model_to_dict
 import random, datetime, os, string
 from cacheout import Cache
 import json
@@ -265,7 +266,7 @@ def crystal_delete(request, id):
 
 @check_login('crystalupdate', 1)
 def crystal_update(request, id):
-    result = models.model_to_dict(models.Djbasicnatu.objects.filter(id=id).first())
+    result = model_to_dict(models.Djbasicnatu.objects.filter(id=id).first())
     return render(request, 'crystalupdate.html', {'result': result})
 
 @check_login('processselect')
