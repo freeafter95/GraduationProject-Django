@@ -204,7 +204,7 @@ def crystal_query(request):
     else:
         select_fields = set()
         select_conditions = {}
-        for k, v in request.POST:
+        for k, v in request.POST.items():
             if k[-1] == '1':
                 if v.strip() != '':
                     select_fields.add(k[0:-1])
