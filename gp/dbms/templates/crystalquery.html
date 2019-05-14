@@ -45,16 +45,18 @@
                 {% for field in fields %}
                 <th style="text-align: center;width: 100px">{{ field }}</th>
                 {% endfor %}
+                <th style="text-align: center;width: 100px">修改</th>
                 <th style="text-align: center;width: 100px">删除</th>
             </tr>
             </thead>
             <tbody>
                 {% for columns in result %}
                 <tr class="odd gradeX">
-                    {% for column in columns %}
+                    {% for column in columns.value %}
                     <td style="text-align: center;width: 100px">{{ column }}</td>
                     {% endfor %}
-                    <td style="text-align: center;width: 100px"><a href="http://39.106.148.96/dbms/deluser-{{ item.name }}/" data-id="11" class="btn_delete">删除</a></td>
+                    <td style="text-align: center;width: 100px"><a href="http://39.106.148.96/dbms/crystalupdate-{{ columns.id }}/" data-id="11" class="btn_delete">修改</a></td>
+                    <td style="text-align: center;width: 100px"><a href="http://39.106.148.96/dbms/crystaldelete-{{ columns.id }}/" data-id="11" class="btn_delete">删除</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

@@ -224,9 +224,11 @@ def crystal_query(request):
         if len(select_fields) == 0:
             return render(request, 'crystalquery.html')
         select_fields.add('insert_time')
-        select_result = models.Djbasicnatu.objects.filter(**select_conditions).values(*select_fields)
+        select_fields.add('id')
+        select_result = models.Djbasicnatu.objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
+        select_fields.remove('id')
         field_names = [input_lists['crystal_list'][name] for name in select_fields]
-        result = [[columns[field] for field in select_fields] for columns in select_result]
+        result = [{'id': columns['id'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
         
         return render(request, 'crystalquery.html', {'fields': field_names, 'result': result})
 
