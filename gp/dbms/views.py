@@ -147,7 +147,13 @@ def crystal_select(request):
 
 @check_login('crystalinsert', 2)
 def crystal_insert(request):
-    return render(request, 'crystalinsert.html')
+    if request.method == 'GET':
+        return render(request, 'crystalinsert.html')
+    else:
+        al = request.POST.get('alloy_grade')
+        info = request.POST.get('info_source')
+        print(al, info)
+        return render(request, 'crystalinsert.html')
 
 @check_login('processselect')
 def process_select(request):
