@@ -34,7 +34,7 @@
     <div id="page-wrapper" style="min-height: 589px; margin-left: 0">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">相场初始构型</h1>
+                    <h1 class="page-header" style="color: steelblue;">相场初始构型</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -48,27 +48,27 @@
                                     <form role="form"  enctype="multipart/form-data" action="pfInitialStructureServlet" method="post">
 
                                         <div class="form-group" >
-                                            <label>平均晶粒半径</label>
-                                            <input class="form-control" name="Radius" value="8 9">
+                                            <label style="color: steelblue; width: 20%;">平均晶粒半径</label>
+                                            <input class="form-control" name="Radius" style="width: 50%;display: inline" value="8 9">
                                         </div>
                                         <div class="form-group" >
-                                            <label>多晶织构信息</label>
-                                            <input class="form-control" name="Texture" value="0 0">
+                                            <label style="color: steelblue; width: 20%;">多晶织构信息</label>
+                                            <input class="form-control" name="Texture" style="width: 50%;display: inline" value="0 0">
                                         </div>
                                         <div class="form-group" >
-                                            <label>是否用Voronoi法构造初始多晶</label>
-                                            <input class="form-control" name="Voro" value="1 0">
+                                            <label style="color: steelblue; width: 20%;">是否用Voronoi法构造初始多晶</label>
+                                            <input class="form-control" name="Voro" style="width: 50%;display: inline" value="1 0">
                                         </div>
                                         <div class="form-group" >
-                                            <label>File input</label>
-                                            <input type="file" name="file1">
+                                            <label style="color: steelblue; width: 20%;">输入文件</label>
+                                            <input type="file" name="file1" style="width: 50%;display: inline">
                                         </div>
                                         
                                             
                                             
                                         
-                                        <button type="submit" class="btn btn-default">保 存</button>
-                                        <button type="reset" class="btn btn-default">恢 复</button>
+                                        <button type="submit" class="btn btn-default" style="width: 15%; color: white; background-color: steelblue;">保 存</button>
+                                        <button type="reset" class="btn btn-default" style="width: 15%; color: white; background-color: steelblue;margin-left: 70px;">恢 复</button>
                                     </form>
                                 </div>
                             </div>

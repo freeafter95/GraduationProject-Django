@@ -34,7 +34,7 @@
     <div id="page-wrapper" style="min-height: 589px; margin-left: 0">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">神经网络参数设置</h1>
+                <h1 class="page-header" style="color: steelblue">神经网络参数设置</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -47,29 +47,29 @@
                                 <div class="col-lg-6">
                                     <form role="form" enctype="multipart/form-data" action="ANNCMServlet" method="post">
                                         <div class="form-group">
-                                            <label>神经网络层数</label>
-                                            <input class="form-control" name="Neural_Net_Layer" value="3">
+                                            <label style="color: steelblue; width: 20%">神经网络层数</label>
+                                            <input class="form-control" name="Neural_Net_Layer" value="3" style="width: 50%; display: inline;">
                                         </div>
                                         <div class="form-group">
-                                            <label>隐层神经元个数</label>
-                                            <input class="form-control" name="Hidden_Layer_Neurons" value="5">
+                                            <label style="color: steelblue; width: 20%">隐层神经元个数</label>
+                                            <input class="form-control" name="Hidden_Layer_Neurons" value="5" style="width: 50%; display: inline;">
                                         </div>
                                         <div class="form-group">
-                                            <label>循环次数</label>
-                                            <input class="form-control" name="Cycle_Times" value="800">
+                                            <label style="color: steelblue; width: 20%">循环次数</label>
+                                            <input class="form-control" name="Cycle_Times" value="800" style="width: 50%; display: inline;">
                                         </div>
                                         <div class="form-group">
-                                            <label>学习率</label>
-                                            <input class="form-control" name="Learn_Rate" value="0.3">
+                                            <label style="color: steelblue; width: 20%">学习率</label>
+                                            <input class="form-control" name="Learn_Rate" value="0.3" style="width: 50%; display: inline;">
                                         </div>
 
                                         <div class="form-group">
-                                            <label>精度控制参数</label>
-                                            <input class="form-control" name="Precision_Control" value="0.00001">
+                                            <label style="color: steelblue; width: 20%">精度控制参数</label>
+                                            <input class="form-control" name="Precision_Control" value="0.00001" style="width: 50%; display: inline;">
                                         </div>
 
-                                        <button type="submit" class="btn btn-default">保 存</button>
-                                        <button type="reset" class="btn btn-default">恢 复</button>
+                                        <button type="submit" class="btn btn-default"  style="width: 15%; color: white; background-color: steelblue;">保 存</button>
+                                        <button type="reset" class="btn btn-default"  style="width: 15%; color: white; background-color: steelblue;">恢 复</button>
                                     </form>
                                     
                                 </div>

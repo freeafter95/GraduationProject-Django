@@ -34,7 +34,7 @@
     <div id="page-wrapper" style="min-height: 589px; margin-left: 0">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">模型原子搭建</h1>
+                    <h1 class="page-header" style="color:steelblue">模型原子搭建</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -50,43 +50,39 @@
                                 <div class="col-lg-6">
                                     <form role="form" enctype="multipart/form-data" action="yzmxdjServlet" method="post">
                                         <div class="form-group">
-                                            <label>模型原子数量级</label>
+                                            <label><font color="steelblue">模型原子数量级</font></label>
                                             <input class="form-control" name="ATOMNUM" value="1e4">
                                         </div>
+                                       
                                         <div class="form-group">
-                                            <label>单晶构建：</label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label style="width: 50%;">晶格结构</label>
-                                            <label style="width: 24%;">晶格常数(埃)</label>
+                                            <label style="width: 50%; color: steelblue;">晶格结构</label>
+                                            <label style="width: 24%; color: steelblue;">晶格常数(埃)</label>
                                             <input class="form-control" name="MOTIF" style="width: 50%;display: inline" value="bcc">
                                             <input class="form-control" name="LP" style="width: 24%;display: inline" value="2.83 2.83 2.83">
                                         </div>
                                         <div class="form-group" >
-                                            <label>位错类型列表</label>
+                                            <label style="width: 24%; color: steelblue;">位错类型列表</label>
                                             <input type="file" name="wclxlb">
                                         </div>
                                         <div class="form-group" >
-                                            <label>其他缺陷列表</label>
+                                            <label style="width: 24%; color: steelblue;">其他缺陷列表</label>
                                             <input type="file" name="qtqxlb">
                                         </div>
-                                        <div class="form-group">
-                                            <label>晶界构建：</label>
-                                        </div>
+                                        
                                         <div class="form-group" >
-                                            <label>晶界类型列表</label>
+                                            <label style="width: 24%; color: steelblue;">晶界类型列表</label>
                                             <input type="file" name="jjlxlb">
                                         </div>
                                         <div class="form-group">
-                                            <label>物理性质</label>
+                                            <label style="width: 24%; color: steelblue;">物理性质</label>
                                             <input class="form-control" name="PROPERTY" value="all">
                                         </div>
                                         <div class="form-group" >
-                                            <label>自定义模型文件：</label>
+                                            <label style="width: 24%; color: steelblue;">自定义模型文件：</label>
                                             <input type="file" name="selffile">
                                         </div>
-                                        <button type="submit" class="btn btn-default">保 存</button>
-                                        <button type="reset" class="btn btn-default">恢 复</button>
+                                        <button type="submit" class="btn btn-default" style="width: 15%; color: white; background-color: steelblue;">保 存</button>
+                                        <button type="reset" class="btn btn-default" style="width: 15%; color: white; background-color: steelblue; margin-left: 100px">恢 复</button>
                                     </form>
                                 </div>
                             </div>

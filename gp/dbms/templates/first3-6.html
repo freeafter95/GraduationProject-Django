@@ -34,7 +34,7 @@
     <div id="page-wrapper" style="min-height: 589px; margin-left: 0">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">MD基本信息</h1>
+                    <h1 class="page-header" style="color: steelblue">MD基本信息</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -47,27 +47,27 @@
                                 <div class="col-lg-6">
                                     <form role="form" enctype="multipart/form-data" action="mdjbxxServlet" method="post">
                                         <div class="form-group">
-                                            <label style="width: 50%;">主元素含量（%）</label>
-                                            <label style="width: 24%;">次元素含量（%）</label>
-                                            <label style="width: 24%;">次元素含量（%）</label>
+                                            <label style="width: 50%; color: steelblue">主元素含量（%）</label>
+                                            <label style="width: 24%;color: steelblue">次元素含量（%）</label>
+                                            <label style="width: 24%;color: steelblue">次元素含量（%）</label>
                                             <input class="form-control" name="PFe" style="width: 50%;display: inline" value="80">
                                             <input class="form-control" name="PCr" style="width: 24%;display: inline" value="10">
                                             <input class="form-control" name="PAl" style="width: 24%;display: inline" value="10">
                                         </div>
                                         <div class="form-group" >
-                                            <label>势能力场文件选择</label>
-                                            <input type="file" name="snlichang">
+                                            <label><font color ="steelblue">势能力场文件选择</font></label>
+                                            <input type="file" name="snlichang" style="width:30%; height:20px;">
                                         </div>
                                         <div class="form-group">
-                                            <label>温度(k)</label>
+                                            <label><font color ="steelblue">温度(k)</font></label>
                                             <input class="form-control" name="TEMPERATURE" value="300">
                                         </div>
                                         <div class="form-group" >
-                                            <label>其他情况选择文件：</label>
-                                            <input type="file" name="elsefile">
+                                            <label><font color ="steelblue">其他情况选择文件：</font></label>
+                                            <input type="file" name="elsefile" style="width:30%; height:20px;" >
                                         </div>
-                                        <button type="submit" class="btn btn-default">保 存</button>
-                                        <button type="reset" class="btn btn-default">恢 复</button>
+                                        <button type="submit" class="btn btn-default" style="width: 15%; color: white; background-color: steelblue;">保 存</button>
+                                        <button type="reset" class="btn btn-default" style="width: 15%; color: white; background-color: steelblue; margin-left: 70px">恢 复</button>
                                     </form>
                                 </div>
                             </div>

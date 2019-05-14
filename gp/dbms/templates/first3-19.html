@@ -34,7 +34,7 @@
     <div id="page-wrapper" style="min-height: 589px; margin-left: 0">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">FEM任务管理</h1>
+                    <h1 class="page-header" style="color: steelblue;">FEM任务管理</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -47,8 +47,8 @@
                                 <div class="col-lg-6">
                                     <form role="form" enctype="multipart/form-data" action="femrwglServlet" method="post">
                                         <div class="form-group">
-                                            <label>等效性质的计算设置</label>
-                                            <select class="form-control" name="property">
+                                            <label style="color: steelblue; width:25%;">等效性质的计算设置</label>
+                                            <select class="form-control" name="property" style="width: 50%; display: inline;">
                                                 <option name="property" value="0">0–所有</option>
                                                 <option name="property" value="1">1–等效热传导系数</option>
                                                 <option name="property" value="2">2–等效热容</option>
@@ -59,20 +59,20 @@
                                             </select>
                                         </div>
                                         <div class="form-group" >
-                                            <label>选取等效设置对应文件</label>
-                                            <input type="file" name="dxszfile">
+                                            <label style="color: steelblue; width:25%; ">选取等效设置对应文件</label>
+                                            <input type="file" name="dxszfile" style="width: 50%; display: inline;">
                                         </div>
                                         <div class="form-group">
-                                            <label>加载速率(m/s)</label>
-                                            <input class="form-control" name="strainRate" value="1e-3">
+                                            <label style="color: steelblue; width:25%;">加载速率(m/s)</label>
+                                            <input class="form-control" name="strainRate" value="1e-3" style="width: 50%; display: inline;">
                                         </div>
                                         <div class="form-group">
-                                            <label>CPU核数</label>
-                                            <input class="form-control" name="cpuNumber" value="4">
+                                            <label  style="color: steelblue; width:25%;">CPU核数</label>
+                                            <input class="form-control" name="cpuNumber" value="4" style="width: 50%; display: inline;">
                                         </div>
 
-                                        <button type="submit" class="btn btn-default">保 存</button>
-                                        <button type="reset" class="btn btn-default">恢 复</button>
+                                        <button type="submit" class="btn btn-default" style="width: 15%; color: white; background-color: steelblue;">保 存</button>
+                                        <button type="reset" class="btn btn-default" style="width: 15%; color: white; background-color: steelblue;">恢 复</button>
                                     </form>
                                 </div>
                             </div>
