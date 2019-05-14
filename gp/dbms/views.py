@@ -184,8 +184,7 @@ def crystal_insert(request):
         ret_dic = {}
         for attr in input_lists['crystal_list']:
             content = request.POST.get(attr).strip()
-            if attr is not None and attr != '':
-                print(content, len(content))
+            if content is not None and content != '':
                 input_dic[attr] = content
 
         if (input_dic.get('main_elem') is not None \
