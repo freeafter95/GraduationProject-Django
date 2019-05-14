@@ -212,7 +212,7 @@ def crystal_query(request):
                     select_fields.add(k[0:-1])
                     if k == 'second_elem1':
                         select_conditions['second_elem__icontains'] = '%'.join(v.strip().split(' '))
-                        print(models.Djbasicnatu.objects.filter(second_elem__icontains=select_conditions['second_elem__icontains']).first().values('id'))
+                        print(models.Djbasicnatu.objects.filter(second_elem__icontains=select_conditions['second_elem__icontains']).values('id'))
                     else:
                         select_conditions[k[0:-1] + '__icontains'] = v.strip()
             else:
