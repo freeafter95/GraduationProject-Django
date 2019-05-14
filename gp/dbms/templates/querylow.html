@@ -45,6 +45,7 @@
                 {% for field in fields %}
                 <th style="text-align: center;width: 100px">{{ field }}</th>
                 {% endfor %}
+                <th style="text-align: center;width: 100px">更新时间</th>
             </tr>
             </thead>
             <tbody>
@@ -53,6 +54,7 @@
                     {% for column in columns.value %}
                     <td style="text-align: center;width: 100px">{{ column }}</td>
                     {% endfor %}
+                    <td style="text-align: center;width: 100px">{{ columns.time }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
