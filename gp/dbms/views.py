@@ -42,6 +42,7 @@ input_lists = {
         'elasti_anis': '微观弹性各异性(Gpa)',
         'wG_Ress': '微观切变模量(Gpa)',
         'wK_Ress': '微观体积模量(Gpa)',
+        'insert_time': '插入时间'
     }
 }
 
@@ -184,6 +185,8 @@ def crystal_insert(request):
         input_dic = {}
         ret_dic = {}
         for attr in input_lists['crystal_list'].keys():
+            if attr == 'insert_time':
+                continue
             content = request.POST.get(attr).strip()
             if content is not None and content != '':
                 input_dic[attr] = content
