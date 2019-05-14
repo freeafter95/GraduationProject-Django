@@ -187,8 +187,8 @@ def crystal_insert(request):
             if attr is not None and attr != '':
                 input_dic[attr] = content
 
-        if (input_dic.get('main_elem') is not None
-        and input_dic.get('second_elem') is not None)
+        if (input_dic.get('main_elem') is not None \
+        and input_dic.get('second_elem') is not None) \
         or input_dic.get('alloy_grade') is not None:
             ret_dic['success'] = '添加成功'
         else:
