@@ -267,6 +267,7 @@ def crystal_delete(request, id):
 @check_login('crystalupdate', 1)
 def crystal_update(request, id):
     result = model_to_dict(models.Djbasicnatu.objects.filter(id=id).first())
+    print(result)
     return render(request, 'crystalupdate.html', {'result': result})
 
 @check_login('processselect')
