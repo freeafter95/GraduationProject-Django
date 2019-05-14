@@ -203,7 +203,20 @@ def crystal_insert(request):
 @check_login('crystalquery')
 def crystal_query(request):
     if request.method == 'GET':
-        return render(request, 'crystalquery.html')
+        select_fields = request.COOKIES.get('select_fields')
+        select_conditions = request.COOKIES.get('select_conditions')
+        if select_fields is None or select_conditions is None:
+            return render(request, 'crystalquery.html')
+        select_result = models.Djbasicnatu.objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
+        select_fields.remove('id')
+        field_names = [input_lists['crystal_list'][name] for name in select_fields]
+        result = [{'id': columns['id'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
+        
+        if request.session['permission'] == '3':
+            res = render(request, 'crystalquerylow.html', {'fields': field_names, 'result': result})
+        else:
+            res = render(request, 'crystalqueryhigh.html', {'fields': field_names, 'result': result})
+        return res
     else:
         select_fields = set()
         select_conditions = {}
@@ -231,9 +244,17 @@ def crystal_query(request):
         result = [{'id': columns['id'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
         
         if request.session['permission'] == '3':
-            return render(request, 'crystalquerylow.html', {'fields': field_names, 'result': result})
+            res = render(request, 'crystalquerylow.html', {'fields': field_names, 'result': result})
         else:
-            return render(request, 'crystalqueryhigh.html', {'fields': field_names, 'result': result})
+            res = render(request, 'crystalqueryhigh.html', {'fields': field_names, 'result': result})
+        res.set_cookie('select_fields', select_fields)
+        res.set_cookie('select_conditions', select_conditions)
+        return res
+
+@check_login('crystaldelete', 1)
+def crystal_delete(request, id):
+    models.Djbasicnatu.objects.filter(id=id).delete()
+    return redirect('/dbms/crystalquery')
 
 @check_login('processselect')
 def process_select(request):
