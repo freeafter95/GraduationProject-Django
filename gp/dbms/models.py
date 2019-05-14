@@ -33,3 +33,4 @@ class Djbasicnatu(models.Model):
     wK_Ress = models.CharField(max_length=255, null=True)
     mater_cate = models.CharField(max_length=255, null=True)
     brittle_tough = models.CharField(max_length=255, null=True)
+    insert_time = models.DateTimeField(auto_now=True)

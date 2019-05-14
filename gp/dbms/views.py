@@ -41,7 +41,7 @@ input_lists = {
         'wPoisson_rate': '微观泊松比(无量纲)',
         'elasti_anis': '微观弹性各异性(Gpa)',
         'wG_Ress': '微观切变模量(Gpa)',
-        'wK_Ress': '微观体积模量(Gpa)'
+        'wK_Ress': '微观体积模量(Gpa)',
     }
 }
 
@@ -220,6 +220,7 @@ def crystal_query(request):
 
         if len(select_fields) == 0:
             return render(request, 'crystalquery.html')
+        select_fields.add('insert_time')
         select_result = models.Djbasicnatu.objects.filter(**select_conditions).values(*select_fields)
         field_names = [input_lists['crystal_list'][name] for name in select_fields]
         result = [[columns[field] for field in select_fields] for columns in select_result]
