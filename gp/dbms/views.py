@@ -42,7 +42,7 @@ input_lists = {
         'elasti_anis': '微观弹性各异性(Gpa)',
         'wG_Ress': '微观切变模量(Gpa)',
         'wK_Ress': '微观体积模量(Gpa)',
-        'insert_time': '插入时间'
+        'insert_time': '更新时间'
     }
 }
 
@@ -207,16 +207,19 @@ def crystal_query(request):
         select_conditions = json.loads(request.COOKIES.get('select_conditions'))
         select_fields.add('id')
         if select_fields is None or select_conditions is None:
-            return render(request, 'crystalquery.html')
+            if request.session['permission'] == '3':
+                return render(request, 'queryhigh.html')
+            else:
+                return render(request, 'querylow.html')
         select_result = models.Djbasicnatu.objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
         select_fields.remove('id')
         field_names = [input_lists['crystal_list'][name] for name in select_fields]
         result = [{'id': columns['id'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
         
         if request.session['permission'] == '3':
-            res = render(request, 'crystalquerylow.html', {'fields': field_names, 'result': result})
+            res = render(request, 'querylow.html', {'querytype': 'crystal', 'fields': field_names, 'result': result})
         else:
-            res = render(request, 'crystalqueryhigh.html', {'fields': field_names, 'result': result})
+            res = render(request, 'queryhigh.html', {'querytype': 'crystal', 'fields': field_names, 'result': result})
         return res
     else:
         select_fields = set()
@@ -236,7 +239,10 @@ def crystal_query(request):
                 select_fields.add(k)
 
         if len(select_fields) == 0:
-            return render(request, 'crystalquery.html')
+            if request.session['permission'] == '3':
+                return render(request, 'queryhigh.html')
+            else:
+                return render(request, 'querylow.html')
         select_fields.add('insert_time')
         select_fields.add('id')
         select_result = models.Djbasicnatu.objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
@@ -245,9 +251,9 @@ def crystal_query(request):
         result = [{'id': columns['id'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
         
         if request.session['permission'] == '3':
-            res = render(request, 'crystalquerylow.html', {'fields': field_names, 'result': result})
+            res = render(request, 'querylow.html', {'querytype': 'crystal', 'fields': field_names, 'result': result})
         else:
-            res = render(request, 'crystalqueryhigh.html', {'fields': field_names, 'result': result})
+            res = render(request, 'queryhigh.html', {'querytype': 'crystal', 'fields': field_names, 'result': result})
         res.set_cookie('select_fields', ','.join(list(select_fields)))
         res.set_cookie('select_conditions', json.dumps(select_conditions))
         return res
@@ -256,6 +262,12 @@ def crystal_query(request):
 def crystal_delete(request, id):
     models.Djbasicnatu.objects.filter(id=id).delete()
     return redirect('/dbms/crystalquery')
+
+@check_login('crystalupdate', 1)
+def crystal_update(request, id):
+    result = models.Djbasicnatu.objects.filter(id=id).first()
+    print(result)
+    return render(request, 'crystalupdate.html')
 
 @check_login('processselect')
 def process_select(request):
