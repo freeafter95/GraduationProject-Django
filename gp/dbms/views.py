@@ -205,7 +205,7 @@ def crystal_query(request):
         select_fields = set()
         select_conditions = {}
         for k, v in request.POST:
-            if k[-1] = '1':
+            if k[-1] == '1':
                 if v.strip() != '':
                     select_fields.add(k[0:-1])
                     if k == 'second_elem1':
@@ -220,7 +220,7 @@ def crystal_query(request):
         select_result = models.Djbasicnatu.objects.filter(**select_conditions).values(*select_fields)
         result = [[columns[field] for field in field_names] for columns in select_result]
         field_names = [input_lists['crystal_list'][name] for name in select_fields]
-        return render(request, 'crystalquery.html', {'fields': field_names, 'result': select_result})
+        return render(request, 'crystalquery.html', {'fields': field_names, 'result': result})
 
 @check_login('processselect')
 def process_select(request):
