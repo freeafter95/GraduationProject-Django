@@ -86,7 +86,7 @@
                         <div class="panel-body">
                             <div class="row" style="width: 100%">
                                 
-                                <form role="form" id="dataForm" action="http://39.106.148.96/dbms/crystalselect/" method="post">
+                                <form role="form" id="dataForm" action="http://39.106.148.96/dbms/crystalquery/" method="post" target="_blank">
 
                                         <label><font color="SteelBlue">选择查询内容</font></label>
                                         <div class="checkbox">
@@ -104,10 +104,10 @@
                                                 <input type="checkbox" name="energy" title="" value="energy">能量
                                             </label>
                                             <label style="width: 120px">
-                                                <input type="checkbox" name="temperature1" title="" value="temperature1">温度
+                                                <input type="checkbox" name="temperature" title="" value="temperature">温度
                                             </label>
                                             <label style="width: 120px">
-                                                <input type="checkbox" name="literature1" title="" value="literature1">文献
+                                                <input type="checkbox" name="literature" title="" value="literature">文献
                                             </label>
                                             <label style="width: 120px">
                                                 <input type="checkbox" name="space_group" title="" value="space_group">空间群
@@ -116,7 +116,7 @@
                                                 <input type="checkbox" name="brittle_tough" title="" value="brittle_tough">脆韧性
                                             </label>
                                             <label style="width: 120px">
-                                                <input type="checkbox" name="chem_formula1" title="" value="chem_formula1">化学式
+                                                <input type="checkbox" name="chem_formula" title="" value="chem_formula">化学式
                                             </label>
                                             <label style="width: 120px">
                                                 <input type="checkbox" name="latt_cons" title="" value="latt_cons">晶格常数
@@ -125,7 +125,7 @@
                                                 <input type="checkbox" name="mater_cate" title="" value="mater_cate">材料类别
                                             </label>
                                             <label style="width: 120px">
-                                                <input type="checkbox" name="alloy_grade1" title="" value="alloy_grade1">合金牌号
+                                                <input type="checkbox" name="alloy_grade" title="" value="alloy_grade">合金牌号
                                             </label>
                                             <label style="width: 120px">
                                                 <input type="checkbox" name="info_source1" title="" value="info_source1">信息来源
@@ -160,10 +160,10 @@
                                            
                                             
                                             <label style="width: 120px">
-                                                <input type="checkbox" name="main_elem1" title="" value="main_elem1">主元素及含量
+                                                <input type="checkbox" name="main_elem" title="" value="main_elem">主元素及含量
                                             </label>
                                             <label style="width: 120px">
-                                                <input type="checkbox" name="second_elem1" title="" value="second_elem1">次元素及含量
+                                                <input type="checkbox" name="second_elem" title="" value="second_elem">次元素及含量
                                             </label>
                                             <label style="width: 120px">
                                                 <input type="checkbox" name="trace_elem1" title="" value="trace_elem1">微量元素及含量
@@ -175,30 +175,30 @@
                                         <label><font color="SteelBlue">输入查询条件</font></label>
                                     <div class="form-group">
                                         <label style="width: 10%; text-align: right;">文献</label>
-                                        <input class="form-control" name="literature" value="" style="width: 20%;display: inline; height: 28px">
+                                        <input class="form-control" name="literature1" value="" style="width: 20%;display: inline; height: 28px">
                                         <label style="width: 10%; text-align: right;">温度(K)</label>
-                                        <input class="form-control" name="temperature" value="" style="width: 20%;display: inline; height: 28px">
+                                        <input class="form-control" name="temperature1" value="" style="width: 20%;display: inline; height: 28px">
                                         <label style="width: 10%; text-align: right">化学式</label>
-                                        <input class="form-control" name="chem_formula" value="" style="width: 20%;display: inline; height: 28px">
+                                        <input class="form-control" name="chem_formula1" value="" style="width: 20%;display: inline; height: 28px">
                                          
                                         
                                        
                                     </div>
                                     <div class="form-group">
                                         <label style="width: 10%; text-align: right;">主元素及含量</label>
-                                        <input class="form-control" name="main_elem" value="" style="width: 20%;display: inline; height: 28px">
+                                        <input class="form-control" name="main_elem1" value="" style="width: 20%;display: inline; height: 28px">
                                         <label style="width: 10%; text-align: right;">次元素及含量</label>
-                                        <input class="form-control" name="second_elem" value="" style="width: 20%;display: inline; height: 28px">
+                                        <input class="form-control" name="second_elem1" value="" style="width: 20%;display: inline; height: 28px">
 
                                         <label style="width: 10%; text-align: right;">微量元素及含量</label>
-                                        <input class="form-control" name="trace_elem" value="" style="width: 20%;display: inline; height: 28px">
+                                        <input class="form-control" name="trace_elem1" value="" style="width: 20%;display: inline; height: 28px">
                                         
                                        
                                     </div>
 
                                     <div class="form-group">
                                        <label style="width: 10%; text-align: right">合金牌号</label>
-                                        <input class="form-control" name="alloy_grade" value="" style="width: 20%;display: inline; height: 28px">
+                                        <input class="form-control" name="alloy_grade1" value="" style="width: 20%;display: inline; height: 28px">
 
                                         
                                         

@@ -11,8 +11,40 @@ from django.contrib import auth
 from . import models
 import random, datetime, os, string
 from cacheout import Cache
+import copy
 
 cache = Cache()
+
+input_lists = {
+    'crystal_list': {
+        'density': '密度(kg/m3)',
+        'literature': '文献',
+        'temperature': '温度(k)',
+        'volume': '体积(Å3/atom)',
+        'brittle_tough': '脆韧性',
+        'chem_formula': '化学式',
+        'structure_Id': '结构ID',
+        'space_group': '空间群',
+        'alloy_grade': '合金牌号',
+        'info_source': '信息来源',
+        'mater_cate': '材料类别',
+        'energy': '能量(eV)',
+        'latt_cons': '晶格常数(Å)',
+        'main_elem': '主元素及含量',
+        'second_elem': '次元素及含量',
+        'trace_elem': '微量元素及含量',
+        'rerong': '热容(J/molK)',
+        'rpzxs': '热膨胀系数(/K)',
+        'atomic_ener': '单位原子能(eV)',
+        'form_ener': '单位原子形成能(eV/atom)',
+        'elastic_cons': '单晶弹性常数(Gpa)',
+        'wPoisson_rate': '微观泊松比(无量纲)',
+        'elasti_anis': '微观弹性各异性(Gpa)',
+        'wG_Ress': '微观切变模量(Gpa)',
+        'wK_Ress': '微观体积模量(Gpa)',
+        'insert_time': '插入时间'
+    }
+}
 
 def del_session(request):
     try:
@@ -150,10 +182,53 @@ def crystal_insert(request):
     if request.method == 'GET':
         return render(request, 'crystalinsert.html')
     else:
-        al = request.POST.get('alloy_grade')
-        info = request.POST.get('info_source')
-        print(al, info)
-        return render(request, 'crystalinsert.html')
+        input_dic = {}
+        ret_dic = {}
+        for attr in input_lists['crystal_list'].keys():
+            if attr == 'insert_time':
+                continue
+            content = request.POST.get(attr).strip()
+            if content is not None and content != '':
+                input_dic[attr] = content
+
+        if (input_dic.get('main_elem') is not None \
+        and input_dic.get('second_elem') is not None) \
+        or input_dic.get('alloy_grade') is not None:
+            models.Djbasicnatu.objects.create(**input_dic)
+            ret_dic['success'] = '添加成功'
+        else:
+            ret_dic['error'] = '合金牌号或主元素与次元素必须填写'
+        return render(request, 'crystalinsert.html', ret_dic)
+
+@check_login('crystalquery')
+def crystal_query(request):
+    if request.method == 'GET':
+        return render(request, 'crystalquery.html')
+    else:
+        select_fields = set()
+        select_conditions = {}
+        for k, v in request.POST.items():
+            if k == 'select':
+                continue
+            if k[-1] == '1':
+                if v.strip() != '':
+                    select_fields.add(k[0:-1])
+                    if k == 'second_elem1':
+                        select_conditions['second_elem__icontains'] = '[%]'.join(v.strip().split(' '))
+                        print(select_conditions['second_elem__icontains'])
+                    else:
+                        select_conditions[k[0:-1] + '__icontains'] = v.strip()
+            else:
+                select_fields.add(k)
+
+        if len(select_fields) == 0:
+            return render(request, 'crystalquery.html')
+        select_fields.add('insert_time')
+        select_result = models.Djbasicnatu.objects.filter(**select_conditions).values(*select_fields)
+        field_names = [input_lists['crystal_list'][name] for name in select_fields]
+        result = [[columns[field] for field in select_fields] for columns in select_result]
+        
+        return render(request, 'crystalquery.html', {'fields': field_names, 'result': result})
 
 @check_login('processselect')
 def process_select(request):
