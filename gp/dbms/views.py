@@ -190,6 +190,9 @@ def crystal_insert(request):
         if (input_dic.get('main_elem') is not None \
         and input_dic.get('second_elem') is not None) \
         or input_dic.get('alloy_grade') is not None:
+            print(input_dic['main_elem'])
+            print(input_dic['second_elem'])
+            print(input_dic['alloy_grade'])
             ret_dic['success'] = '添加成功'
         else:
             ret_dic['error'] = '合金牌号或主元素与次元素必须填写'
