@@ -11,6 +11,7 @@ from django.contrib import auth
 from . import models
 import random, datetime, os, string
 from cacheout import Cache
+import copy
 
 cache = Cache()
 
@@ -201,7 +202,25 @@ def crystal_query(request):
     if request.method == 'GET':
         return render(request, 'crystalquery.html')
     else:
-        print(request.POST) 
+        select_fields = set()
+        select_conditions = {}
+        for k, v in request.POST:
+            if k[-1] = '1':
+                if v.strip() != '':
+                    select_fields.add(k[0:-1])
+                    if k == 'second_elem1':
+                        select_conditions['second_elem__icontains'] = '%'.join(v.strip().split(' '))
+                    else:
+                        select_conditions[k[0:-1] + '__icontains'] = v.strip()
+            else:
+                select_fields.add(k)
+
+        if len(select_fields) == 0:
+            return render(request, 'crystalquery.html')
+        select_result = models.Djbasicnatu.objects.filter(**select_conditions).values(*select_fields)
+        result = [[columns[field] for field in field_names] for columns in select_result]
+        field_names = [input_lists['crystal_list'][name] for name in select_fields]
+        return render(request, 'crystalquery.html', {'fields': field_names, 'result': select_result})
 
 @check_login('processselect')
 def process_select(request):
