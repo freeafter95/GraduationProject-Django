@@ -230,7 +230,10 @@ def crystal_query(request):
         field_names = [input_lists['crystal_list'][name] for name in select_fields]
         result = [{'id': columns['id'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
         
-        return render(request, 'crystalquery.html', {'fields': field_names, 'result': result})
+        if request.session['permission'] == '3':
+            return render(request, 'crystalquerylow.html', {'fields': field_names, 'result': result})
+        else:
+            return render(request, 'crystalqueryhigh.html', {'fields': field_names, 'result': result})
 
 @check_login('processselect')
 def process_select(request):
