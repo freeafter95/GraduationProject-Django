@@ -10,6 +10,7 @@ urlpatterns = [
   path('crystalinsert/', views.crystal_insert, name='crystal_insert'),
   path('crystalquery/', views.crystal_query, name='crystal_query'),
   path('crystaldelete-<int:id>/', views.crystal_delete, name='crystaldelete'),
+  path('crystalupdate-<int:id>/', views.crystal_update, name='crystalupdate'),
   path('processselect/', views.process_select, name='process_select'),
   path('processinsert/', views.process_insert, name='process_insert'),
   path('testselect/', views.test_select, name='test_select'),
