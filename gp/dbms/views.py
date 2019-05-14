@@ -203,7 +203,7 @@ def crystal_insert(request):
 @check_login('crystalquery')
 def crystal_query(request):
     if request.method == 'GET':
-        select_fields = json.loads(request.COOKIES.get('select_fields'))
+        select_fields = set(request.COOKIES.get('select_fields').split(','))
         select_conditions = json.loads(request.COOKIES.get('select_conditions'))
         if select_fields is None or select_conditions is None:
             return render(request, 'crystalquery.html')
@@ -247,7 +247,7 @@ def crystal_query(request):
             res = render(request, 'crystalquerylow.html', {'fields': field_names, 'result': result})
         else:
             res = render(request, 'crystalqueryhigh.html', {'fields': field_names, 'result': result})
-        res.set_cookie('select_fields', json.dumps(select_fields))
+        res.set_cookie('select_fields', ','.join(list(select_fields)))
         res.set_cookie('select_conditions', json.dumps(select_conditions))
         return res
 
