@@ -195,6 +195,10 @@ def crystal_insert(request):
             ret_dic['error'] = '合金牌号或主元素与次元素必须填写'
         return render(request, 'crystalinsert.html', ret_dic)
 
+@check_login('crystalquery')
+def crystal_query(request):
+    return render(request, 'crystalquery.html')
+
 @check_login('processselect')
 def process_select(request):
     return render(request, 'processselect.html')

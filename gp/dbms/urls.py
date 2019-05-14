@@ -8,6 +8,7 @@ urlpatterns = [
   path('logout/', views.logout, name='logout'),
   path('crystalselect/', views.crystal_select, name='crystal_select'),
   path('crystalinsert/', views.crystal_insert, name='crystal_insert'),
+  path('crystalquery/', views.crystal_query, name='crystal_query'),
   path('processselect/', views.process_select, name='process_select'),
   path('processinsert/', views.process_insert, name='process_insert'),
   path('testselect/', views.test_select, name='test_select'),
