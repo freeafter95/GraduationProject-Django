@@ -15,33 +15,33 @@ from cacheout import Cache
 cache = Cache()
 
 input_lists = {
-    'crystal_list': [
-        'density',
-        'literature',
-        'temperature',
-        'volume',
-        'brittle_tough',
-        'chem_formula',
-        'structure_Id',
-        'space_group',
-        'alloy_grade',
-        'info_source',
-        'mater_cate',
-        'energy',
-        'latt_cons',
-        'main_elem',
-        'second_elem',
-        'trace_elem',
-        'rerong',
-        'rpzxs',
-        'atomic_ener',
-        'form_ener',
-        'elastic_cons',
-        'wPoisson_rate',
-        'elasti_anis',
-        'wG_Ress',
-        'wK_Ress'
-    ]
+    'crystal_list': {
+        'density': '密度(kg/m3)',
+        'literature': '文献',
+        'temperature': '温度(k)',
+        'volume': '体积(Å3/atom)',
+        'brittle_tough': '脆韧性',
+        'chem_formula': '化学式',
+        'structure_Id': '结构ID',
+        'space_group': '空间群',
+        'alloy_grade': '合金牌号',
+        'info_source': '信息来源',
+        'mater_cate': '材料类别',
+        'energy': '能量(eV)',
+        'latt_cons': '晶格常数(Å)',
+        'main_elem': '主元素及含量',
+        'second_elem': '次元素及含量',
+        'trace_elem': '微量元素及含量',
+        'rerong': '热容(J/molK)',
+        'rpzxs': '热膨胀系数(/K)',
+        'atomic_ener': '单位原子能(eV)',
+        'form_ener': '单位原子形成能(eV/atom)',
+        'elastic_cons': '单晶弹性常数(Gpa)',
+        'wPoisson_rate': '微观泊松比(无量纲)',
+        'elasti_anis': '微观弹性各异性(Gpa)',
+        'wG_Ress': '微观切变模量(Gpa)',
+        'wK_Ress': '微观体积模量(Gpa)'
+    }
 }
 
 def del_session(request):
@@ -182,7 +182,7 @@ def crystal_insert(request):
     else:
         input_dic = {}
         ret_dic = {}
-        for attr in input_lists['crystal_list']:
+        for attr in input_lists['crystal_list'].keys():
             content = request.POST.get(attr).strip()
             if content is not None and content != '':
                 input_dic[attr] = content
@@ -190,6 +190,7 @@ def crystal_insert(request):
         if (input_dic.get('main_elem') is not None \
         and input_dic.get('second_elem') is not None) \
         or input_dic.get('alloy_grade') is not None:
+            models.Djbasicnatu.objects.create(**input_dic)
             ret_dic['success'] = '添加成功'
         else:
             ret_dic['error'] = '合金牌号或主元素与次元素必须填写'
@@ -197,7 +198,10 @@ def crystal_insert(request):
 
 @check_login('crystalquery')
 def crystal_query(request):
-    return render(request, 'crystalquery.html')
+    if request.method == 'GET':
+        return render(request, 'crystalquery.html')
+    else:
+        print(request.POST) 
 
 @check_login('processselect')
 def process_select(request):
