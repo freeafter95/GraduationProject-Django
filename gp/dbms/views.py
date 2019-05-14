@@ -205,6 +205,7 @@ def crystal_query(request):
     if request.method == 'GET':
         select_fields = set(request.COOKIES.get('select_fields').split(','))
         select_conditions = json.loads(request.COOKIES.get('select_conditions'))
+        select_fields.add('id')
         if select_fields is None or select_conditions is None:
             return render(request, 'crystalquery.html')
         select_result = models.Djbasicnatu.objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
