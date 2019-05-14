@@ -14,6 +14,36 @@ from cacheout import Cache
 
 cache = Cache()
 
+input_lists = {
+    'crystal_list': [
+        'density',
+        'literature',
+        'temperature',
+        'volume',
+        'brittle_tough',
+        'chem_formula',
+        'structure_Id',
+        'space_group',
+        'alloy_grade',
+        'info_source',
+        'mater_cate',
+        'energy',
+        'latt_cons',
+        'main_elem',
+        'second_elem',
+        'trace_elem',
+        'rerong',
+        'rpzxs',
+        'atomic_ener',
+        'form_ener',
+        'elastic_cons',
+        'wPoisson_rate',
+        'elasti_anis',
+        'wG_Ress',
+        'wK_Ress'
+    ]
+}
+
 def del_session(request):
     try:
         del request.session['username']
@@ -150,10 +180,20 @@ def crystal_insert(request):
     if request.method == 'GET':
         return render(request, 'crystalinsert.html')
     else:
-        al = request.POST.get('alloy_grade')
-        info = request.POST.get('info_source')
-        print(al, info)
-        return render(request, 'crystalinsert.html')
+        input_dic = {}
+        ret_dic = {}
+        for attr in input_lists['crystal_list']:
+            content = request.POST.get(attr).strip()
+            if attr is not None and attr != '':
+                input_dic[attr] = content
+
+        if (input_dic.get('main_elem') is not None
+        and input_dic.get('second_elem') is not None)
+        or input_dic.get('alloy_grade') is not None:
+            ret_dic['success'] = '添加成功'
+        else:
+            ret_dic['error'] = '合金牌号或主元素与次元素必须填写'
+        return render(request, 'crystalinsert.html', ret_dic)
 
 @check_login('processselect')
 def process_select(request):
