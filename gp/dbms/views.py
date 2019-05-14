@@ -209,14 +209,14 @@ def crystal_query(request):
         select_fields.add('insert_time')
         if select_fields is None or select_conditions is None:
             if request.session['permission'] == '3':
-                return render(request, 'queryhigh.html')
-            else:
                 return render(request, 'querylow.html')
+            else:
+                return render(request, 'queryhigh.html')
         select_result = models.Djbasicnatu.objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
         select_fields.remove('id')
         select_fields.remove('insert_time')
         field_names = [input_lists['crystal_list'][name] for name in select_fields]
-        result = [{'id': columns['id'], 'insert_time': columns['insert_time'],'value': [columns[field] for field in select_fields]} for columns in select_result]
+        result = [{'id': columns['id'], 'time': columns['insert_time'],'value': [columns[field] for field in select_fields]} for columns in select_result]
         
         if request.session['permission'] == '3':
             res = render(request, 'querylow.html', {'querytype': 'crystal', 'fields': field_names, 'result': result})
@@ -242,9 +242,9 @@ def crystal_query(request):
 
         if len(select_fields) == 0:
             if request.session['permission'] == '3':
-                return render(request, 'queryhigh.html')
-            else:
                 return render(request, 'querylow.html')
+            else:
+                return render(request, 'queryhigh.html')
         select_fields.add('insert_time')
         select_fields.add('id')
         select_result = models.Djbasicnatu.objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
