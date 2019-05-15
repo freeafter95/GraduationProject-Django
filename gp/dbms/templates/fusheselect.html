@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0067)http://appj.nimte.ac.cn/Magmiss/ForwardServlet?name=WorkBeforeAfter -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--<base href="http://appj.nimte.ac.cn:80/Magmiss/">--><base href=".">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>材料辐射信息查询</title>
+
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/metisMenu.min.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/sb-admin-2.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/morris.css">
+    <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/font-awesome.min.css">
+
+    
+</head>
+
+<body>
+<div id="wrapper">
+
+<!-- jQuery -->
+<script src="http://39.106.148.96/static/js/jquery.min.js"></script>
+<script src="http://39.106.148.96/static/js/bootstrap.min.js"></script>
+<script src="http://39.106.148.96/static/js/metisMenu.min.js"></script>
+<script src="http://39.106.148.96/static/js/raphael.min.js"></script>
+<script src="http://39.106.148.96/static/js/morris.min.js"></script>
+<script src="http://39.106.148.96/static/js/morris-data.js"></script>
+<script src="http://39.106.148.96/static/js/sb-admin-2.js"></script>
+
+
+
+        
+    
+    <div id="page-wrapper" style="min-height: 589px; margin-left: 0">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><font color="steelblue">材料辐射信息查询</font></h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    
+                        
+                    
+
+                    <div class="panel-body">
+                        <div class="row" style="width: 100%">
+                            
+                            <form role="form" id="dataForm" action="http://39.106.148.96/dbms/processselect/" method="post">
+
+                                <label><font color="steelblue" size="5px">选择查询的性质</font></label>
+                                <div class="checkbox">
+                                    
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="alloy_grade1" title="" value="alloy_grade1">合金牌号
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="chem_formula1" title="" value="chem_formula1">化学式
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="main_elem1" title="" value="main_elem1">主要元素
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="second_elem1" title="" value="second_elem1">次要元素
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="trace_elem1" title="" value="trace_elem1">微量元素
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="literature1" title="" value="literature1">文献
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="info_source1" title="" value="info_source1">信息来源
+                                    </label>
+                                   
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="Irr_cond" title="" value="Irr_cond">辐照条件名称
+                                    </label>
+
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="Ray_type" title="" value="Ray_type">射线类型
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="Neu_num" title="" value="Neu_num">快中子注量
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="Ray_stro" title="" value="Ray_stro">射线强度
+                                    </label>
+                                    
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hProcess_sample" title="" value="hProcess_sample">辐射前试样
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hSample_size" title="" value="hSample_size">辐射前试样尺寸
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hsyx_com" title="" value="hsyx_com"><font size="1">辐射前试样相组成</font>
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hsyjld" title="" value="hsyjld"><font size="1">辐射前试样晶粒度</font>
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="hsyzg" title="" value="hsyzg">辐射前试样织构
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="Hirr_symc" title="" value="Hirr_symc">辐射后试样
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="Hirr_sycc" title="" value="Hirr_sycc">辐射后试样尺寸
+                                    </label>
+                                   
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="Hirr_syld" title="" value="Hirr_syld"><font size="1">辐射后试样晶粒度</font>
+                                    </label>
+                                    <label style="width: 120px">
+                                        <input type="checkbox" name="Hirr_syzg" title="" value="Hirr_syzg">辐射后试样织构
+                                    </label>
+                                  
+                                <label><font color="steelblue" size="5px">输入查询条件</font></label>
+                                <div class="form-group">
+                                    <label style="width: 10%;">文献</label>
+                                     <input class="form-control" name="literature" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">信息来源</label>
+                                    <input class="form-control" name="info_source" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%">合金牌号</label>
+                                    <input class="form-control" name="alloy_grade" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">化学式</label>
+                                    <input class="form-control" name="chem_formula" value="" style="width: 13%;display: inline">
+                                </div>
+                                <div class="form-group">
+                                    
+                                    <label style="width: 10%;">主元素及含量</label>
+                                     <input class="form-control" name="main_elem" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">次元素及含量</label>
+                                    <input class="form-control" name="second_elem" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">微量元素及含量</label>
+                                    <input class="form-control" name="trace_elem" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">辐射前试样</label>
+                                    <input class="form-control" name="hProcess_sample" value="" style="width: 13%;display: inline">
+                                </div>
+                                <div class="form-group">
+                                    
+                                    
+                                    <label style="width: 10%;">辐射前试样尺寸</label>
+                                    <input class="form-control" name="hSample_size" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">辐射前试样相组成</label>
+                                    <input class="form-control" name="hsyx_com" value="" style="width: 13%;display: inline">
+                                     <label style="width: 10%;">辐射前试样晶粒度</label>
+                                     <input class="form-control" name="hsyjld" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">辐射前试样织构</label>
+                                    <input class="form-control" name="hsyzg" value="" style="width: 13%;display: inline">
+                                </div>
+
+                                <div class="form-group">
+                                   
+                                    <label style="width: 10%;">辐射条件名称</label>
+                                      <input class="form-control" name="Irr_cond" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">射线类型</label>
+                                    <input class="form-control" name="Ray_type" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">快中子注量</label>
+                                    <input class="form-control" name="Neu_num" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">射线强度</label>
+                                     <input class="form-control" name="Ray_stro" value="" style="width: 13%;display: inline">
+                                </div>
+
+                                <div class="form-group">
+                                    
+                                    <label style="width: 10%;">辐照时间</label>
+                                     <input class="form-control" name="Irr_time" value="" style="width: 13%;display: inline">
+                                    
+                            
+                                    <label style="width: 10%;">辐照后试样</label>
+                                    <input class="form-control" name="Hirr_symc" value="" style="width: 13%;display: inline">
+                                    <label style="width: 10%;">辐照后试样尺寸</label>
+                                    <input class="form-control" name="Hirr_sycc" value="" style="width: 13%;display: inline;">
+                                    <label style="width: 10%;">辐照后试样晶粒度</label>
+                                    <input class="form-control" name="Hirr_syld" value="" style="width: 13%;display: inline">
+                               </div>
+
+                                <div class="form-group">
+                                   
+                                    
+                                    <label style="width: 10%;">辐照后试样织构</label>
+                                    <input class="form-control" name="Hirr_syzg" value="" style="width: 13%;display: inline">
+
+                                </div>
+                                <div class="form-group">
+                                    <input class="form action=" name="select"  style="width: 18%;text-align: center; display: inline; color: white; background-color: steelblue; margin: 0 40%" type="submit">
+                                </div>
+                                
+                            </form>
+
+
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+<!-- /#page-wrapper -->
+
+
+</body></html>
