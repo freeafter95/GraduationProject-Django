@@ -44,6 +44,18 @@ input_lists = {
         'wG_Ress': '微观切变模量(Gpa)',
         'wK_Ress': '微观体积模量(Gpa)'
     }
+    'process_list': {
+        '': '',
+        '': '',
+        '': '',
+        '': '',
+        '': '',
+        '': '',
+        '': '',
+        '': '',
+        '': '',
+        '': ''
+    }
 }
 
 def del_session(request):

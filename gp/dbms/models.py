@@ -10,8 +10,8 @@ class UserInfo(models.Model):
 class Djbasicnatu(models.Model):
     alloy_grade = models.CharField(max_length=255, null=True)
     chem_formula = models.CharField(max_length=255, null=True)
-    main_elem  = models.CharField(max_length=255)
-    second_elem  = models.CharField(max_length=255)
+    main_elem  = models.CharField(max_length=255, null=True)
+    second_elem  = models.CharField(max_length=255, null=True)
     trace_elem  = models.CharField(max_length=255, null=True)
     literature = models.CharField(max_length=255, null=True)
     info_source = models.CharField(max_length=255, null=True)
