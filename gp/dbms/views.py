@@ -313,6 +313,14 @@ def test_select(request):
 def test_insert(request):
     return render(request, 'testinsert.html')
 
+@check_login('radiationselect')
+def radiation_select(request):
+    return render(request, 'radiationselect.html')
+
+@check_login('radiationinsert', 2)
+def radiation_insert(request):
+    return render(request, 'radiationinsert.html')
+
 @check_login('', 2)
 def first(request, p1, p2):
     res = render(request, 'first%d-%d.html' % (p1, p2))
