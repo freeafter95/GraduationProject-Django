@@ -43,7 +43,7 @@ input_lists = {
         'elasti_anis': '微观弹性各异性(Gpa)',
         'wG_Ress': '微观切变模量(Gpa)',
         'wK_Ress': '微观体积模量(Gpa)'
-    }
+    },
     'process_list': {
         '': '',
         '': '',
