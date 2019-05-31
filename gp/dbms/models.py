@@ -100,7 +100,7 @@ class allworkeafter(models.Model):
     young_modulus = models.FloatField(null=True)
     tensile_strength = models.FloatField(null=True)
     yield_strength = models.FloatField(null=True) 
-    breaking strength = models.FloatField(null=True)
+    breaking_strength = models.FloatField(null=True)
     dhys_rate = models.FloatField(null=True)
     hPoisson_rate = models.FloatField(null=True)
     heat_rate = models.FloatField(null=True)
