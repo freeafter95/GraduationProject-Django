@@ -151,19 +151,13 @@ def check_type(input_info, content, ret_dic):
         try:
             return float(content)
         except ValueError:
-            if 'error' in ret_dic:
-                ret_dic['error'] += '%s应该为浮点型\n' % input_info[0]
-            else:
-                ret_dic['error'] = '%s应该为浮点型\n' % input_info[0]
+            ret_dic['errors'].append('%s应该为浮点型\n' % input_info[0])
             return ''
     elif input_info[1] == 'int':
         try:
             return int(content)
         except ValueError:
-            if 'error' in ret_dic:
-                ret_dic['error'] += '%s应该为整型\n' % input_info[0]
-            else:
-                ret_dic['error'] = '%s应该为整型\n' % input_info[0]
+            ret_dic['errors'].append('%s应该为整型\n' % input_info[0])
             return ''
 
     return content
@@ -305,7 +299,7 @@ def crystal_insert(request):
         return render(request, 'crystalinsert.html')
     else:
         input_dic = {}
-        ret_dic = {}
+        ret_dic = {'errors': []}
         for attr in input_lists['crystal_list'].keys():
             content = request.POST.get(attr).strip()
             if content is not None and content != '':
@@ -314,11 +308,11 @@ def crystal_insert(request):
         if (input_dic.get('main_elem') is not None \
         and input_dic.get('second_elem') is not None) \
         or input_dic.get('alloy_grade') is not None:
-            if len(ret_dic) == 0:
+            if len(ret_dic['errors']) == 0:
                 models.Djbasicnatu.objects.create(**input_dic)
                 ret_dic['success'] = '添加成功'
         else:
-            ret_dic['error'] += '合金牌号或主元素与次元素必须填写\n'
+            ret_dic['errors'].append('合金牌号或主元素与次元素必须填写\n')
 
         return render(request, 'crystalinsert.html', ret_dic)
 

@@ -143,7 +143,9 @@
                                 </form>
                                 <div style="text-align: center">
                                     <font color="green" size="2" style="display: inline;text-align: center;margin: 0 40%">{{ success }}</font>
+                                    {% for error in errors %}
                                     <font color="red" size="2" style="display: inline;text-align: center;margin: 0 40%">{{ error }}</font>
+                                    {% endfor %}
                                 </div>
                             </div>
                             <!-- /.row (nested) -->
