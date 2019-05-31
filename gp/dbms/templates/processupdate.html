@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>材料加工信息添加</title>
+    <title>材料加工信息修改</title>
 
     <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/metisMenu.min.css">
@@ -33,7 +33,7 @@
     <div id="page-wrapper" style="min-height: 589px; margin-left: 0">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"><font color="steelblue">材料加工信息添加</font></h1>
+                <h1 class="page-header"><font color="steelblue">材料加工信息修改</font></h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -46,115 +46,115 @@
                             
                             
                             
-                            <form role="form" class="addForm" action="http://39.106.148.96/dbms/processinsert/" method="post">
+                            <form role="form" class="addForm" action="http://39.106.148.96/dbms/processupdate-{{ result.id }}/" method="post">
                                 <div class="form-group">
                                     <label style="width: 10%;">文献</label>
-                                     <input class="form-control" name="literature" style="width: 13%;display: inline">
+                                     <input class="form-control" name="literature" style="width: 13%;display: inline" value={{ result.literature }}>
                                     <label style="width: 10%;">信息来源</label>
-                                     <input class="form-control" name="info_source" style="width: 13%;display: inline">
+                                     <input class="form-control" name="info_source" style="width: 13%;display: inline" value={{ result.info_source }}>
                                     <label style="width: 10%;">化学式</label>
-                                     <input class="form-control" name="chem_formula" style="width: 13%;display: inline">
+                                     <input class="form-control" name="chem_formula" style="width: 13%;display: inline" value={{ result.chem_formula }}>
                                      <label style="width: 10%;">合金牌号</label>
-                                    <input class="form-control" name="alloy_grade" style="width: 13%;display: inline">
+                                    <input class="form-control" name="alloy_grade" style="width: 13%;display: inline" value={{ result.alloy_grade }}>
                                    
                                 </div>
                                 <div class="form-group">
 
                                      <label style="width: 10%;">主元素及含量</label>
-                                    <input class="form-control" name="main_elem" style="width: 13%;display: inline">
+                                    <input class="form-control" name="main_elem" style="width: 13%;display: inline" value={{ result.main_elem }}>
                                     <label style="width: 10%;">次元素及含量</label>
-                                    <input class="form-control" name="second_elem" style="width: 13%;display: inline">
+                                    <input class="form-control" name="second_elem" style="width: 13%;display: inline" value={{ result.second_elem }}>
                                     <label style="width: 10%;">微量元素及含量</label>
                                     
-                                    <input class="form-control" name="trace_elem" style="width: 13%;display: inline">
+                                    <input class="form-control" name="trace_elem" style="width: 13%;display: inline" value={{ result.trace_elem }}>
                                      <label style="width: 10%;">熔炼电压(V)</label>
 
-                                    <input class="form-control" name="smelting_voltage" style="width: 13%;display: inline">
+                                    <input class="form-control" name="smelting_voltage" style="width: 13%;display: inline" value={{ result.smelting_voltage }}>
                                 </div>    
                                 <div class="form-group">    
                                     <label style="width: 10%;">加工前试样</label>
-                                    <input class="form-control" name="qProcessing_sample" style="width: 13%;display: inline">
+                                    <input class="form-control" name="qProcessing_sample" style="width: 13%;display: inline" value={{ result.qProcessing_sample }}>
                                     <label style="width: 10%;">加工工艺</label>
-                                    <input class="form-control" name="process_tech" style="width: 13%;display: inline">
+                                    <input class="form-control" name="process_tech" style="width: 13%;display: inline" value={{ result.process_tech }}>
                                     <label style="width: 10%;">加工前试样尺寸</label>
-                                     <input class="form-control" name="qSample_size" style="width: 13%;display: inline">
+                                     <input class="form-control" name="qSample_size" style="width: 13%;display: inline" value={{ result.qSample_size }}>
                                     <label style="width: 10%;">加工前试样组成</label>
-                                    <input class="form-control" name="qsyx_com" style="width: 13%;display: inline">
+                                    <input class="form-control" name="qsyx_com" style="width: 13%;display: inline" value={{ result.qsyx_com }}>
                                 </div>
                                 <div class="form-group">
                                      <label style="width: 10%;">加热温度(℃)</label>
-                                    <input class="form-control" name="heat_temp" style="width: 13%;display: inline">
+                                    <input class="form-control" name="heat_temp" style="width: 13%;display: inline" value={{ result.heat_temp }}>
 
                                     <label style="width: 10%;">加工前试样晶粒度(μm)</label>
-                                    <input class="form-control" name="qsyjld" style="width: 13%;display: inline">
+                                    <input class="form-control" name="qsyjld" style="width: 13%;display: inline" value={{ result.qsyjld }}>
                                     <label style="width: 10%;">加工前试样织构</label>
 
-                                    <input class="form-control" name="qsyzg" style="width: 13%;display: inline">
+                                    <input class="form-control" name="qsyzg" style="width: 13%;display: inline" value={{ result.qsyzg }}>
                                     
                                     <label style="width: 10%;">熔炼真空度(Pa)</label>
-                                    <input class="form-control" name="smelting_vacuum" style="width: 13%;display: inline">
+                                    <input class="form-control" name="smelting_vacuum" style="width: 13%;display: inline" value={{ result.smelting_vacuum }}>
                                     
 
                                 </div>
                                 <div class="form-group">
                                     <label style="width: 10%;">熔炼电流(kA)</label>
-                                    <input class="form-control" name="smelting_current" style="width: 13%;display: inline">
+                                    <input class="form-control" name="smelting_current" style="width: 13%;display: inline" value={{ result.smelting_current }}>
                                     <label style="width: 10%;">熔炼次数(次)</label>
-                                    <input class="form-control" name="smelting_times" style="width: 13%;display: inline">
+                                    <input class="form-control" name="smelting_times" style="width: 13%;display: inline" value={{ result.smelting_times }}>
                                     <label style="width: 10%;">铸锭直径(mm)</label>
-                                     <input class="form-control" name="ingot_diameter" style="width: 13%;display: inline">
+                                     <input class="form-control" name="ingot_diameter" style="width: 13%;display: inline" value={{ result.ingot_diameter }}>
                                     <label style="width: 10%;">公称能力(MN)</label>
-                                     <input class="form-control" name="nominal_ability" style="width: 13%;display: inline">
+                                     <input class="form-control" name="nominal_ability" style="width: 13%;display: inline" value={{ result.nominal_ability }}>
                                    
                                 </div>
                                 <div class="form-group">
 
                                     
                                     <label style="width: 10%;">挤压机吨位(t)</label>
-                                    <input class="form-control" name="extruder_tonnage" style="width: 13%;display: inline">
+                                    <input class="form-control" name="extruder_tonnage" style="width: 13%;display: inline" value={{ result.extruder_tonnage }}>
                                     <label style="width: 10%;">挤压筒直径(mm)</label>
-                                     <input class="form-control" name="jyt_diameter" style="width: 13%;display: inline">
+                                     <input class="form-control" name="jyt_diameter" style="width: 13%;display: inline" value={{ result.jyt_diameter }}>
                                     <label style="width: 10%;">挤压加热温度(℃)</label>
-                                    <input class="form-control" name="jy_heattemp" style="width: 13%;display: inline">
+                                    <input class="form-control" name="jy_heattemp" style="width: 13%;display: inline" value={{ result.jy_heattemp }}>
                                     <label style="width: 10%;">挤压保温时间(min)</label>
 
-                                    <input class="form-control" name="jy_bwtime" style="width: 13%;display: inline">
+                                    <input class="form-control" name="jy_bwtime" style="width: 13%;display: inline" value={{ result.jy_bwtime }}>
 
                                 </div>
 
                                 <div class="form-group">
                                     <label style="width: 10%;">保温时间(min)</label>
-                                    <input class="form-control" name="bw_time" style="width: 13%;display: inline">
+                                    <input class="form-control" name="bw_time" style="width: 13%;display: inline" value={{ result.bw_time }}>
                                     <label style="width: 10%;">轧制加热温度(℃)</label>
-                                    <input class="form-control" name="yz_jjrtime" style="width: 13%;display: inline">
+                                    <input class="form-control" name="yz_jjrtime" style="width: 13%;display: inline" value={{ result.yz_jjrtime }}>
                                     <label style="width: 10%;">轧制保温时间(min)</label>
-                                    <input class="form-control" name="yz_bwtime" style="width: 13%;display: inline">
+                                    <input class="form-control" name="yz_bwtime" style="width: 13%;display: inline" value={{ result.yz_bwtime }}>
 
                                     <label style="width: 10%;">道次最大加工率(%)</label>
-                                     <input class="form-control" name="dc_maxprorate" style="width: 13%;display: inline">
+                                     <input class="form-control" name="dc_maxprorate" style="width: 13%;display: inline" value={{ result.dc_maxprorate }}>
                                 </div>
                                 <div class="form-group">
                                     <label style="width: 10%;">总加工率(%)</label>
-                                     <input class="form-control" name="all_prorate" style="width: 13%;display: inline">
+                                     <input class="form-control" name="all_prorate" style="width: 13%;display: inline" value={{ result.all_prorate }}>
                                     <label style="width: 10%;">淬火介质()</label>
                                     
-                                    <input class="form-control" name="quenching_medium" style="width: 13%;display: inline">
+                                    <input class="form-control" name="quenching_medium" style="width: 13%;display: inline" value={{ result.quenching_medium }}>
                                      <label style="width: 10%;">淬火温度(℃)</label>
-                                    <input class="form-control" name="quenching_temp" style="width: 13%;display: inline">
+                                    <input class="form-control" name="quenching_temp" style="width: 13%;display: inline" value={{ result.quenching_temp }}>
                                     <label style="width: 10%;">加工后试样</label>
         
-                                    <input class="form-control" name="hProcessing_sample" style="width: 13%;display: inline">
+                                    <input class="form-control" name="hProcessing_sample" style="width: 13%;display: inline" value={{ result.hProcessing_sample }}>
                                 </div>
                                 <div class="form-group">
                                    
                                     <label style="width: 10%;">退火种类</label>
-                                    <input class="form-control" name="annealing_type" style="width: 13%;display: inline">
+                                    <input class="form-control" name="annealing_type" style="width: 13%;display: inline" value={{ result.annealing_type }}>
                                     <label style="width: 10%;">退火温度(℃)</label>
-                                    <input class="form-control" name="annealing_temp" style="width: 13%;display: inline">
+                                    <input class="form-control" name="annealing_temp" style="width: 13%;display: inline" value={{ result.annealing_temp }}>
                                     <label style="width: 10%;">退火时间(min)</label>
-                                     <input class="form-control" name="annealing_time" style="width: 13%;display: inline">
+                                     <input class="form-control" name="annealing_time" style="width: 13%;display: inline" value={{ result.annealing_time }}>
                                      <label style="width: 10%;">加工后试样尺寸</label>
-                                    <input class="form-control" name="hSample_size" style="width: 13%;display: inline">
+                                    <input class="form-control" name="hSample_size" style="width: 13%;display: inline" value={{ result.hSample_size }}>
                                     
                                 </div>
 
@@ -162,20 +162,18 @@
 
                                     
                                     <label style="width: 10%;">加工后试样组成</label>
-                                     <input class="form-control" name="hsyx_com" style="width: 13%;display: inline">
+                                     <input class="form-control" name="hsyx_com" style="width: 13%;display: inline" value={{ result.hsyx_com }}>
                                     <label style="width: 10%;">加工后试样晶粒度</label>
-                                    <input class="form-control" name="hsyjld" style="width: 13%;display: inline">
+                                    <input class="form-control" name="hsyjld" style="width: 13%;display: inline" value={{ result.hsyjld }}>
                                     <label style="width: 10%;">加工后试样织构</label>
-                                    <input class="form-control" name="hsyzg" style="width: 13%;display: inline">
+                                    <input class="form-control" name="hsyzg" style="width: 13%;display: inline" value={{ result.hsyzg }}>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form action=" name="add" style="width: 18%;text-align: center; display: inline; color: white; background-color: steelblue; margin: 0 40%" type="submit" value="添加数据">
+                                    <input class="form action=" name="update" style="width: 18%;text-align: center; display: inline; color: white; background-color: steelblue; margin: 0 40%" type="submit" value="修改">
                                 </div>
                             </form>
                             <div class="">
-                                <div style="text-align: center">
-                                    <font color="green" size="2" style="text-align: center;margin: 0 40%">{{ success }}</font>
-                                </div>
+                                
                                 {% for error in errors %}
                                 <div style="text-align: center">
                                     <font color="red" size="2" style="text-align: center;margin: 0 40%">{{ error }}</font>

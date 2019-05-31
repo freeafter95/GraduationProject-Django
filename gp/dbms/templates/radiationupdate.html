@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>材料辐射信息添加</title>
+    <title>材料辐射信息修改</title>
 
     <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="http://39.106.148.96/static/css/metisMenu.min.css">
@@ -33,7 +33,7 @@
     <div id="page-wrapper" style="min-height: 589px; margin-left: 0">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"><font color="steelblue">材料辐射信息添加</font></h1>
+                <h1 class="page-header"><font color="steelblue">材料辐射信息修改</font></h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -46,68 +46,68 @@
                             
                             
                             
-                            <form role="form" class="addForm" action="http://39.106.148.96/dbms/radiationinsert/" method="post">
+                            <form role="form" class="addForm" action="http://39.106.148.96/dbms/radiationupdate-{{ result.id }}/" method="post">
 
                                 <div class="form-group">
                                     <label style="width: 10%;">文献</label>
-                                     <input class="form-control" name="literature" style="width: 13%;display: inline">
+                                     <input class="form-control" name="literature" style="width: 13%;display: inline" value={{ result.literature }}>
                                     <label style="width: 10%;">信息来源</label>
-                                     <input class="form-control" name="info_source" style="width: 13%;display: inline">
+                                     <input class="form-control" name="info_source" style="width: 13%;display: inline" value={{ result.info_source }}>
                                     <label style="width: 10%;">化学式</label>
-                                     <input class="form-control" name="chem_formula" style="width: 13%;display: inline">
+                                     <input class="form-control" name="chem_formula" style="width: 13%;display: inline" value={{ result.chem_formula }}>
                                      <label style="width: 10%;">合金牌号</label>
-                                    <input class="form-control" name="alloy_grade" style="width: 13%;display: inline">
+                                    <input class="form-control" name="alloy_grade" style="width: 13%;display: inline" value={{ result.alloy_grade }}>
                                    
                                 </div>
                                 <div class="form-group">
 
                                      <label style="width: 10%;">主元素及含量</label>
-                                    <input class="form-control" name="main_elem" style="width: 13%;display: inline">
+                                    <input class="form-control" name="main_elem" style="width: 13%;display: inline" value={{ result.main_elem }}>
                                     <label style="width: 10%;">次元素及含量</label>
-                                    <input class="form-control" name="second_elem" style="width: 13%;display: inline">
+                                    <input class="form-control" name="second_elem" style="width: 13%;display: inline" value={{ result.second_elem }}>
                                     <label style="width: 10%;">微量元素及含量</label>
                                     
-                                    <input class="form-control" name="trace_elem" style="width: 13%;display: inline">
+                                    <input class="form-control" name="trace_elem" style="width: 13%;display: inline" value={{ result.trace_elem }}>
                                      <label style="width: 10%;">快中子注量</label>
                                     
-                                    <input class="form-control" name="Neu_num" style="width: 13%;display: inline">
+                                    <input class="form-control" name="Neu_num" style="width: 13%;display: inline" value={{ result.Neu_num }}>
                                     
                                 </div>    
                                 <div class="form-group">    
                                     <label style="width: 10%;">辐射前试样</label>
-                                    <input class="form-control" name="hProcess_sample" style="width: 13%;display: inline">
+                                    <input class="form-control" name="hProcess_sample" style="width: 13%;display: inline" value={{ result.hProcess_sample }}>
                                     <label style="width: 10%;">辐射条件名称</label>
-                                    <input class="form-control" name="Irr_cond" style="width: 13%;display: inline">
+                                    <input class="form-control" name="Irr_cond" style="width: 13%;display: inline" value={{ result.Irr_cond }}>
                                     <label style="width: 10%;">辐射前试样尺寸</label>
-                                     <input class="form-control" name="hSample_size" style="width: 13%;display: inline">
+                                     <input class="form-control" name="hSample_size" style="width: 13%;display: inline" value={{ result.hSample_size }}>
                                     <label style="width: 10%;">辐射前试样组成</label>
-                                    <input class="form-control" name="hsyx_com" style="width: 13%;display: inline">
+                                    <input class="form-control" name="hsyx_com" style="width: 13%;display: inline" value={{ result.hsyx_com }}>
                                 </div>
                                 <div class="form-group">
                                      <label style="width: 10%;">射线类型</label>
-                                    <input class="form-control" name="Ray_type" style="width: 13%;display: inline">
+                                    <input class="form-control" name="Ray_type" style="width: 13%;display: inline" value={{ result.Ray_type }}>
 
                                     <label style="width: 10%;">辐射前试样晶粒度(μm)</label>
-                                    <input class="form-control" name="hsyjld" style="width: 13%;display: inline">
+                                    <input class="form-control" name="hsyjld" style="width: 13%;display: inline" value={{ result.hsyjld }}>
                                     <label style="width: 10%;">辐射前试样织构</label>
 
-                                    <input class="form-control" name="hsyzg" style="width: 13%;display: inline">
+                                    <input class="form-control" name="hsyzg" style="width: 13%;display: inline" value={{ result.hsyzg }}>
                                     
                                     <label style="width: 10%;">射线强度</label>
-                                    <input class="form-control" name="Ray_stro" style="width: 13%;display: inline">
+                                    <input class="form-control" name="Ray_stro" style="width: 13%;display: inline" value={{ result.Ray_stro }}>
                                     
 
                                 </div>
                                 <div class="form-group">
                                     <label style="width: 10%;">辐照时间</label>
-                                    <input class="form-control" name="Irr_time" style="width: 13%;display: inline">
+                                    <input class="form-control" name="Irr_time" style="width: 13%;display: inline" value={{ result.Irr_time }}>
                                  <label style="width: 10%;">辐射前试样尺寸</label>
-                                     <input class="form-control" name="hSample_size" style="width: 13%;display: inline">
+                                     <input class="form-control" name="hSample_size" style="width: 13%;display: inline" value={{ result.hSample_size }}>
                                      <label style="width: 10%;">辐射后试样尺寸</label>
-                                    <input class="form-control" name="Hirr_sycc" style="width: 13%;display: inline"> 
+                                    <input class="form-control" name="Hirr_sycc" style="width: 13%;display: inline" value={{ result.Hirr_sycc }}> 
                                      
                                     <label style="width: 10%;">辐射后试样名称</label>
-                                     <input class="form-control" name="Hirr_symc" style="width: 13%;display: inline">
+                                     <input class="form-control" name="Hirr_symc" style="width: 13%;display: inline" value={{ result.Hirr_symc }}>
 
                                    
                                 </div>
@@ -119,18 +119,16 @@
 
                                     
                                     <label style="width: 10%;">辐射后试样晶粒度</label>
-                                    <input class="form-control" name="Hirr_syjld" style="width: 13%;display: inline">
+                                    <input class="form-control" name="Hirr_syjld" style="width: 13%;display: inline" value={{ result.Hirr_syjld }}>
                                     <label style="width: 10%;">辐射后试样织构</label>
-                                    <input class="form-control" name="Hirr_syzg" style="width: 13%;display: inline">
+                                    <input class="form-control" name="Hirr_syzg" style="width: 13%;display: inline" value={{ result.Hirr_syzg }}>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form action=" name="add" style="width: 18%;text-align: center; display: inline; color: white; background-color: steelblue; margin: 0 40%" type="submit" value="添加数据">
+                                    <input class="form action=" name="update" style="width: 18%;text-align: center; display: inline; color: white; background-color: steelblue; margin: 0 40%" type="submit" value="修改">
                                 </div>
                             </form>
                             <div class="">
-                                    <div style="text-align: center">
-                                        <font color="green" size="2" style="text-align: center;margin: 0 40%">{{ success }}</font>
-                                    </div>
+                                   
                                     {% for error in errors %}
                                     <div style="text-align: center">
                                         <font color="red" size="2" style="text-align: center;margin: 0 40%">{{ error }}</font>
