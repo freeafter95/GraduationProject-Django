@@ -309,7 +309,7 @@ def crystal_insert(request):
         for attr in input_lists['crystal_list'].keys():
             content = request.POST.get(attr).strip()
             if content is not None and content != '':
-                input_dic[attr] = check_type()
+                input_dic[attr] = check_type(input_lists['crystal_list'][attr], content, ret_dic)
 
         if (input_dic.get('main_elem') is not None \
         and input_dic.get('second_elem') is not None) \
