@@ -323,7 +323,9 @@ def all_insert(request, table):
     else:
         input_dic = {}
         ret_dic = {'errors': []}
+        print(request.POST)
         for attr in input_lists['crystal_list'].keys():
+            print(attr)
             content = request.POST.get(attr).strip()
             if content is not None and content != '':
                 input_dic[attr] = check_type(input_lists[table + '_list'][attr], content, ret_dic)
