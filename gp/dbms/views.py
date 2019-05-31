@@ -93,7 +93,7 @@ input_lists = {
         'main_elem': ('主元素及含量', 'char'),
         'second_elem': ('次元素及含量', 'char'),
         'trace_elem': ('微量元素及含量', 'char'),
-        'hProcessing_sample': ('加工后试样', 'char'),
+        'hProcess_sample': ('加工后试样', 'char'),
         'hSample_size': ('试样尺寸', 'char'),
         'hsyx_com': ('试样组成', 'char'),
         'hsyjld': ('试样晶粒度(μm)', 'char'),
