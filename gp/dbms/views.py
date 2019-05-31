@@ -401,9 +401,9 @@ def all_query(request, table):
         result = [{'id': columns['id'], 'time': columns['insert_time'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
         
         if request.session['permission'] == '3':
-            res = render(request, 'querylow.html', {'name_ch': get_table_ch(table), 'querytype': 'crystal', 'fields': field_names, 'result': result})
+            res = render(request, 'querylow.html', {'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
         else:
-            res = render(request, 'queryhigh.html', {'name_ch': get_table_ch(table), 'querytype': 'crystal', 'fields': field_names, 'result': result})
+            res = render(request, 'queryhigh.html', {'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
         sf = request.COOKIES.get('select_fields')
         if sf is not None:
             sf_map = json.loads(sf)
