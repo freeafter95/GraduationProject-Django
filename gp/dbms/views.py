@@ -432,8 +432,6 @@ def all_update(request, id, table):
             if v is None:
                 result[k] = ''
 
-        print(result)
-
         return render(request, table + 'update.html', {'result': result})
     else:
         input_dic = {}
