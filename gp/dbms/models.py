@@ -36,7 +36,7 @@ class Djbasicnatu(models.Model):
     insert_time = models.DateTimeField(auto_now=True)
 
 
-class workbeforeafter(models.Model):
+class Process_table(models.Model):
     alloy_grade = models.CharField(max_length=255, null=True)
     chem_formula = models.CharField(max_length=255, null=True)
     main_elem  = models.CharField(max_length=255, null=True)
@@ -58,7 +58,7 @@ class workbeforeafter(models.Model):
     nominal_ability = models.FloatField(null=True)
     heat_temp = models.FloatField(null=True)
     bw_time = models.FloatField(null=True)
-    Extruder_tonnage = models.FloatField(null=True)
+    extruder_tonnage = models.FloatField(null=True)
     jyt_diameter = models.FloatField(null=True)
     jy_heattemp = models.FloatField(null=True)
     jy_bwtime = models.FloatField(null=True)
@@ -70,7 +70,7 @@ class workbeforeafter(models.Model):
     quenching_temp = models.FloatField(null=True)
     annealing_type = models.CharField(max_length=255, null=True)
     annealing_temp = models.FloatField(null=True)
-    Annealing_time  = models.IntegerField(max_length=11, null=True)
+    annealing_time  = models.FloatField(max_length=11, null=True)
     hProcessing_sample = models.CharField(max_length=255, null=True) 
     hSample_size = models.CharField(max_length=255, null=True)
     hsyx_com = models.CharField(max_length=255, null=True)
@@ -78,7 +78,7 @@ class workbeforeafter(models.Model):
     hsyzg = models.CharField(max_length=255, null=True)
     insert_time = models.DateTimeField(auto_now=True)
 
-class allworkeafter(models.Model):
+class Test_table(models.Model):
     alloy_grade = models.CharField(max_length=255, null=True)
     chem_formula = models.CharField(max_length=255, null=True)
     main_elem  = models.CharField(max_length=255, null=True)
@@ -93,10 +93,9 @@ class allworkeafter(models.Model):
     hsyzg = models.CharField(max_length=255, null=True)
     xntest_cond = models.CharField(max_length=255, null=True)
     xndeform_rate = models.CharField(max_length=255, null=True)
-    Testcond_else = models.CharField(max_length=255, null=True)
     xntest_temp = models.FloatField(null=True)
     bulk_modulu = models.FloatField(null=True)
-    Shear_modulus = models.FloatField(null=True)
+    shear_modulus = models.FloatField(null=True)
     young_modulus = models.FloatField(null=True)
     tensile_strength = models.FloatField(null=True)
     yield_strength = models.FloatField(null=True) 
@@ -110,13 +109,13 @@ class allworkeafter(models.Model):
     conductivity = models.FloatField(null=True) 
     dielectric_con = models.FloatField(null=True)
     work_fun = models.FloatField(null=True)
-    Coercivity = models.FloatField(null=True)
+    coercivity = models.FloatField(null=True)
     magnetic_rate = models.FloatField(null=True)
     bhmagnetic_str = models.FloatField(null=True) 
     curie_temp = models.FloatField(null=True)
     insert_time = models.DateTimeField(auto_now=True)
 
-class beforeandafter(models.Model):
+class Radiation_table(models.Model):
     alloy_grade = models.CharField(max_length=255, null=True)
     chem_formula = models.CharField(max_length=255, null=True)
     main_elem  = models.CharField(max_length=255, null=True)
