@@ -303,6 +303,8 @@ def logout(request):
     del_session(request)
     res = redirect('/dbms/login/')
     res.delete_cookie('current_page')
+    res.delete_cookie('select_fields')
+    res.delete_cookie('select_conditions')
     return res
     # response = redirect('/dbms/login/')
     # response.delete_cookie('username')
@@ -424,92 +426,95 @@ def all_delete(request, id, table):
 
 @check_login('crystalinsert', 2)
 def crystal_insert(request):
-    if request.method == 'GET':
-        return render(request, 'crystalinsert.html')
-    else:
-        input_dic = {}
-        ret_dic = {'errors': []}
-        for attr in input_lists['crystal_list'].keys():
-            content = request.POST.get(attr).strip()
-            if content is not None and content != '':
-                input_dic[attr] = check_type(input_lists['crystal_list'][attr], content, ret_dic)
+    return all_insert(request, 'crystal')
+    # if request.method == 'GET':
+    #     return render(request, 'crystalinsert.html')
+    # else:
+    #     input_dic = {}
+    #     ret_dic = {'errors': []}
+    #     for attr in input_lists['crystal_list'].keys():
+    #         content = request.POST.get(attr).strip()
+    #         if content is not None and content != '':
+    #             input_dic[attr] = check_type(input_lists['crystal_list'][attr], content, ret_dic)
 
-        if (input_dic.get('main_elem') is not None \
-        and input_dic.get('second_elem') is not None) \
-        or input_dic.get('alloy_grade') is not None:
-            if len(ret_dic['errors']) == 0:
-                models.Djbasicnatu.objects.create(**input_dic)
-                ret_dic['success'] = '添加成功'
-        else:
-            ret_dic['errors'].append('合金牌号或主元素与次元素必须填写\n')
+    #     if (input_dic.get('main_elem') is not None \
+    #     and input_dic.get('second_elem') is not None) \
+    #     or input_dic.get('alloy_grade') is not None:
+    #         if len(ret_dic['errors']) == 0:
+    #             models.Djbasicnatu.objects.create(**input_dic)
+    #             ret_dic['success'] = '添加成功'
+    #     else:
+    #         ret_dic['errors'].append('合金牌号或主元素与次元素必须填写\n')
 
-        return render(request, 'crystalinsert.html', ret_dic)
+    #     return render(request, 'crystalinsert.html', ret_dic)
 
 @check_login('crystalquery')
 def crystal_query(request):
-    if request.method == 'GET':
-        select_fields = set(request.COOKIES.get('select_fields').split(','))
-        select_conditions = json.loads(request.COOKIES.get('select_conditions'))
-        select_fields.add('id')
-        select_fields.add('insert_time')
-        if select_fields is None or select_conditions is None:
-            if request.session['permission'] == '3':
-                return render(request, 'querylow.html')
-            else:
-                return render(request, 'queryhigh.html')
-        select_result = models.Djbasicnatu.objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
-        select_fields.remove('id')
-        select_fields.remove('insert_time')
-        field_names = [input_lists['crystal_list'][name] for name in select_fields]
-        result = [{'id': columns['id'], 'time': columns['insert_time'],'value': [columns[field] for field in select_fields]} for columns in select_result]
+    return all_query(request, 'crystal')
+    # if request.method == 'GET':
+    #     select_fields = set(request.COOKIES.get('select_fields').split(','))
+    #     select_conditions = json.loads(request.COOKIES.get('select_conditions'))
+    #     select_fields.add('id')
+    #     select_fields.add('insert_time')
+    #     if select_fields is None or select_conditions is None:
+    #         if request.session['permission'] == '3':
+    #             return render(request, 'querylow.html')
+    #         else:
+    #             return render(request, 'queryhigh.html')
+    #     select_result = models.Djbasicnatu.objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
+    #     select_fields.remove('id')
+    #     select_fields.remove('insert_time')
+    #     field_names = [input_lists['crystal_list'][name] for name in select_fields]
+    #     result = [{'id': columns['id'], 'time': columns['insert_time'],'value': [columns[field] for field in select_fields]} for columns in select_result]
         
-        if request.session['permission'] == '3':
-            res = render(request, 'querylow.html', {'querytype': 'crystal', 'fields': field_names, 'result': result})
-        else:
-            res = render(request, 'queryhigh.html', {'querytype': 'crystal', 'fields': field_names, 'result': result})
-        return res
-    else:
-        select_fields = set()
-        select_conditions = {}
-        for k, v in request.POST.items():
-            if k == 'select':
-                continue
-            if k[-1] == '1':
-                if v.strip() != '':
-                    select_fields.add(k[0:-1])
-                    if k == 'second_elem1':
-                        select_conditions['second_elem__icontains'] = '[%]'.join(v.strip().split(' '))
-                        print(select_conditions['second_elem__icontains'])
-                    else:
-                        select_conditions[k[0:-1] + '__icontains'] = v.strip()
-            else:
-                select_fields.add(k)
+    #     if request.session['permission'] == '3':
+    #         res = render(request, 'querylow.html', {'querytype': 'crystal', 'fields': field_names, 'result': result})
+    #     else:
+    #         res = render(request, 'queryhigh.html', {'querytype': 'crystal', 'fields': field_names, 'result': result})
+    #     return res
+    # else:
+    #     select_fields = set()
+    #     select_conditions = {}
+    #     for k, v in request.POST.items():
+    #         if k == 'select':
+    #             continue
+    #         if k[-1] == '1':
+    #             if v.strip() != '':
+    #                 select_fields.add(k[0:-1])
+    #                 if k == 'second_elem1':
+    #                     select_conditions['second_elem__icontains'] = '[%]'.join(v.strip().split(' '))
+    #                     print(select_conditions['second_elem__icontains'])
+    #                 else:
+    #                     select_conditions[k[0:-1] + '__icontains'] = v.strip()
+    #         else:
+    #             select_fields.add(k)
 
-        if len(select_fields) == 0:
-            if request.session['permission'] == '3':
-                return render(request, 'querylow.html')
-            else:
-                return render(request, 'queryhigh.html')
-        select_fields.add('insert_time')
-        select_fields.add('id')
-        select_result = models.Djbasicnatu.objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
-        select_fields.remove('id')
-        select_fields.remove('insert_time')
-        field_names = [input_lists['crystal_list'][name] for name in select_fields]
-        result = [{'id': columns['id'], 'time': columns['insert_time'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
+    #     if len(select_fields) == 0:
+    #         if request.session['permission'] == '3':
+    #             return render(request, 'querylow.html')
+    #         else:
+    #             return render(request, 'queryhigh.html')
+    #     select_fields.add('insert_time')
+    #     select_fields.add('id')
+    #     select_result = models.Djbasicnatu.objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
+    #     select_fields.remove('id')
+    #     select_fields.remove('insert_time')
+    #     field_names = [input_lists['crystal_list'][name] for name in select_fields]
+    #     result = [{'id': columns['id'], 'time': columns['insert_time'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
         
-        if request.session['permission'] == '3':
-            res = render(request, 'querylow.html', {'querytype': 'crystal', 'fields': field_names, 'result': result})
-        else:
-            res = render(request, 'queryhigh.html', {'querytype': 'crystal', 'fields': field_names, 'result': result})
-        res.set_cookie('select_fields', ','.join(list(select_fields)))
-        res.set_cookie('select_conditions', json.dumps(select_conditions))
-        return res
+    #     if request.session['permission'] == '3':
+    #         res = render(request, 'querylow.html', {'querytype': 'crystal', 'fields': field_names, 'result': result})
+    #     else:
+    #         res = render(request, 'queryhigh.html', {'querytype': 'crystal', 'fields': field_names, 'result': result})
+    #     res.set_cookie('select_fields', ','.join(list(select_fields)))
+    #     res.set_cookie('select_conditions', json.dumps(select_conditions))
+    #     return res
 
 @check_login('crystaldelete', 2)
 def crystal_delete(request, id):
-    models.Djbasicnatu.objects.filter(id=id).delete()
-    return redirect('/dbms/crystalquery')
+    return all_delete(request, id, 'crystal')
+    # models.Djbasicnatu.objects.filter(id=id).delete()
+    # return redirect('/dbms/crystalquery')
 
 @check_login('crystalupdate', 2)
 def crystal_update(request, id):
