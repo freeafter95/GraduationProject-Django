@@ -402,14 +402,14 @@ def all_query(request, table):
             res = render(request, 'querylow.html', {'name_ch': get_table_ch(table), 'querytype': 'crystal', 'fields': field_names, 'result': result})
         else:
             res = render(request, 'queryhigh.html', {'name_ch': get_table_ch(table), 'querytype': 'crystal', 'fields': field_names, 'result': result})
-        sf = res.COOKIES.get('select_fields')
+        sf = request.COOKIES.get('select_fields')
         if sf is not None:
             sf_map = json.loads(sf)
         else:
             sf_map = {}
         sf_map[table] = ','.join(list(select_fields))
         res.set_cookie('select_fields', json.dumps(sf_map))
-        sc = res.COOKIES.get('select_conditions')
+        sc = request.COOKIES.get('select_conditions')
         if sc is not None:
             sc_map = json.loads(sc)
         else:
