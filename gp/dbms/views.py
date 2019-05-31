@@ -146,6 +146,30 @@ input_lists = {
     }
 }
 
+def get_table_ch(table):
+    if table == 'crystal':
+        return '晶体'
+    elif table == 'process':
+        return '加工'
+    elif table == 'test':
+        return '测试'
+    elif table == 'radiation':
+        return '辐照'
+    else:
+        return ''
+
+def get_model(table):
+    if table == 'crystal':
+        return models.Djbasicnatu
+    elif table == 'process':
+        return models.Process_table
+    elif table == 'test':
+        return models.Test_table
+    elif table == 'radiation':
+        return models.Radiation_table
+    else:
+        return None
+
 def check_type(input_info, content, ret_dic):
     if input_info[1] == 'float':
         try:
@@ -293,6 +317,109 @@ def main_graph(request):
 def crystal_select(request):
     return render(request, 'crystalselect.html')
 
+def all_insert(request, table):
+    if request.method == 'GET':
+        return render(request, table + 'insert.html')
+    else:
+        input_dic = {}
+        ret_dic = {'errors': []}
+        for attr in input_lists['crystal_list'].keys():
+            content = request.POST.get(attr).strip()
+            if content is not None and content != '':
+                input_dic[attr] = check_type(input_lists[table + '_list'][attr], content, ret_dic)
+
+        if (input_dic.get('main_elem') is not None \
+        and input_dic.get('second_elem') is not None) \
+        or input_dic.get('alloy_grade') is not None:
+            if len(ret_dic['errors']) == 0:
+                get_model(table).objects.create(**input_dic)
+                ret_dic['success'] = '添加成功'
+        else:
+            ret_dic['errors'].append('合金牌号或主元素与次元素必须填写\n')
+
+        return render(request, table + 'insert.html', ret_dic)
+
+def all_query(request, table):
+    if request.method == 'GET':
+        try:
+            select_fields = set(json.loads(request.COOKIES.get('select_fields')).get(table, '').split(','))
+            select_conditions = json.loads(request.COOKIES.get('select_conditions')).get(table, {})
+        except json.decoder.JSONDecodeError:
+            select_fields = []
+            select_conditions = {}
+        select_fields.add('id')
+        select_fields.add('insert_time')
+        if len(select_fields) == 0:
+            if request.session['permission'] == '3':
+                return render(request, 'querylow.html')
+            else:
+                return render(request, 'queryhigh.html')
+
+        select_result = get_model(table).objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
+        select_fields.remove('id')
+        select_fields.remove('insert_time')
+        field_names = [input_lists[table + '_list'][name][0] for name in select_fields]
+        result = [{'id': columns['id'], 'time': columns['insert_time'],'value': [columns[field] for field in select_fields]} for columns in select_result]
+        
+        if request.session['permission'] == '3':
+            res = render(request, 'querylow.html', {'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
+        else:
+            res = render(request, 'queryhigh.html', {'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
+        return res
+    else:
+        select_fields = set()
+        select_conditions = {}
+        for k, v in request.POST.items():
+            if k == 'select':
+                continue
+            if k[-1] == '1':
+                if v.strip() != '':
+                    select_fields.add(k[0:-1])
+                    if k == 'second_elem1':
+                        select_conditions['second_elem__icontains'] = '[%]'.join(v.strip().split(' '))
+                        print(select_conditions['second_elem__icontains'])
+                    else:
+                        select_conditions[k[0:-1] + '__icontains'] = v.strip()
+            else:
+                select_fields.add(k)
+
+        if len(select_fields) == 0:
+            if request.session['permission'] == '3':
+                return render(request, 'querylow.html')
+            else:
+                return render(request, 'queryhigh.html')
+        select_fields.add('insert_time')
+        select_fields.add('id')
+        select_result = models.Djbasicnatu.objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
+        select_fields.remove('id')
+        select_fields.remove('insert_time')
+        field_names = [input_lists[table + '_list'][name][0] for name in select_fields]
+        result = [{'id': columns['id'], 'time': columns['insert_time'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
+        
+        if request.session['permission'] == '3':
+            res = render(request, 'querylow.html', {'name_ch': get_table_ch(table), 'querytype': 'crystal', 'fields': field_names, 'result': result})
+        else:
+            res = render(request, 'queryhigh.html', {'name_ch': get_table_ch(table), 'querytype': 'crystal', 'fields': field_names, 'result': result})
+        sf = res.COOKIES.get('select_fields')
+        if sf is not None:
+            sf_map = json.loads(sf)
+        else:
+            sf_map = {}
+        sf_map[table] = ','.join(list(select_fields))
+        res.set_cookie('select_fields', json.dumps(sf_map))
+        sc = res.COOKIES.get('select_conditions')
+        if sc is not None:
+            sc_map = json.loads(sc)
+        else:
+            sc_map = {}
+        sc_map[table] = select_conditions
+        res.set_cookie('select_conditions', json.dumps(sc_map))
+        return res
+
+def all_delete(request, id, table):
+    get_model(table).objects.filter(id=id).delete()
+    return redirect('/dbms/' + table + 'query')
+
 @check_login('crystalinsert', 2)
 def crystal_insert(request):
     if request.method == 'GET':
@@ -419,7 +546,15 @@ def process_select(request):
 
 @check_login('processinsert', 2)
 def process_insert(request):
-    return render(request, 'processinsert.html')
+    return all_insert(request, 'process')
+
+@check_login('processquery')
+def process_query(request):
+    return all_query(request, 'process')
+
+@check_login('processdelete', 2)
+def process_delete(request, id):
+    return all_delete(request, id, 'process')
 
 @check_login('testselect')
 def test_select(request):
@@ -427,7 +562,15 @@ def test_select(request):
 
 @check_login('testinsert', 2)
 def test_insert(request):
-    return render(request, 'testinsert.html')
+    return all_insert(request, 'test')
+
+@check_login('testquery')
+def test_query(request):
+    return all_query(request, 'test')
+
+@check_login('testdelete', 2)
+def test_delete(request, id):
+    return all_delete(request, id, 'test')
 
 @check_login('radiationselect')
 def radiation_select(request):
@@ -435,7 +578,15 @@ def radiation_select(request):
 
 @check_login('radiationinsert', 2)
 def radiation_insert(request):
-    return render(request, 'radiationinsert.html')
+    return all_insert(request, 'radiation')
+
+@check_login('radiationquery')
+def radiation_query(request):
+    return all_query(request, 'radiation')
+
+@check_login('radiationdelete', 2)
+def radiation_delete(request, id):
+    return all_delete(request, id, 'radiation')
 
 @check_login('', 2)
 def first(request, p1, p2):
