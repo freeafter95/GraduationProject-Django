@@ -197,7 +197,16 @@
                                     <input class="form action=" name="add" style="width: 18%;text-align: center; display: inline; color: white; background-color: steelblue; margin: 0 40%" type="submit" value="添加数据">
                                 </div>
                             </form>
-
+                            <div class="">
+                                <div style="text-align: center">
+                                    <font color="green" size="2" style="text-align: center;margin: 0 40%">{{ success }}</font>
+                                </div>
+                                {% for error in errors %}
+                                <div style="text-align: center">
+                                    <font color="red" size="2" style="text-align: center;margin: 0 40%">{{ error }}</font>
+                                </div>
+                                {% endfor %}
+                            </div>
                             
                         </div>
                         <!-- /.row (nested) -->
