@@ -394,7 +394,7 @@ def all_query(request, table):
                 return render(request, 'queryhigh.html')
         select_fields.add('insert_time')
         select_fields.add('id')
-        select_result = models.Djbasicnatu.objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
+        select_result = get_model(table).objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
         select_fields.remove('id')
         select_fields.remove('insert_time')
         field_names = [input_lists[table + '_list'][name][0] for name in select_fields]
