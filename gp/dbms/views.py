@@ -129,20 +129,20 @@ input_lists = {
         'main_elem': ('主元素及含量', 'char'),
         'second_elem': ('次元素及含量', 'char'),
         'trace_elem': ('微量元素及含量', 'char'),
-        'Neu_num': ('快中子注量', ''),
-        'hProcess_sample': ('辐射前试样', ''),
-        'Irr_cond': ('辐射条件名称', ''),
-        'hsyx_com': ('辐射前试样尺寸', ''),
-        'Ray_type': ('射线类型', ''),
-        'hsyjld': ('辐射前试样晶粒度(μm)', ''),
-        'hsyzg': ('辐射前试样织构', ''),
-        'Ray_stro': ('射线强度', ''),
-        'Irr_time': ('辐照时间', ''),
-        'Hirr_symc': ('辐射后试样名称', ''),
-        'Hirr_sycc': ('辐射后试样尺寸', ''),
-        'Hirr_symc': ('辐射后试样名称', ''),
-        'Hirr_syjld': ('辐射后试样晶粒度', ''),
-        'Hirr_syzg': ('辐射后试样织构', '')
+        'Neu_num': ('快中子注量', 'float'),
+        'hProcess_sample': ('辐射前试样', 'char'),
+        'Irr_cond': ('辐射条件名称', 'char'),
+        'hsyx_com': ('辐射前试样尺寸', 'char'),
+        'Ray_type': ('射线类型', 'char'),
+        'hsyjld': ('辐射前试样晶粒度(μm)', 'char'),
+        'hsyzg': ('辐射前试样织构', 'char'),
+        'Ray_stro': ('射线强度', 'float'),
+        'Irr_time': ('辐照时间', 'float'),
+        'hSample_size': ('辐射前试样尺寸', 'char'),
+        'Hirr_sycc': ('辐射后试样尺寸', 'char'),
+        'Hirr_symc': ('辐射后试样名称', 'char'),
+        'Hirr_syjld': ('辐射后试样晶粒度', 'char'),
+        'Hirr_syzg': ('辐射后试样织构', 'char')
     }
 }
 
@@ -154,7 +154,7 @@ def get_table_ch(table):
     elif table == 'test':
         return '测试'
     elif table == 'radiation':
-        return '辐照'
+        return '辐射'
     else:
         return ''
 
@@ -324,7 +324,7 @@ def all_insert(request, table):
         input_dic = {}
         ret_dic = {'errors': []}
         print(request.POST)
-        for attr in input_lists['crystal_list'].keys():
+        for attr in input_lists[table + '_list'].keys():
             print(attr)
             content = request.POST.get(attr).strip()
             if content is not None and content != '':
