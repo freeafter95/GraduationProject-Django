@@ -56,60 +56,60 @@
                                 <form role="form" class="addForm" action="http://39.106.148.96/dbms/crystalupdate-{{ result.id }}/" method="post">
                                     <div class="form-group">
                                         <label style="width: 10%; height: 28px;text-align: right">密度(kg/m3)</label>
-                                        <input class="form-control" name="density" style="width: 13%;display: inline" value={{ result.density }}>
+                                        <input class="form-control" name="density" style="width: 13%;display: inline" value="{{ result.density }}">
 
                                         <label style="width: 10%; height: 28px;text-align: right">文献</label>
-                                        <input class="form-control" name="literature" style="width: 13%;display: inline" value={{ result.literature }}>
+                                        <input class="form-control" name="literature" style="width: 13%;display: inline" value="{{ result.literature }}">
                                         <label style="width: 10%; height: 28px;text-align: right">温度(k)</label> 
-                                        <input class="form-control" name="temperature" style="width: 13%;display: inline" value={{ result.temperature }}>
+                                        <input class="form-control" name="temperature" style="width: 13%;display: inline" value="{{ result.temperature }}">
                                         <label style="width: 10%; height: 28px;text-align: right">体积(Å3/atom)</label>
-                                        <input class="form-control" name="volume" style="width: 13%;display: inline" value={{ result.volume }}>
+                                        <input class="form-control" name="volume" style="width: 13%;display: inline" value="{{ result.volume }}">
                                     </div>
                                     
                                     <div class="form-group">    
                                         <label style="width: 10%; height: 28px;text-align: right">脆韧性</label>
-                                        <input class="form-control" name="brittle_tough" style="width: 13%;display: inline" value={{ result.brittle_tough }}>
+                                        <input class="form-control" name="brittle_tough" style="width: 13%;display: inline" value="{{ result.brittle_tough }}">
                                         <label style="width: 10%; height: 28px;text-align: right">化学式</label>
-                                        <input class="form-control" name="chem_formula" style="width: 13%;display: inline" value={{ result.chem_formula }}>
+                                        <input class="form-control" name="chem_formula" style="width: 13%;display: inline" value="{{ result.chem_formula }}">
 
                                         
                                         <label style="width: 10%; height: 28px;text-align: right">结构ID</label>
-                                        <input class="form-control" name="structure_Id" style="width: 13%;display: inline" value={{ result.structure_Id }}>
+                                        <input class="form-control" name="structure_Id" style="width: 13%;display: inline" value="{{ result.structure_Id }}">
                                         <label style="width: 10%; height: 28px;text-align: right">空间群</label>
-                                        <input class="form-control" name="space_group" style="width: 13%;display: inline" value={{ result.space_group }}>
+                                        <input class="form-control" name="space_group" style="width: 13%;display: inline" value="{{ result.space_group }}">
                                     </div>
                                      <div class="form-group"> 
                                         <label style="width: 10%; height: 28px;text-align: right">合金牌号</label>
-                                        <input class="form-control" name="alloy_grade" style="width: 13%;display: inline" value={{ result.alloy_grade }}>
+                                        <input class="form-control" name="alloy_grade" style="width: 13%;display: inline" value="{{ result.alloy_grade }}">
                                         <label style="width: 10%; height: 28px;text-align: right">信息来源</label>
-                                        <input class="form-control" name="info_source" style="width: 13%;display: inline" value={{ result.info_source }}>
+                                        <input class="form-control" name="info_source" style="width: 13%;display: inline" value="{{ result.info_source }}">
                                         <label style="width: 10%; height: 28px;text-align: right">材料类别</label>
-                                        <input class="form-control" name="mater_cate" style="width: 13%;display: inline" value={{ result.mater_cate }}>
+                                        <input class="form-control" name="mater_cate" style="width: 13%;display: inline" value="{{ result.mater_cate }}">
                                         <label style="width: 10%; height: 28px;text-align: right">能量(eV)</label>
-                                        <input class="form-control" name="energy" style="width: 13%;display: inline" value={{ result.energy }}>
+                                        <input class="form-control" name="energy" style="width: 13%;display: inline" value="{{ result.energy }}">
                                     </div>
                                     <div class="form-group">   
                                         <label style="width: 10%; height: 28px;text-align: right">晶格常数(Å)</label>
-                                        <input class="form-control" name="latt_cons" style="width: 13%;display: inline" value={{ result.latt_cons }}>  
+                                        <input class="form-control" name="latt_cons" style="width: 13%;display: inline" value="{{ result.latt_cons }}">  
                                         <label style="width: 10%; height: 28px;text-align: right;">主元素及含量</label>
                                         <input class="form-control" name="main_elem" style="width: 13%;display: inline" value="{{ result.main_elem }}">
                                         <label style="width: 10%; height: 28px;text-align: right;">次元素及含量</label>
-                                         <input class="form-control" name="second_elem" style="width: 13%;display: inline" value={{ result.second_elem }}>
+                                         <input class="form-control" name="second_elem" style="width: 13%;display: inline" value="{{ result.second_elem }}">
                                         <label style="width: 10%; height: 28px;text-align: right;">微量元素及含量</label>
-                                        <input class="form-control" name="trace_elem" style="width: 13%;display: inline" value={{ result.trace_elem }}>
+                                        <input class="form-control" name="trace_elem" style="width: 13%;display: inline" value="{{ result.trace_elem }}">
                                     </div>
                                     
                                     <div class="form-group">
 
                                         
                                         <label style="width: 10%; height: 28px;text-align: right">热容(J/molK)</label>
-                                        <input class="form-control" name="rerong" style="width: 13%;display: inline" value={{ result.rerong }}>
+                                        <input class="form-control" name="rerong" style="width: 13%;display: inline" value="{{ result.rerong }}">
                                         <label style="width: 10%; height: 28px;text-align: right">热膨胀系数(/K)</label>
-                                        <input class="form-control" name="rpzxs" style="width: 13%;display: inline" value={{ result.rpzxs }}>
+                                        <input class="form-control" name="rpzxs" style="width: 13%;display: inline" value="{{ result.rpzxs }}">
                                         <label style="width: 10%; height: 28px;text-align: right">单位原子能(eV)</label>
-                                        <input class="form-control" name="atomic_ener" style="width: 13%;display: inline" value={{ result.atomic_ener }}>
+                                        <input class="form-control" name="atomic_ener" style="width: 13%;display: inline" value="{{ result.atomic_ener }}">
                                         <label style="width: 10%; height: 28px;text-align: right">单位原子形成能(eV/atom)</label>
-                                        <input class="form-control" name="form_ener" style="width: 13%;display: inline" value={{ result.form_ener }}>
+                                        <input class="form-control" name="form_ener" style="width: 13%;display: inline" value="{{ result.form_ener }}">
                                     </div>
                                     <div class="form-group">
                                        
@@ -117,14 +117,14 @@
                                         
                                         
                                         <label style="width: 10%; height: 28px;text-align: right">单晶弹性常数(Gpa)</label>
-                                        <input class="form-control" name="elastic_cons" style="width: 13%;display: inline" value={{ result.elastic_cons }}>
+                                        <input class="form-control" name="elastic_cons" style="width: 13%;display: inline" value="{{ result.elastic_cons }}">
                                         <label style="width: 10%; height: 28px;text-align: right">微观泊松比(无量纲)</label>
 
-                                        <input class="form-control" name="wPoisson_rate" style="width: 13%;display: inline" value={{ result.wPoisson_rate }}>
+                                        <input class="form-control" name="wPoisson_rate" style="width: 13%;display: inline" value="{{ result.wPoisson_rate }}">
                                         <label style="width: 10%; height: 28px;text-align: right">微观弹性各异性(Gpa)</label>
-                                        <input class="form-control" name="elasti_anis" style="width: 13%;display: inline" value={{ result.elasti_anis }}>
+                                        <input class="form-control" name="elasti_anis" style="width: 13%;display: inline" value="{{ result.elasti_anis }}">
                                         <label style="width: 10%; height: 28px;text-align: right">微观切变模量(Gpa)</label>
-                                         <input class="form-control" name="wG_Ress" style="width: 13%;display: inline" value={{ result.wG_Ress }}>
+                                         <input class="form-control" name="wG_Ress" style="width: 13%;display: inline" value="{{ result.wG_Ress }}">
                                         
 
                                     </div>
@@ -133,7 +133,7 @@
                                         
                                         
                                         <label style="width: 10%; height: 28px;text-align: right">微观体积模量(Gpa)</label>
-                                         <input class="form-control" name="wK_Ress" style="width: 13%;display: inline" value={{ result.wK_Ress }}>
+                                         <input class="form-control" name="wK_Ress" style="width: 13%;display: inline" value="{{ result.wK_Ress }}">
                                         
                                     </div>  
                                     
