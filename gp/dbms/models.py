@@ -23,7 +23,7 @@ class Djbasicnatu(models.Model):
     rpzxs = models.FloatField(null=True)
     volume = models.CharField(max_length=255, null=True)
     density = models.FloatField(null=True)
-    energy = models.FloatFielld(null=True)
+    energy = models.FloatField(null=True)
     atomic_ener = models.FloatField(null=True)
     form_ener = models.FloatField(null=True)
     elastic_cons = models.CharField(max_length=255, null=True)
