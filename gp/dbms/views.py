@@ -472,33 +472,34 @@ def crystal_delete(request, id):
 
 @check_login('crystalupdate', 2)
 def crystal_update(request, id):
-    if request.method == 'GET':
-        result = model_to_dict(models.Djbasicnatu.objects.filter(id=id).first())
-        for (k, v) in result.items():
-            if v is None:
-                result[k] = ''
+    return all_update(request, id, 'crystal')
+    # if request.method == 'GET':
+    #     result = model_to_dict(models.Djbasicnatu.objects.filter(id=id).first())
+    #     for (k, v) in result.items():
+    #         if v is None:
+    #             result[k] = ''
 
-        return render(request, 'crystalupdate.html', {'result': result})
-    else:
-        input_dic = {}
-        for attr in input_lists['crystal_list'].keys():
-            if attr == 'insert_time':
-                continue
-            content = request.POST.get(attr).strip()
-            if content is not None and content != '':
-                input_dic[attr] = content
+    #     return render(request, 'crystalupdate.html', {'result': result})
+    # else:
+    #     input_dic = {}
+    #     for attr in input_lists['crystal_list'].keys():
+    #         if attr == 'insert_time':
+    #             continue
+    #         content = request.POST.get(attr).strip()
+    #         if content is not None and content != '':
+    #             input_dic[attr] = content
 
-        if (input_dic.get('main_elem') is not None \
-        and input_dic.get('second_elem') is not None) \
-        or input_dic.get('alloy_grade') is not None:
-            models.Djbasicnatu.objects.filter(id=id).update(**input_dic)
-            return redirect('/dbms/crystalquery')
-        else:
-            result = model_to_dict(models.Djbasicnatu.objects.filter(id=id).first())
-            for (k, v) in result.items():
-                if v is None:
-                    result[k] = ''
-            return render(request, 'crystalupdate.html', {'result': result, 'error': '修改失败，合金牌号或主元素与次元素必须填写'})
+    #     if (input_dic.get('main_elem') is not None \
+    #     and input_dic.get('second_elem') is not None) \
+    #     or input_dic.get('alloy_grade') is not None:
+    #         models.Djbasicnatu.objects.filter(id=id).update(**input_dic)
+    #         return redirect('/dbms/crystalquery')
+    #     else:
+    #         result = model_to_dict(models.Djbasicnatu.objects.filter(id=id).first())
+    #         for (k, v) in result.items():
+    #             if v is None:
+    #                 result[k] = ''
+    #         return render(request, 'crystalupdate.html', {'result': result, 'error': '修改失败，合金牌号或主元素与次元素必须填写'})
         
 
 @check_login('processselect')
@@ -517,6 +518,10 @@ def process_query(request):
 def process_delete(request, id):
     return all_delete(request, id, 'process')
 
+@check_login('processupdate', 2)
+def process_update(request, id):
+    return all_update(request, id, 'process')
+
 @check_login('testselect')
 def test_select(request):
     return render(request, 'testselect.html')
@@ -533,6 +538,10 @@ def test_query(request):
 def test_delete(request, id):
     return all_delete(request, id, 'test')
 
+@check_login('testupdate', 2)
+def test_update(request, id):
+    return all_update(request, id, 'test')
+
 @check_login('radiationselect')
 def radiation_select(request):
     return render(request, 'radiationselect.html')
@@ -548,6 +557,10 @@ def radiation_query(request):
 @check_login('radiationdelete', 2)
 def radiation_delete(request, id):
     return all_delete(request, id, 'radiation')
+
+@check_login('radiationupdate', 2)
+def radiation_update(request, id):
+    return all_update(request, id, 'radiation')
 
 @check_login('', 2)
 def first(request, p1, p2):
