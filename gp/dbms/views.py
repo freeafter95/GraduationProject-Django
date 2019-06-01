@@ -534,18 +534,37 @@ def radiation_delete(request, id):
 def radiation_update(request, id):
     return all_update(request, id, 'radiation')
 
+save_lists = {
+    '1-1': [
+        ('cllb', 'radio')
+    ]
+}
+
 @check_login('', 2)
 def first(request, p1, p2):
     if request.method == 'GET':
+        para = request.COOKIES.get('save_para', '{}')
+        res = render(request, 'first%d-%d.html' % (p1, p2))
+        res.set_cookie('current_page', 'first%d-%d' % (p1, p2), 'save_para': para)
+        return res
+    elif request.POST.has_key('save'):
+        save_para = json.loads(request.COOKIES.get('save_para', '{}'))
+        for k, v in request.POST.items():
+            save_para[k] = v
 
         res = render(request, 'first%d-%d.html' % (p1, p2))
         res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
+        res.set_cookie('save_para', json.dumps(save_para))
         return res
     else:
-        save_para = dict(request.POST)
-        print(save_para)
+        save_para = json.loads(request.COOKIES.get('save_para', '{}'))
+        for k, _ in request.POST.items():
+            if k in save_para:
+                save_para.pop(k)
+
         res = render(request, 'first%d-%d.html' % (p1, p2))
         res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
+        res.set_cookie('save_para', json.dumps(save_para))
         return res
 
 @check_login('usermanage', 1)
