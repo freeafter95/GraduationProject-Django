@@ -86,9 +86,12 @@
     </div>
 
 <script type="text/javascript">
-    function showdata(){
+    function showdata() {
+        var para = {{ save_para|safe }};
+
         document.getElementById("optionsRadios3").checked=true;
     }
+    showdata()
 </script>
 
 </body>
