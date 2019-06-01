@@ -562,6 +562,7 @@ def first(request, p1, p2):
         res.set_cookie('save_para', para)
         return res
     else:
+        print('qw')
         save_para = json.loads(request.COOKIES.get('save_para', '{}'))
         for k, _ in request.POST.items():
             if k in save_para:
