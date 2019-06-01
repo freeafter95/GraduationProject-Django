@@ -87,11 +87,9 @@
 
 <script type="text/javascript">
     var para = {{ save_para|safe }};
-    $('#list').prepend(para[0]);
-    $('#list').append(para[1]);
 
-    for(i in List){
-        console.log(i);// i为索引
+    for(i in para){
+        alert(i);// i为索引
     }
 </script>
 
