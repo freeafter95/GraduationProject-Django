@@ -542,7 +542,8 @@ def first(request, p1, p2):
         res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
         return res
     else:
-        print(request.POST)
+        save_para = dict(request.POST)
+        print(save_para)
         res = render(request, 'first%d-%d.html' % (p1, p2))
         res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
         return res
