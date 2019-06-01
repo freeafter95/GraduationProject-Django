@@ -86,8 +86,8 @@
     </div>
 
 <script type="text/javascript">
-    var para = JSON.parse({{ save_para|safe }});
-    alert(para)
+    var para = {{ save_para|safe }};
+    alert(JSON.parse(para));
     document.getElementById("optionsRadios3").checked=true;
 </script>
 
