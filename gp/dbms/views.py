@@ -12,6 +12,7 @@ from . import models
 from django.forms.models import model_to_dict
 import random, datetime, os, string
 from cacheout import Cache
+from django.utils.safestring import SafeString
 import json
 
 cache = Cache()
@@ -545,7 +546,7 @@ def first(request, p1, p2):
     #print(dict(request.POST))
     if request.method == 'GET':
         para = request.COOKIES.get('save_para', '{}')
-        res = render(request, 'first%d-%d.html' % (p1, p2), {'save_para': para})
+        res = render(request, 'first%d-%d.html' % (p1, p2), {'save_para': SafeString(para)})
         res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
         return res
     elif request.POST.get('save') is not None:
