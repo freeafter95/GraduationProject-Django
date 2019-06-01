@@ -549,6 +549,7 @@ def first(request, p1, p2):
         res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
         return res
     elif request.POST.get('save') is not None:
+        print(1)
         save_para = json.loads(request.COOKIES.get('save_para', '{}'))
         for k, v in request.POST.items():
             if k != 'save' and k != 'reset':
