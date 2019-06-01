@@ -87,8 +87,12 @@
 
 <script type="text/javascript">
     var para = {{ save_para|safe }};
-    alert(para["cllb"]);
-    document.getElementById("optionsRadios3").checked=true;
+    $('#list').prepend(List[0]);
+    $('#list').append(List[1]);
+
+    for(i in List){
+        console.log(i);// i为索引
+    }
 </script>
 
 </body>

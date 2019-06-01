@@ -542,7 +542,7 @@ save_lists = {
 
 @check_login('', 2)
 def first(request, p1, p2):
-    print(dict(request.POST))
+    #print(dict(request.POST))
     if request.method == 'GET':
         para = request.COOKIES.get('save_para', '{}')
         res = render(request, 'first%d-%d.html' % (p1, p2), {'save_para': para})
@@ -551,7 +551,8 @@ def first(request, p1, p2):
     elif 'value' in request.POST:
         save_para = json.loads(request.COOKIES.get('save_para', '{}'))
         for k, v in request.POST.items():
-            save_para[k] = v
+            if k != 'save' and k != 'reset':
+                save_para[k] = v
 
         res = render(request, 'first%d-%d.html' % (p1, p2))
         res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
