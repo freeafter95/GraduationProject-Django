@@ -556,9 +556,10 @@ def first(request, p1, p2):
                 save_para[k] = v
 
         print(save_para)
+        para = json.dumps(save_para)
         res = render(request, 'first%d-%d.html' % (p1, p2), {'save_para': SafeString(para)})
         res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
-        res.set_cookie('save_para', json.dumps(save_para))
+        res.set_cookie('save_para', para)
         return res
     else:
         save_para = json.loads(request.COOKIES.get('save_para', '{}'))
