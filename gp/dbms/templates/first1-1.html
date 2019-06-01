@@ -49,9 +49,15 @@
                                     <div class="form-group">
                                         <label><font color="steelblue" font-size="15px">材料类别</font></label>
                                         <div class="radio">
+                                            {% if 'cllb' in save_para and save_para['cllb'] == 'metal' %}
                                             <label>
                                                 <input type="radio" name="cllb" id="optionsRadios1" value="metal">金属
                                             </label>
+                                            {% else %}
+                                            <label>
+                                                <input type="radio" name="cllb" id="optionsRadios1" value="metal">金属
+                                            </label>
+                                            {% endif %}
                                         </div>
                                         <div class="radio">
                                             <label>
@@ -85,11 +91,11 @@
                 <!-- /.row -->
     </div>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     var para = {{ save_para|safe }};
 
     alert(para);
-</script>
+</script> -->
 
 </body>
 

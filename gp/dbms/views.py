@@ -546,7 +546,7 @@ def first(request, p1, p2):
     #print(dict(request.POST))
     if request.method == 'GET':
         para = request.COOKIES.get('save_para', '{}')
-        res = render(request, 'first%d-%d.html' % (p1, p2), {'save_para': SafeString(para)})
+        res = render(request, 'first%d-%d.html' % (p1, p2), {'save_para': json.loads(para)})
         res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
         return res
     elif request.POST.get('save') is not None:
@@ -557,7 +557,7 @@ def first(request, p1, p2):
 
         print(save_para)
         para = json.dumps(save_para)
-        res = render(request, 'first%d-%d.html' % (p1, p2), {'save_para': SafeString(para)})
+        res = render(request, 'first%d-%d.html' % (p1, p2), {'save_para': save_para})
         res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
         res.set_cookie('save_para', para)
         return res
@@ -567,7 +567,7 @@ def first(request, p1, p2):
             if k in save_para:
                 save_para.pop(k)
 
-        res = render(request, 'first%d-%d.html' % (p1, p2))
+        res = render(request, 'first%d-%d.html' % (p1, p2), {'save_para': {}})
         res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
         res.set_cookie('save_para', json.dumps(save_para))
         return res
