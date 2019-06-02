@@ -587,12 +587,14 @@ def compute_return(para):
 @check_login('compute', 2)
 def compute(request):
     if request.method == 'GET':
+        print(1)
         return render(request, 'compute.html')
     else:
+        print(2)
         para = request.COOKIES.get('save_para', '{}')
         path = compute_return(json.loads(para))
+        print(path)
         if path:
-            print(path)
             res = render(request, 'compute.html', {'success': '计算成功，正在下载计算图形'})
             with open(path, 'rb') as file:
                 res.writelines(file.read())
