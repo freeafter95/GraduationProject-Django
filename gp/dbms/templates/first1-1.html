@@ -60,19 +60,37 @@
                                             {% endif %}
                                         </div>
                                         <div class="radio">
+                                            {% if save_para.cllb == 'ceramics' %}
+                                            <label>
+                                                <input type="radio" name="cllb" id="optionsRadios2" value="ceramics" checked>陶瓷
+                                            </label>
+                                            {% else %}
                                             <label>
                                                 <input type="radio" name="cllb" id="optionsRadios2" value="ceramics">陶瓷
                                             </label>
+                                            {% endif %}
                                         </div>
                                         <div class="radio">
+                                            {% if save_para.cllb == 'ceramics' %}
+                                            <label>
+                                                <input type="radio" name="cllb" id="optionsRadios3" value="polymer" checked="">高分子
+                                            </label>
+                                            {% else %}
                                             <label>
                                                 <input type="radio" name="cllb" id="optionsRadios3" value="polymer">高分子
                                             </label>
+                                            {% endif %}
                                         </div>
                                         <div class="radio">
+                                            {% if save_para.cllb == 'ceramics' %}
+                                            <label>
+                                                <input type="radio" name="cllb" id="optionsRadios4" value="molecular" checked="">分子
+                                            </label>
+                                            {% else %}
                                             <label>
                                                 <input type="radio" name="cllb" id="optionsRadios4" value="molecular">分子
                                             </label>
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <button type="submit" name="save" class="btn btn-default" style="width: 15%; color: white; background-color: steelblue;">保 存</button>
