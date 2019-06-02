@@ -594,11 +594,9 @@ def compute(request):
         path = compute_return(json.loads(para))
         print(path)
         if path:
-            with open(path, 'rb') as file:
-                content = file.read()
-            res = HttpResponse(content_type='application/octet-stream')
+            res = HttpResponse(open(path, 'rb'))
+            res['content_type'] = 'application/octet-stream'
             res['Content-Disposition'] = 'attachment;filename="计算图形.png"'
-            res.content = content
             return res
         else:
             return render(request, 'compute.html', {'error': '无法计算，请重新检查上传参数'})
