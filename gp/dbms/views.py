@@ -596,8 +596,8 @@ def compute(request):
         if path:
             with open(path, 'rb') as file:
                 file_content = file.read()
-            res = HttpResponse(file_content)
-            res['Content_Type'] = 'application/octet-stream'
+            res = HttpResponse(file_content, content_type='application/image')
+            #res['Content_Type'] = 'application/octet-stream'
             res['Content-Disposition'] = 'attachment;filename="计算图形.png"'
             return res
         else:
