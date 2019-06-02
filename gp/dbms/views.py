@@ -599,7 +599,7 @@ def compute(request):
             with open(path, 'rb') as file:
                 content = file.read()
             res = render(request, 'compute.html')
-            res['Content'] = content
+            res.writelines(content)
             res['Content-Type'] = 'image/png'
             res['Content-Disposition'] = 'attachment;filename={0}'.format('计算图形.png')
             return res
