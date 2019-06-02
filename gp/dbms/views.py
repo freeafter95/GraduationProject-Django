@@ -306,6 +306,7 @@ def logout(request):
     res.delete_cookie('current_page')
     res.delete_cookie('select_fields')
     res.delete_cookie('select_conditions')
+    res.delete_cookie('save_para')
     return res
     # response = redirect('/dbms/login/')
     # response.delete_cookie('username')
