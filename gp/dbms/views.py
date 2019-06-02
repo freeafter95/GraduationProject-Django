@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 #coding=utf-8
 from django.shortcuts import render,render_to_response,redirect
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse,HttpResponseRedirect, FileResponse
 from django.template import RequestContext
 from tools import generate_code, generate_graph
 from django.views import View 
@@ -594,7 +594,7 @@ def compute(request):
         path = compute_return(json.loads(para))
         print(path)
         if path:
-            res = HttpResponse(open(path, 'rb'))
+            res = FileResponse(open(path, 'rb'))
             res['Content_Type'] = 'application/octet-stream'
             res['Content-Disposition'] = 'attachment;filename="计算图形.png"'
             return res
