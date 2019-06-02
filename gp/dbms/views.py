@@ -574,7 +574,10 @@ def first(request, p1, p2):
         return res
 
 def compute_return(para):
-    pass
+    if para.get('cllb') is not None:
+        return '/root/git/GraduationProject-Django/gp/dbms/views.py'
+    else:
+        return None
 
 @check_login('compute', 2)
 def compute(request):
@@ -582,7 +585,7 @@ def compute(request):
         return render(request, 'compute.html')
     else:
         para = request.COOKIES.get('save_para', '{}')
-        path = '/root/git/GraduationProject-Django/gp/dbms/views.py'
+        path = compute_return(para)
         if path:
             res = render(request, 'compute.html', {'success': '计算成功，正在下载计算图形'})
             with open(path, 'rb') as file:
