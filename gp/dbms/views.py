@@ -592,6 +592,7 @@ def compute(request):
         para = request.COOKIES.get('save_para', '{}')
         path = compute_return(json.loads(para))
         if path:
+            print(path)
             res = render(request, 'compute.html', {'success': '计算成功，正在下载计算图形'})
             with open(path, 'rb') as file:
                 res.writelines(file.read())
