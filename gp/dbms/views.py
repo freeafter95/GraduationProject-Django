@@ -553,6 +553,7 @@ def first(request, p1, p2):
     elif request.POST.get('save') is not None:
         save_para = json.loads(request.COOKIES.get('save_para', '{}'))
         for k, v in request.POST.items():
+            print(k, v)
             if k != 'save' and k != 'reset':
                 save_para[k] = v
 
