@@ -30,6 +30,7 @@ urlpatterns = [
   path('usermanage/', views.user_manage, name='usermanage'),
   path('adduser/', views.add_user, name='adduser'),
   path('first<int:p1>-<int:p2>/', views.first, name='first'),
+  path('compute/', views.compute, name='compute'),
   path('deluser-<str:username>/', views.del_user, name='deluser'),
   # path('regist/',views.regist, name='regist'),
   # path('index/',views.index,name = 'index'),

@@ -573,6 +573,27 @@ def first(request, p1, p2):
         res.set_cookie('save_para', json.dumps(save_para))
         return res
 
+def compute_return(para):
+    pass
+
+@check_login('compute', 2)
+def compute(request):
+    if request.method == 'GET':
+        return render(request, 'compute.html')
+    else:
+        para = request.COOKIES.get('save_para', '{}')
+        path = '/root/git/GraduationProject-Django/gp/dbms/views.py'
+        if path:
+            res = render(request, 'compute.html', {'success': '计算成功，正在下载计算图形'})
+            with open(path, 'rb') as file:
+                res.writelines(file.read())
+            res['Content-Type'] = 'application/octet-stream'
+            res['Content-Disposition'] = 'attachment;filename={0}'.format('test.py')
+            return res
+        else:
+            return render(request, 'compute.html', {'error': '无法计算，请重新检查上传参数'})
+
+
 @check_login('usermanage', 1)
 def user_manage(request):
     if request.method == 'GET':
