@@ -49,7 +49,7 @@
                                     <div class="form-group">
                                         <label><font color="steelblue" font-size="15px">材料类别</font></label>
                                         <div class="radio">
-                                            {% if save_para.cllb == 'metal' %}
+                                            {% if 'metal' in save_para.cllb %}
                                             <label>
                                                 <input type="radio" name="cllb" id="optionsRadios1" value="metal" checked/>金属
                                             </label>
@@ -60,7 +60,7 @@
                                             {% endif %}
                                         </div>
                                         <div class="radio">
-                                            {% if save_para.cllb == 'ceramics' %}
+                                            {% if 'ceramics' in save_para.cllb %}
                                             <label>
                                                 <input type="radio" name="cllb" id="optionsRadios2" value="ceramics" checked/>陶瓷
                                             </label>
@@ -71,7 +71,7 @@
                                             {% endif %}
                                         </div>
                                         <div class="radio">
-                                            {% if save_para.cllb == 'polymer' %}
+                                            {% if 'polymer' in save_para.cllb %}
                                             <label>
                                                 <input type="radio" name="cllb" id="optionsRadios3" value="polymer" checked/>高分子
                                             </label>
@@ -82,7 +82,7 @@
                                             {% endif %}
                                         </div>
                                         <div class="radio">
-                                            {% if save_para.cllb == 'molecular' %}
+                                            {% if 'molecular' in save_para.cllb %}
                                             <label>
                                                 <input type="radio" name="cllb" id="optionsRadios4" value="molecular" checked/>分子
                                             </label>
