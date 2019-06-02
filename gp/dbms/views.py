@@ -547,6 +547,7 @@ def first(request, p1, p2):
     print(dict(request.POST))
     if request.method == 'GET':
         para = request.COOKIES.get('save_para', '{}')
+        print(json.loads(para))
         res = render(request, 'first%d-%d.html' % (p1, p2), {'save_para': json.loads(para)})
         res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
         return res
