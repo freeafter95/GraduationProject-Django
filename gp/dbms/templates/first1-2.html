@@ -89,22 +89,48 @@
                                         <label><font color="steelblue" size="">力  学</font></label>
                                         <div class="checkbox">
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
+                                                {% if 'ElasticModTen' in save_para.dynamics %}
+                                                <input type="checkbox" value="ElasticModTen" name="dynamics" checked />弹性模量
+                                                {% else %}
                                                 <input type="checkbox" value="ElasticModTen" name="dynamics"/>弹性模量
+                                                {% endif %}
                                             </label>
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
+                                                {% if 'TensileStr' in save_para.dynamics %}
+                                                <input type="checkbox" value="TensileStr" name="dynamics" checked />抗拉强度
+                                                {% else %}
                                                 <input type="checkbox" value="TensileStr" name="dynamics"/>抗拉强度
+                                                {% endif %}
                                             </label>
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
+                                                {% if 'BreakingStr' in save_para.dynamics %}
+                                                <input type="checkbox" value="YieldStr" name="dynamics" checked />屈服强度
+                                                {% else %}
+                                                <input type="checkbox" value="YieldStr" name="dynamics"/>屈服强度
+                                                {% endif %}
                                                 <input type="checkbox" value="YieldStr" name="dynamics"/>屈服强度
                                             </label>
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
+                                                {% if 'BreakingStr' in save_para.dynamics %}
+                                                <input type="checkbox" value="BreakingStr" name="dynamics" checked />断裂强度
+                                                {% else %}
                                                 <input type="checkbox" value="BreakingStr" name="dynamics"/>断裂强度
+                                                {% endif %}
                                             </label>
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
+                                                {% if 'Fatigue' in save_para.dynamics %}
+                                                <input type="checkbox" value="Fatigue" name="dynamics" checked />疲  劳
+                                                {% else %}
+                                                <input type="checkbox" value="Fatigue" name="dynamics"/>疲  劳
+                                                {% endif %}
                                                 <input type="checkbox" value="Fatigue" name="dynamics"/>疲  劳
                                             </label>
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
-                                                <input type="checkbox" value="Creep" name="dynamics" />蠕  变
+                                                {% if 'Creep' in save_para.dynamics %}
+                                                <input type="checkbox" value="Creep" name="dynamics" checked />蠕  变
+                                                {% else %}
+                                                <input type="checkbox" value="Creep" name="dynamics"/>蠕  变
+                                                {% endif %}
                                             </label>
                                         </div>
                                     </div>
@@ -112,10 +138,18 @@
                                         <label><font color="steelblue">电  学</font></label>
                                         <div class="checkbox">
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
-                                                <input type="checkbox" value="1" name="Conductivity" />电导率
+                                                {% if 'Conductivity' in save_para.electricity %}
+                                                <input type="checkbox" value="Conductivity" name="electricity" checked />电导率
+                                                {% else %}
+                                                <input type="checkbox" value="Conductivity" name="electricity"/>电导率
+                                                {% endif %}
                                             </label>
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
-                                                <input type="checkbox" value="1" name="Mobility"/>迁移率
+                                                {% if 'Mobility' in save_para.electricity %}
+                                                <input type="checkbox" value="Mobility" name="electricity" checked />迁移率
+                                                {% else %}
+                                                <input type="checkbox" value="Mobility" name="electricity"/>迁移率
+                                                {% endif %}
                                             </label>
                                         </div>
                                     </div>
@@ -123,10 +157,18 @@
                                         <label><font color="steelblue">光  学</font></label>
                                         <div class="checkbox">
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
-                                                <input type="checkbox" value="1" name="AbsorbanceCoe"/>吸光系数
+                                                {% if 'AbsorbanceCoe' in save_para.optics %}
+                                                <input type="checkbox" value="AbsorbanceCoe" name="optics" checked />吸光系数
+                                                {% else %}
+                                                <input type="checkbox" value="AbsorbanceCoe" name="optics"/>吸光系数
+                                                {% endif %}
                                             </label>
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
-                                                <input type="checkbox" value="1" name="DielectricCon"/>介电常数
+                                                {% if 'DielectricCon' in save_para.optics %}
+                                                <input type="checkbox" value="DielectricCon" name="optics" checked />介电常数
+                                                {% else %}
+                                                <input type="checkbox" value="DielectricCon" name="optics"/>介电常数
+                                                {% endif %}
                                             </label>
                                         </div>
                                     </div>
@@ -134,16 +176,29 @@
                                         <label><font color="steelblue">磁  学</font></label>
                                         <div class="checkbox">
                                             <label style="size:120PX  width：15%；" class="checkbox-inline">
-                                                <input type="checkbox" value="1" name="AtomicMagMom"/>原子磁矩
+                                                {% if 'AtomicMagMom' in save_para.magnetics %}
+                                                <input type="checkbox" value="AtomicMagMom" name="magnetics" checked />原子磁矩
+                                                {% else %}
+                                                <input type="checkbox" value="AtomicMagMom" name="magnetics"/>原子磁矩
+                                                {% endif %}
                                             </label>
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
-                                                <input type="checkbox" value="1" name="Coercivity"/>矫顽力
+                                                {% if 'Coercivity' in save_para.magnetics %}
+                                                <input type="checkbox" value="Coercivity" name="magnetics" checked />矫顽力
+                                                {% else %}
+                                                <input type="checkbox" value="Coercivity" name="magnetics"/>矫顽力
+                                                {% endif %}
                                             </label>
                                         </div>
                                     </div>
                                     <button type="submit" name="save" class="btn btn-default" style="width: 10%; color: white; background-color: steelblue;">保 存</button>
                                     <button type="submit" name="reset" class="btn btn-default" style="width: 10%; color: white; background-color: steelblue; margin-left: 40px">恢 复</button>
                                 </form>
+                                <div class="">
+                                    <div style="text-align: center">
+                                        <font color="green" size="2" style="text-align: center;margin: 0 40%">{{ success }}</font>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- /.row (nested) -->

@@ -557,7 +557,7 @@ def first(request, p1, p2):
                 save_para[k] = v
 
         para = json.dumps(save_para)
-        res = render(request, 'first%d-%d.html' % (p1, p2), {'save_para': save_para})
+        res = render(request, 'first%d-%d.html' % (p1, p2), {'save_para': save_para, 'success': '保存成功'})
         res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
         res.set_cookie('save_para', para)
         return res
@@ -567,7 +567,7 @@ def first(request, p1, p2):
             if k in save_para:
                 save_para.pop(k)
 
-        res = render(request, 'first%d-%d.html' % (p1, p2), {'save_para': {}})
+        res = render(request, 'first%d-%d.html' % (p1, p2), {'save_para': {}, 'success': '重置成功'})
         res.set_cookie('current_page', 'first%d-%d' % (p1, p2))
         res.set_cookie('save_para', json.dumps(save_para))
         return res
