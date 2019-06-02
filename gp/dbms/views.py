@@ -588,19 +588,17 @@ def compute_return(para):
 @check_login('compute', 2)
 def compute(request):
     if request.method == 'GET':
-        print(1)
         return render(request, 'compute.html')
     else:
-        print(2)
         para = request.COOKIES.get('save_para', '{}')
         path = compute_return(json.loads(para))
         print(path)
         if path:
             with open(path, 'rb') as file:
                 content = file.read()
-            response = HttpResponse(content_type='application/octet-stream')
-            response.writelines(content)
-            response['Content-Disposition'] = 'attachment;filename={0}'.format('计算图形.png')
+            res = HttpResponse(content_type='application/octet-stream')
+            res.writelines(content)
+            res['Content-Disposition'] = 'attachment;filename={0}'.format('计算图形.png')
             return res
         else:
             return render(request, 'compute.html', {'error': '无法计算，请重新检查上传参数'})
