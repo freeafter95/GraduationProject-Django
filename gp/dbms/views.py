@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.shortcuts import render,render_to_response,redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.template import RequestContext
-from tools import generate_code
+from tools import generate_code, generate_graph
 from django.views import View 
 from django.contrib import auth
 from . import models
@@ -574,10 +574,15 @@ def first(request, p1, p2):
         return res
 
 def compute_return(para):
+    path = None
     if para.get('cllb') is not None:
-        return '/root/git/GraduationProject-Django/gp/dbms/views.py'
-    else:
-        return None
+        current_str = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+        if not os.path.isdir('graph_result'):
+            os.makedirs('graph_result', exist_ok=True)
+        path = 'graph_result/' + current_str
+        generate_graph.gs_graph(None, path)
+        
+    return path
 
 @check_login('compute', 2)
 def compute(request):

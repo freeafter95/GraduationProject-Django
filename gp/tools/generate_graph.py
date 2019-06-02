@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
-def generate_graph(result):
+def gs_graph(result, path):
     xs = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85]
     y1 = [5, 7,8, 9,14,18,17,10,9,6,4,3,3,3]
     y2 = [10, 9,9,8,8,8,7,7,8,8,9,9,9,10]
@@ -17,7 +17,6 @@ def generate_graph(result):
     plt.legend()
     plt.xlabel('Fe')
     plt.ylabel('Attrs')
-    plt.show()
+    plt.savefig(path)
 
-if __name__ == "__main__":
-    gene_code('/tmp','test') #会把生成的图片存成/tmp/test.png
+
