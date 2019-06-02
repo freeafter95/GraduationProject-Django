@@ -49,18 +49,39 @@
                                         <label><font color="steelblue">热  学</font></label>
                                         <div class="checkbox">
                                             <label style="size: 120px；width：15%；" class="checkbox-inline">
+                                                {% if 'ThermalCon' in save_para.thermology %}
+                                                <input type="checkbox" value="ThermalCon" name="thermology" checked />热导率
+                                                {% else %}
                                                 <input type="checkbox" value="ThermalCon" name="thermology"/>热导率
+                                                {% endif %}
                                             </label>
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
-                                                <input type="checkbox" value="ThermalExpC" name="thermology"/>热膨胀系数
+                                                {% if 'ThermalExpC' in save_para.thermology %}
+                                                <input type="checkbox" value="ThermalExpC" name="thermology" checked />热导率
+                                                {% else %}
+                                                <input type="checkbox" value="ThermalExpC" name="thermology"/>热导率
+                                                {% endif %}
                                             </label>
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
-                                                <input type="checkbox" value="HeatCap" name="thermology"/>热  容
+                                                {% if 'HeatCap' in save_para.thermology %}
+                                                <input type="checkbox" value="HeatCap" name="thermology" checked />热导率
+                                                {% else %}
+                                                <input type="checkbox" value="HeatCap" name="thermology"/>热导率
+                                                {% endif %}
                                             </label>
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
-                                                <input type="checkbox" value="MeltingPoint" name="thermology"/>熔  点
+                                                {% if 'MeltingPoint' in save_para.thermology %}
+                                                <input type="checkbox" value="MeltingPoint" name="thermology" checked />热导率
+                                                {% else %}
+                                                <input type="checkbox" value="MeltingPoint" name="thermology"/>热导率
+                                                {% endif %}
                                             </label>
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
+                                                {% if 'BoilingPoint' in save_para.thermology %}
+                                                <input type="checkbox" value="BoilingPoint" name="thermology" checked />热导率
+                                                {% else %}
+                                                <input type="checkbox" value="BoilingPoint" name="thermology"/>热导率
+                                                {% endif %}
                                                 <input type="checkbox" value="BoilingPoint" name="thermology"/>沸  点
                                             </label>
                                         </div>
@@ -69,7 +90,7 @@
                                         <label><font color="steelblue" size="">力  学</font></label>
                                         <div class="checkbox">
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
-                                                <input type="checkbox" value="ElasticModTen" name="dynamics" checked/>弹性模量
+                                                <input type="checkbox" value="ElasticModTen" name="dynamics"/>弹性模量
                                             </label>
                                             <label style="size: 120px width：15%；" class="checkbox-inline">
                                                 <input type="checkbox" value="TensileStr" name="dynamics"/>抗拉强度
