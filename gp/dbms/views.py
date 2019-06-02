@@ -13,6 +13,7 @@ from django.forms.models import model_to_dict
 import random, datetime, os, string
 from cacheout import Cache
 from django.utils.safestring import SafeString
+from pytz import timezone
 import json
 
 cache = Cache()
@@ -576,7 +577,7 @@ def first(request, p1, p2):
 def compute_return(para):
     path = None
     if para.get('cllb') is not None:
-        current_str = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+        current_str = datetime.datetime.now(timezone('Asia/Shanghai')).strftime("%Y%m%d%H%M%S")
         if not os.path.isdir('graph_result'):
             os.makedirs('graph_result', exist_ok=True)
         path = 'graph_result/' + current_str + '.png'
@@ -595,10 +596,10 @@ def compute(request):
         path = compute_return(json.loads(para))
         print(path)
         if path:
-            res = render(request, 'compute.html', {'success': '计算成功，正在下载计算图形'})
             with open(path, 'rb') as file:
-                res.writelines(file.read())
-            res['Content-Type'] = 'application/octet-stream'
+                content = file.read()
+            res = render(request, 'compute.html', content)
+            res['Content-Type'] = 'image/png'
             res['Content-Disposition'] = 'attachment;filename={0}'.format('计算图形.png')
             return res
         else:
