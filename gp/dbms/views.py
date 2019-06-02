@@ -579,9 +579,9 @@ def compute_return(para):
         current_str = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         if not os.path.isdir('graph_result'):
             os.makedirs('graph_result', exist_ok=True)
-        path = 'graph_result/' + current_str
+        path = 'graph_result/' + current_str + '.png'
         generate_graph.gs_graph(None, path)
-        
+
     return path
 
 @check_login('compute', 2)
@@ -596,7 +596,7 @@ def compute(request):
             with open(path, 'rb') as file:
                 res.writelines(file.read())
             res['Content-Type'] = 'application/octet-stream'
-            res['Content-Disposition'] = 'attachment;filename={0}'.format('test.py')
+            res['Content-Disposition'] = 'attachment;filename={0}'.format(path[path.rfind('/'):])
             return res
         else:
             return render(request, 'compute.html', {'error': '无法计算，请重新检查上传参数'})
