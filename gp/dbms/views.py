@@ -596,7 +596,7 @@ def compute(request):
             with open(path, 'rb') as file:
                 res.writelines(file.read())
             res['Content-Type'] = 'application/octet-stream'
-            res['Content-Disposition'] = 'attachment;filename={0}'.format(path[path.rfind('/'):])
+            res['Content-Disposition'] = 'attachment;filename={0}'.format('计算图形.png')
             return res
         else:
             return render(request, 'compute.html', {'error': '无法计算，请重新检查上传参数'})
