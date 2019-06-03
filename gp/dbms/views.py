@@ -484,8 +484,8 @@ def crystal_update(request, id):
     return all_update(request, id, 'crystal')
 
 @check_login('crystalinsert', 2)
-def crystal_allin(request, id):
-    return all_allin(request, id, 'crystal')
+def crystal_allin(request):
+    return all_allin(request, 'crystal')
 
 @check_login('processselect')
 def process_select(request):
@@ -508,8 +508,8 @@ def process_update(request, id):
     return all_update(request, id, 'process')
 
 @check_login('processinsert', 2)
-def process_allin(request, id):
-    return all_allin(request, id, 'process')
+def process_allin(request):
+    return all_allin(request, 'process')
 
 @check_login('testselect')
 def test_select(request):
@@ -532,8 +532,8 @@ def test_update(request, id):
     return all_update(request, id, 'test')
 
 @check_login('testinsert', 2)
-def test_allin(request, id):
-    return all_allin(request, id, 'test')
+def test_allin(request):
+    return all_allin(request, 'test')
 
 @check_login('radiationselect')
 def radiation_select(request):
@@ -556,8 +556,8 @@ def radiation_update(request, id):
     return all_update(request, id, 'radiation')
 
 @check_login('radiationinsert', 2)
-def radiation_allin(request, id):
-    return all_allin(request, id, 'radiation')
+def radiation_allin(request):
+    return all_allin(request, 'radiation')
 
 @check_login('', 2)
 def first(request, p1, p2):
