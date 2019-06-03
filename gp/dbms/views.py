@@ -481,7 +481,11 @@ def crystal_delete(request, id):
 
 @check_login('crystalupdate', 2)
 def crystal_update(request, id):
-    return all_update(request, id, 'crystal')  
+    return all_update(request, id, 'crystal')
+
+@check_login('crystalinsert', 2)
+def crystal_allin(request, id):
+    return all_allin(request, id, 'crystal')
 
 @check_login('processselect')
 def process_select(request):
@@ -503,6 +507,10 @@ def process_delete(request, id):
 def process_update(request, id):
     return all_update(request, id, 'process')
 
+@check_login('processinsert', 2)
+def process_allin(request, id):
+    return all_allin(request, id, 'process')
+
 @check_login('testselect')
 def test_select(request):
     return render(request, 'testselect.html')
@@ -523,6 +531,10 @@ def test_delete(request, id):
 def test_update(request, id):
     return all_update(request, id, 'test')
 
+@check_login('testinsert', 2)
+def test_allin(request, id):
+    return all_allin(request, id, 'test')
+
 @check_login('radiationselect')
 def radiation_select(request):
     return render(request, 'radiationselect.html')
@@ -542,6 +554,10 @@ def radiation_delete(request, id):
 @check_login('radiationupdate', 2)
 def radiation_update(request, id):
     return all_update(request, id, 'radiation')
+
+@check_login('radiationinsert', 2)
+def radiation_allin(request, id):
+    return all_allin(request, id, 'radiation')
 
 @check_login('', 2)
 def first(request, p1, p2):
