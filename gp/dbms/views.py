@@ -477,7 +477,7 @@ def all_allin(request, table):
             mc = get_model(table)
             print(dict(request.FILES))
             for chunk in file.chunks():
-                chunk = last + chunk.encode(encoding = "utf-8").decode(encoding = "utf-8")
+                chunk = last + chunk.decode(encoding = "utf-8")
                 lines = chunk.split('\n')
                 try:
                     last = lines[-1]
