@@ -466,6 +466,42 @@ def all_allin(request, table):
         file_type = request.POST.get('filetype')
         if file_type is None:
             return render(request, table + 'insert.html', {'all_error': '请选择上传文件的类型'})
+        else:
+            header = []
+            last = ''
+            mc = get_model(table)
+            for chunk in request.FILES['datafile']:
+                chunk = last + chunk
+                lines = chunk.split('\n')
+                try:
+                    last = lines[-1]
+                except IndexError:
+                    last = ''
+                lines = lines[:-1]
+                for line in lines:
+                    if file_type == 'json':
+                        mc.objects.create(**json.loads(line))
+                    else:
+                        if len(header) == 0:
+                            header = line.split(',')
+                        else:
+                            input_dic = {}
+                            input_list = line.split(',')
+                            if len(input_list) > 0
+                            for i in range(len(header)):
+                                input_dic[header[i]] = input_list[i]
+                            mc.objects.create(**input_dic)
+            if last != '':
+                if file_type == 'json':
+                    mc.objects.create(**json.loads(last))
+                else:
+                    input_dic = {}
+                    input_list = last.split(',')
+                    if len(input_list) > 0
+                    for i in range(len(header)):
+                        input_dic[header[i]] = input_list[i]
+                    mc.objects.create(**input_dic)
+            return render(request, table + 'insert.html')
 
 @check_login('crystalinsert', 2)
 def crystal_insert(request):
