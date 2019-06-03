@@ -468,12 +468,15 @@ def all_allin(request, table):
         if file_type is None:
             return render(request, table + 'insert.html', {'all_error': '请选择上传文件的类型'})
         else:
-            form = UploadFileForm(request.POST, request.FILES)
+            file = request.FILES.get('datafile')
+            if file is None:
+                return render(request, table + 'insert.html', {'all_error': '请选择要上传的文件'})
+            #form = UploadFileForm(request.POST, request.FILES)
             header = []
             last = ''
             mc = get_model(table)
             print(dict(request.FILES))
-            for chunk in request.FILES['datafile'].chunks():
+            for chunk in file.chunks():
                 chunk = last + chunk
                 lines = chunk.split('\n')
                 try:
