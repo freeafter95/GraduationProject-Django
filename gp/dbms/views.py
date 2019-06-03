@@ -487,20 +487,20 @@ def all_allin(request, table):
                         else:
                             input_dic = {}
                             input_list = line.split(',')
-                            if len(input_list) > 0
-                            for i in range(len(header)):
-                                input_dic[header[i]] = input_list[i]
-                            mc.objects.create(**input_dic)
+                            if len(input_list) > 0:
+                                for i in range(len(header)):
+                                    input_dic[header[i]] = check_type(input_lists[table + '_list'][header[i]], input_list[i], {})
+                                mc.objects.create(**input_dic)
             if last != '':
                 if file_type == 'json':
                     mc.objects.create(**json.loads(last))
                 else:
                     input_dic = {}
                     input_list = last.split(',')
-                    if len(input_list) > 0
-                    for i in range(len(header)):
-                        input_dic[header[i]] = input_list[i]
-                    mc.objects.create(**input_dic)
+                    if len(input_list) > 0:
+                        for i in range(len(header)):
+                            input_dic[header[i]] = check_type(input_lists[table + '_list'][header[i]], input_list[i], {})
+                        mc.objects.create(**input_dic)
             return render(request, table + 'insert.html')
 
 @check_login('crystalinsert', 2)
