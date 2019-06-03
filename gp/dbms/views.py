@@ -472,10 +472,12 @@ def all_allin(request, table):
             if file is None:
                 return render(request, table + 'insert.html', {'all_error': '请选择要上传的文件'})
             #form = UploadFileForm(request.POST, request.FILES)
+            all_count = 0
+            success_count = 0
             header = []
             last = ''
+            error_list = []
             mc = get_model(table)
-            print(dict(request.FILES))
             for chunk in file.chunks():
                 chunk = last + chunk.decode(encoding = "utf-8")
                 lines = chunk.split('\n')
@@ -485,31 +487,55 @@ def all_allin(request, table):
                     last = ''
                 lines = lines[:-1]
                 for line in lines:
+                    all_count += 1
                     if file_type == 'json':
-                        mc.objects.create(**json.loads(line))
+                        try:
+                            input_dic = json.loads(last)
+                            mc.objects.create(**input_dic)
+                            success_count += 1
+                        except TypeError:
+                            error_list.append('line %d' % all_count + line)
+                        except ValueError:
+                            error_list.append('line %d' % all_count + line)
                     else:
                         if len(header) == 0:
                             header = line.split(',')
                         else:
                             input_dic = {}
                             input_list = line.split(',')
+                            ret_dic = {'errors': []}
                             if len(input_list) > 0:
                                 for i in range(len(header)):
                                     input_dic[header[i]] = check_type(input_lists[table + '_list'][header[i]], input_list[i], {})
-                                mc.objects.create(**input_dic)
-            print(last)
+                                if len(ret_dic['errors']) == 0:
+                                    mc.objects.create(**input_dic)
+                                    success_count += 1
+                                else:
+                                    error_list.append('line %d' % all_count + line)
+
             if last != '':
+                all_count += 1
                 if file_type == 'json':
-                    input_dic = json.loads(last)
-                    mc.objects.create(**input_dic)
+                    try:
+                        input_dic = json.loads(last)
+                        mc.objects.create(**input_dic)
+                        success_count += 1
+                    except TypeError:
+                        error_list.append('line %d' % all_count + last)
+                    except ValueError:
+                        error_list.append('line %d' % all_count + last)
                 else:
                     input_dic = {}
                     input_list = last.split(',')
-                    if len(input_list) > 0:
-                        for i in range(len(header)):
-                            input_dic[header[i]] = check_type(input_lists[table + '_list'][header[i]], input_list[i], {})
+                    ret_dic = {'errors': []}
+                    for i in range(len(header)):
+                        input_dic[header[i]] = check_type(input_lists[table + '_list'][header[i]], input_list[i], ret_dic)
+                    if len(ret_dic['errors']) == 0:
                         mc.objects.create(**input_dic)
-            return render(request, table + 'insert.html')
+                        success_count += 1
+                    else:
+                        error_list.append('line %d' % all_count + last)
+            return render(request, table + 'insert.html', {'all_success': '已成功插入%d/%d条数据，失败数据如下：' % (success_count, all_count), 'all_errors': error_list})
 
 @check_login('crystalinsert', 2)
 def crystal_insert(request):
