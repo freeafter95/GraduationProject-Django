@@ -499,7 +499,8 @@ def all_allin(request, table):
                                 mc.objects.create(**input_dic)
             if last != '':
                 if file_type == 'json':
-                    mc.objects.create(**json.loads(last))
+                    input_dic = json.loads(last)
+                    mc.objects.create(**input_dic)
                 else:
                     input_dic = {}
                     input_list = last.split(',')
