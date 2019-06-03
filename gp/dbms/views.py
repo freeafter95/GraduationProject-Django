@@ -500,6 +500,7 @@ def all_allin(request, table):
                     else:
                         if len(header) == 0:
                             header = line.split(',')
+                            all_count -= 1
                         else:
                             input_dic = {}
                             input_list = line.split(',')
