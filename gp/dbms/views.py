@@ -505,7 +505,7 @@ def all_allin(request, table):
                             input_list = line.split(',')
                             ret_dic = {'errors': []}
                             if len(input_list) > 0:
-                                for i in range(len(header)):
+                                for i in range(len(input_list)):
                                     input_dic[header[i]] = check_type(input_lists[table + '_list'][header[i]], input_list[i], {})
                                 if len(ret_dic['errors']) == 0:
                                     mc.objects.create(**input_dic)
@@ -528,7 +528,7 @@ def all_allin(request, table):
                     input_dic = {}
                     input_list = last.split(',')
                     ret_dic = {'errors': []}
-                    for i in range(len(header)):
+                    for i in range(len(input_list)):
                         input_dic[header[i]] = check_type(input_lists[table + '_list'][header[i]], input_list[i], ret_dic)
                     if len(ret_dic['errors']) == 0:
                         mc.objects.create(**input_dic)
