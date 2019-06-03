@@ -467,6 +467,7 @@ def all_allin(request, table):
         if file_type is None:
             return render(request, table + 'insert.html', {'all_error': '请选择上传文件的类型'})
         else:
+            form = UploadFileForm(request.POST, request.FILES)
             header = []
             last = ''
             mc = get_model(table)
