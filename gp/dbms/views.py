@@ -506,7 +506,7 @@ def all_allin(request, table):
                             ret_dic = {'errors': []}
                             if len(input_list) > 0:
                                 for i in range(len(input_list)):
-                                    input_dic[header[i]] = check_type(input_lists[table + '_list'][header[i]], input_list[i], {})
+                                    input_dic[header[i]] = check_type(input_lists[table + '_list'][header[i]], input_list[i], ret_dic)
                                 if len(ret_dic['errors']) == 0:
                                     mc.objects.create(**input_dic)
                                     success_count += 1
