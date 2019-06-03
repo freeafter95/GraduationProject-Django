@@ -470,7 +470,7 @@ def all_allin(request, table):
             header = []
             last = ''
             mc = get_model(table)
-            for chunk in request.FILES['datafile']:
+            for chunk in request.FILES['datafile'].chunks():
                 chunk = last + chunk
                 lines = chunk.split('\n')
                 try:
