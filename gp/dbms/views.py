@@ -14,6 +14,7 @@ import random, datetime, os, string
 from cacheout import Cache
 from django.utils.safestring import SafeString
 from pytz import timezone
+from .forms import UploadFileForm
 import json
 
 cache = Cache()
