@@ -497,6 +497,7 @@ def all_allin(request, table):
                                 for i in range(len(header)):
                                     input_dic[header[i]] = check_type(input_lists[table + '_list'][header[i]], input_list[i], {})
                                 mc.objects.create(**input_dic)
+            print(last)
             if last != '':
                 if file_type == 'json':
                     input_dic = json.loads(last)
