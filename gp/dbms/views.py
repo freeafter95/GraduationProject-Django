@@ -461,6 +461,12 @@ def all_update(request, id, table):
             ret_dic['result'] = result
             return render(request, table + 'update.html', ret_dic)
 
+def all_allin(request, table):
+    if request.method == 'POST':
+        file_type = request.POST.get('filetype')
+        if file_type is None:
+            return render(request, table + 'insert.html', {'all_error': '请选择上传文件的类型'})
+
 @check_login('crystalinsert', 2)
 def crystal_insert(request):
     return all_insert(request, 'crystal')
@@ -536,12 +542,6 @@ def radiation_delete(request, id):
 @check_login('radiationupdate', 2)
 def radiation_update(request, id):
     return all_update(request, id, 'radiation')
-
-save_lists = {
-    '1-1': [
-        ('cllb', 'radio')
-    ]
-}
 
 @check_login('', 2)
 def first(request, p1, p2):
