@@ -490,7 +490,7 @@ def all_allin(request, table):
                     all_count += 1
                     if file_type == 'json':
                         try:
-                            input_dic = json.loads(last)
+                            input_dic = json.loads(line)
                             mc.objects.create(**input_dic)
                             success_count += 1
                         except TypeError:

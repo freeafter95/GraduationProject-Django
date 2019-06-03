@@ -141,7 +141,7 @@
                                         <input class="form action=" name="add" style="width:18%;text-align: center; display: inline; color: white; background-color: steelblue;color: white;margin: 0 40%" type="submit" value="添加数据">
                                     </div>
                                 </form>
-                                <div class="">
+                                <div class="" style="text-align: center">
                                     <div style="text-align: center">
                                         <font color="green" size="2" style="text-align: center;margin: 0 40%">{{ success }}</font>
                                     </div>
@@ -173,14 +173,14 @@
                                 </form>
                                 <div class="">
                                     <div style="text-align: center">
-                                        <font color="green" size="2" style="text-align: center;margin: 0 40%">{{ all_success }}</font>
+                                        <font color="green" size="2" style="text-align: center">{{ all_success }}</font>
                                     </div>
                                     <div style="text-align: center">
-                                        <font color="red" size="2" style="text-align: center;margin: 0 40%">{{ all_error }}</font>
+                                        <font color="red" size="2" style="text-align: center">{{ all_error }}</font>
                                     </div>
                                     {% for error in all_errors %}
                                     <div style="text-align: center">
-                                        <font color="red" size="2" style="text-align: center;margin: 0 40%">{{ error }}</font>
+                                        <font color="red" size="2" style="text-align: center">{{ error }}</font>
                                     </div>
                                     {% endfor %}
                                 </div>
