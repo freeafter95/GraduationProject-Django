@@ -683,10 +683,10 @@ def compute(request):
         if path:
             with open(path, 'rb') as file:
                 file_content = file.read()
-            res = HttpResponse(content_type='image/jpeg')
+            res = HttpResponse(content_type='application/octet-stream-STREAM')
             res.write(file_content)
             #res['Content_Type'] = 'application/octet-stream'
-            res['Content-Disposition'] = 'attachment;filename="compute.jpeg"'
+            res['Content-Disposition'] = 'attachment;filename="qwe.jpg"'
             return res
         else:
             return render(request, 'compute.html', {'error': '无法计算，请重新检查上传参数'})
