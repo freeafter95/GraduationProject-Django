@@ -11,7 +11,7 @@ class Literature(models.Model):
     p_name = models.CharField(max_length=255)
     author = models.CharField(max_length=255, null=True)
     point_word = models.CharField(max_length=255, null=True)
-    open_time = models.DateTimeField()
+    open_time = models.DateTimeField(null=True)
     open_book = models.CharField(max_length=255, null=True)
     insert_time = models.DateTimeField(auto_now=True)
 
