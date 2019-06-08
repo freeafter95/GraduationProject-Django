@@ -41,6 +41,7 @@ urlpatterns = [
   path('radiationupdate-<int:id>/', views.radiation_update, name='radiation_update'),
   path('radiationallin/', views.radiation_allin, name='radiation_allin'),
   path('radiationallout/', views.radiation_allout, name='radiation_allout'),
+  path('showpic-<int:id>/', views.show_pic, name='show_pic'),
   path('pictureselect/', views.picture_select, name='picture_select'),
   path('picturequery/', views.picture_query, name='picture_query'),
   path('picturedelete-<int:id>/', views.picture_delete, name='picture_delete'),

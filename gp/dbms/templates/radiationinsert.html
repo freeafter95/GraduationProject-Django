@@ -140,9 +140,40 @@
 
 
                             
-                        </div>
+                            </div>
                         <!-- /.row (nested) -->
-                    </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row" style="width: 100%">
+                                <form role="form" class="addForm" enctype="multipart/form-data" action="http://39.106.148.96/dbms/radiationallin/" method="post">
+                                    <div class="form-group" >
+                                        <label style="color: steelblue; width: 30%;">上传文件</label>
+                                        <input type="file" name="datafile" style="width: 50%;display: inline">
+                                    </div>
+                                    <div class="form-group" >
+                                        <label style="color: steelblue; width: 30%;">文件类型</label>
+                                        <input type="radio" value="json" name="filetype"/>JSON
+                                        <input type="radio" value="csv" name="filetype"/>CSV
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form action=" name="add" style="width:18%;text-align: center; display: inline; color: white; background-color: steelblue;color: white;margin: 0 40%" type="submit" value="批量导入">
+                                    </div>
+                                </form>
+                                <div class="">
+                                    <div style="text-align: center">
+                                        <font color="green" size="2" style="text-align: center">{{ all_success }}</font>
+                                    </div>
+                                    <div style="text-align: center">
+                                        <font color="red" size="2" style="text-align: center">{{ all_error }}</font>
+                                    </div>
+                                    {% for error in all_errors %}
+                                    <div style="text-align: center">
+                                        <font color="red" size="2" style="text-align: center">{{ error }}</font>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
                     <!-- /.row (nested) -->
                 </div>
                 <!-- /.panel-body -->

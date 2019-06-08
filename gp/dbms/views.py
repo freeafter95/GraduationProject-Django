@@ -753,6 +753,13 @@ def radiation_allin(request):
 def radiation_allout(request):
     return all_allout(request, 'radiation')
 
+@check_login('')
+def show_pic(request, id):
+    path = models.Picture.get(id=id)['pic_path']
+    with open(path, 'rb') as file:
+        pic = file.read()
+    return HttpResponse(pic, content_type='image/jpeg')
+
 @check_login('pictureselect')
 def picture_select(request):
     return render(request, 'pictureselect.html')
