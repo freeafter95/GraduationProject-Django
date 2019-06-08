@@ -21,12 +21,12 @@ cache = Cache()
 
 input_lists = {
     'literature_list': {
-        '': ('', ''),
-        '': ('', ''),
-        '': ('', ''),
-        '': ('', ''),
-        '': ('', ''),
-        '': ('', ''),
+        'serial_num': ('文献编号', 'char'),
+        'p_name': ('文献名称', 'char'),
+        'author': ('作者', 'char'),
+        'point_word': ('主要内容', 'char'),
+        'open_book': ('发表期刊', 'char'),
+        'open_time': ('发表时间', 'date'),
     },
     'crystal_list': {
         'density': ('密度(kg/m3)', 'float'),
@@ -166,6 +166,10 @@ def get_table_ch(table):
         return '测试'
     elif table == 'radiation':
         return '辐射'
+    elif table == 'literature':
+        return '文献'
+    elif table == 'picture':
+        return '图像'
     else:
         return ''
 
@@ -178,6 +182,10 @@ def get_model(table):
         return models.Test_table
     elif table == 'radiation':
         return models.Radiation_table
+    elif table == 'literature':
+        return models.Literature
+    elif table == 'picture':
+        return models.Picture
     else:
         return None
 
