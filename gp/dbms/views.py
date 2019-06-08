@@ -426,7 +426,8 @@ def all_query(request, table, upde = 0):
                 print(k, v)
         select_fields.remove('id')
         select_fields.remove('insert_time')
-        select_fields.remove('picture')
+        if pic_on and table != 'picture':
+            select_fields.remove('picture')
         field_names = [input_lists[table + '_list'][name][0] for name in select_fields]
         if pic_on:
             if table == 'picture':
@@ -461,9 +462,13 @@ def all_query(request, table, upde = 0):
                 return render(request, 'queryhigh.html')
         select_fields.add('insert_time')
         select_fields.add('id')
+        if pic_on and table != 'picture':
+            select_fields.add('picture')
         select_result = get_model(table).objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
         select_fields.remove('id')
         select_fields.remove('insert_time')
+        if pic_on and table != 'picture':
+            select_fields.remove('picture')
         field_names = [input_lists[table + '_list'][name][0] for name in select_fields]
         if pic_on:
             if table == 'picture':
