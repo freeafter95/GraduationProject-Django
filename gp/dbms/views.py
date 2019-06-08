@@ -336,19 +336,19 @@ def main_graph(request):
     return render(request, 'maingraph.html')
 
 def check_input(list_type, input_dic, ret_dic):
-    if list_type == 'other':
-        if (input_dic.get('main_elem') is None \
-        or input_dic.get('second_elem') is None) \
-        and input_dic.get('alloy_grade') is None:
-            ret_dic['errors'].append('合金牌号或主元素与次元素必须填写')
-    elif list_type == 'literature':
+    if list_type == 'literature':
         if input_dic.get('serial_num') is None \
         or input_dic.get('p_name') is None:
             ret_dic['errors'].append('文献编号与文献名称必须填写')
     elif list_type == 'picture':
         pass
+    else:
+        if (input_dic.get('main_elem') is None \
+        or input_dic.get('second_elem') is None) \
+        and input_dic.get('alloy_grade') is None:
+            ret_dic['errors'].append('合金牌号或主元素与次元素必须填写')
 
-def all_insert(request, table, list_type='other'):
+def all_insert(request, table):
     if request.method == 'GET':
         return render(request, table + 'insert.html')
     else:
@@ -361,7 +361,7 @@ def all_insert(request, table, list_type='other'):
             if content is not None and content != '':
                 input_dic[attr] = check_type(input_lists[table + '_list'][attr], content, ret_dic)
 
-        check_input(list_type, input_dic, ret_dic)
+        check_input(table, input_dic, ret_dic)
         if len(ret_dic['errors']) == 0:
             get_model(table).objects.create(**input_dic)
             ret_dic['success'] = '添加成功'
