@@ -603,21 +603,25 @@ def literature_select(request):
 def literature_insert(request):
     return all_insert(request, 'literature')
 
-@check_login('literaturequery')
+@check_login('literatureselect')
 def literature_query(request):
     return all_query(request, 'literature')
 
-@check_login('literaturedelete', 2)
+@check_login('literatureselect', 2)
 def literature_delete(request, id):
     return all_delete(request, id, 'literature')
 
-@check_login('literatureupdate', 2)
+@check_login('literatureselect', 2)
 def literature_update(request, id):
     return all_update(request, id, 'literature')
 
 @check_login('literatureinsert', 2)
 def literature_allin(request):
     return all_allin(request, 'literature')
+
+@check_login('literatureselect')
+def literature_allout(request):
+    return all_allout(request, 'literature')
 
 @check_login('crystalselect')
 def crystal_select(request):
@@ -627,21 +631,25 @@ def crystal_select(request):
 def crystal_insert(request):
     return all_insert(request, 'crystal')
 
-@check_login('crystalquery')
+@check_login('crystalselect')
 def crystal_query(request):
     return all_query(request, 'crystal')
 
-@check_login('crystaldelete', 2)
+@check_login('crystalselect', 2)
 def crystal_delete(request, id):
     return all_delete(request, id, 'crystal')
 
-@check_login('crystalupdate', 2)
+@check_login('crystalselect', 2)
 def crystal_update(request, id):
     return all_update(request, id, 'crystal')
 
 @check_login('crystalinsert', 2)
 def crystal_allin(request):
     return all_allin(request, 'crystal')
+
+@check_login('crystalselect')
+def crystal_allout(request):
+    return all_allout(request, 'crystal')
 
 @check_login('processselect')
 def process_select(request):
@@ -651,21 +659,25 @@ def process_select(request):
 def process_insert(request):
     return all_insert(request, 'process')
 
-@check_login('processquery')
+@check_login('processselect')
 def process_query(request):
     return all_query(request, 'process')
 
-@check_login('processdelete', 2)
+@check_login('processselect', 2)
 def process_delete(request, id):
     return all_delete(request, id, 'process')
 
-@check_login('processupdate', 2)
+@check_login('processselect', 2)
 def process_update(request, id):
     return all_update(request, id, 'process')
 
 @check_login('processinsert', 2)
 def process_allin(request):
     return all_allin(request, 'process')
+
+@check_login('processselect')
+def process_allout(request):
+    return all_allout(request, 'process')
 
 @check_login('testselect')
 def test_select(request):
@@ -675,21 +687,25 @@ def test_select(request):
 def test_insert(request):
     return all_insert(request, 'test')
 
-@check_login('testquery')
+@check_login('testselect')
 def test_query(request):
     return all_query(request, 'test')
 
-@check_login('testdelete', 2)
+@check_login('testselect', 2)
 def test_delete(request, id):
     return all_delete(request, id, 'test')
 
-@check_login('testupdate', 2)
+@check_login('testselect', 2)
 def test_update(request, id):
     return all_update(request, id, 'test')
 
 @check_login('testinsert', 2)
 def test_allin(request):
     return all_allin(request, 'test')
+
+@check_login('testselect')
+def test_allout(request):
+    return all_allout(request, 'test')
 
 @check_login('radiationselect')
 def radiation_select(request):
@@ -699,21 +715,25 @@ def radiation_select(request):
 def radiation_insert(request):
     return all_insert(request, 'radiation')
 
-@check_login('radiationquery')
+@check_login('radiationselect')
 def radiation_query(request):
     return all_query(request, 'radiation')
 
-@check_login('radiationdelete', 2)
+@check_login('radiationselect', 2)
 def radiation_delete(request, id):
     return all_delete(request, id, 'radiation')
 
-@check_login('radiationupdate', 2)
+@check_login('radiationselect', 2)
 def radiation_update(request, id):
     return all_update(request, id, 'radiation')
 
 @check_login('radiationinsert', 2)
 def radiation_allin(request):
     return all_allin(request, 'radiation')
+
+@check_login('radiationselect')
+def radiation_allout(request):
+    return all_allout(request, 'radiation')
 
 @check_login('', 2)
 def first(request, p1, p2):
