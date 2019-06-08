@@ -374,7 +374,7 @@ def all_insert(request, table):
                 if attr == 'literature':
                     l = models.Literature.objects.filter(serial_num=content).first()
                     if l:
-                        input_dic[attr] = content
+                        input_dic[attr] = l
                     else:
                         ret_dic['errors'].append('文献编号在数据库中未查询到')
                 else:
