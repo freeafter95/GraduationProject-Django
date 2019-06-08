@@ -16,6 +16,7 @@ from django.utils.safestring import SafeString
 from pytz import timezone
 from .forms import UploadFileForm
 import json
+import time
 
 cache = Cache()
 
@@ -201,6 +202,18 @@ def check_type(input_info, content, ret_dic):
             return int(content)
         except ValueError:
             ret_dic['errors'].append('%s应该为整型\n' % input_info[0])
+            return ''
+    elif input_info[1] == 'date':
+        try:
+            if '-' in content:
+                t = time.strptime(content, '%Y-%m-%d')
+            elif '/' in content:
+                t = time.strptime(content, '%Y/%m/%d')
+            else:
+                t = time.strptime(content, '%Y/%m/%d')
+            return time.strftime('%Y-%m-%d', t)
+        except:
+            ret_dic['errors'].append('%s应该为以\'-\'或\'/\'或空格分割的时间类型\n' % input_info[0])
             return ''
 
     return content
