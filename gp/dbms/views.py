@@ -29,6 +29,11 @@ input_lists = {
         'open_book': ('发表期刊', 'char'),
         'open_time': ('发表时间', 'date'),
     },
+    'picture_list': {
+        'main_elem': ('主元素', 'char'),
+        'pic_num': ('属性数量', 'int'),
+        'pic_attr': ('属性', 'char'),
+    },
     'crystal_list': {
         'density': ('密度(kg/m3)', 'float'),
         'literature': ('文献', 'char'),
