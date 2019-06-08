@@ -387,7 +387,25 @@ def all_insert(request, table):
 
         return render(request, table + 'insert.html', ret_dic)
 
-def all_query(request, table):
+'''
+默认为0，如果是奇数，添加图像
+如果是3代表没有update
+'''
+def all_query(request, table, upde = 0):
+    if request.session['permission'] == '3':
+        update_on = False
+        delete_on = False
+    else:
+        if upde // 2 == 1:
+            update_on = False
+        else：
+            update_on = True
+        delete_on = True
+    if upde % 2 == 1:
+        pic_on = True
+    else:
+        pic_on = False
+
     if request.method == 'GET':
         try:
             select_fields = set(json.loads(request.COOKIES.get('select_fields')).get(table, '').split(','))
@@ -398,10 +416,7 @@ def all_query(request, table):
         select_fields.add('id')
         select_fields.add('insert_time')
         if len(select_fields) == 0:
-            if request.session['permission'] == '3':
-                return render(request, 'querylow.html')
-            else:
-                return render(request, 'queryhigh.html')
+            return render(request, 'query.html', {'update_on': update_on, 'delete_on': delete_on, 'pic_on': pic_on})
 
         select_result = get_model(table).objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
         for s in select_result:
@@ -411,11 +426,8 @@ def all_query(request, table):
         select_fields.remove('insert_time')
         field_names = [input_lists[table + '_list'][name][0] for name in select_fields]
         result = [{'id': columns['id'], 'time': columns['insert_time'],'value': [columns[field] for field in select_fields]} for columns in select_result]
-        
-        if request.session['permission'] == '3':
-            res = render(request, 'querylow.html', {'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
-        else:
-            res = render(request, 'queryhigh.html', {'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
+
+        res = render(request, 'querylow.html', {'update_on': update_on, 'delete_on': delete_on, 'pic_on': pic_on, 'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
         return res
     else:
         select_fields = set()
@@ -447,10 +459,7 @@ def all_query(request, table):
         field_names = [input_lists[table + '_list'][name][0] for name in select_fields]
         result = [{'id': columns['id'], 'time': columns['insert_time'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
         
-        if request.session['permission'] == '3':
-            res = render(request, 'querylow.html', {'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
-        else:
-            res = render(request, 'queryhigh.html', {'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
+        res = render(request, 'querylow.html', {'update_on': update_on, 'delete_on': delete_on, 'pic_on': pic_on, 'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
         sf = request.COOKIES.get('select_fields')
         if sf is not None:
             sf_map = json.loads(sf)
@@ -670,7 +679,7 @@ def process_insert(request):
 
 @check_login('processselect')
 def process_query(request):
-    return all_query(request, 'process')
+    return all_query(request, 'process', 1)
 
 @check_login('processselect', 2)
 def process_delete(request, id):
@@ -698,7 +707,7 @@ def test_insert(request):
 
 @check_login('testselect')
 def test_query(request):
-    return all_query(request, 'test')
+    return all_query(request, 'test', 1)
 
 @check_login('testselect', 2)
 def test_delete(request, id):
@@ -726,7 +735,7 @@ def radiation_insert(request):
 
 @check_login('radiationselect')
 def radiation_query(request):
-    return all_query(request, 'radiation')
+    return all_query(request, 'radiation', 1)
 
 @check_login('radiationselect', 2)
 def radiation_delete(request, id):
@@ -743,6 +752,18 @@ def radiation_allin(request):
 @check_login('radiationselect')
 def radiation_allout(request):
     return all_allout(request, 'radiation')
+
+@check_login('pictureselect')
+def picture_select(request):
+    return render(request, 'pictureselect.html')
+
+@check_login('pictureselect')
+def picture_query(request):
+    return all_query(request, 'picture', 3)
+
+@check_login('pictureselect', 2)
+def picture_delete(request, id):
+    return all_delete(request, id, 'picture')
 
 @check_login('', 2)
 def first(request, p1, p2):
