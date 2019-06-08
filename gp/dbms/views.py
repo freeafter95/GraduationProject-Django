@@ -20,6 +20,14 @@ import json
 cache = Cache()
 
 input_lists = {
+    'literature_list': {
+        '': ('', ''),
+        '': ('', ''),
+        '': ('', ''),
+        '': ('', ''),
+        '': ('', ''),
+        '': ('', ''),
+    },
     'crystal_list': {
         'density': ('密度(kg/m3)', 'float'),
         'literature': ('文献', 'char'),
