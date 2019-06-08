@@ -372,7 +372,7 @@ def all_insert(request, table):
             content = request.POST.get(attr).strip()
             if content is not None and content != '':
                 if attr == 'literature':
-                    l = models.Literature.objects.get(serial_num=content).first()
+                    l = models.Literature.objects.filter(serial_num=content).first()
                     if l:
                         input_dic[attr] = l
                     else:
