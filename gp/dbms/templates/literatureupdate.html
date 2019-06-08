@@ -56,21 +56,21 @@
                                 <form role="form" class="addForm" action="http://39.106.148.96/dbms/crystalupdate-{{ result.id }}/" method="post">
                                     <div class="form-group">
                                         <label style="width: 10%; height: 28px;text-align: right">文献编号</label>
-                                        <input class="form-control" name="serial_num" style="width: 13%;display: inline">
+                                        <input class="form-control" name="serial_num" style="width: 13%;display: inline" value="{{ result.serial_num }}">
 
                                         <label style="width: 10%; height: 28px;text-align: right">文献名称</label>
-                                        <input class="form-control" name="p_name" style="width: 13%;display: inline">
+                                        <input class="form-control" name="p_name" style="width: 13%;display: inline" value="{{ result.p_name }}">
                                         <label style="width: 10%; height: 28px;text-align: right">作者</label> 
-                                        <input class="form-control" name="author" style="width: 13%;display: inline">
+                                        <input class="form-control" name="author" style="width: 13%;display: inline" value="{{ result.author }}">
                                         <label style="width: 10%; height: 28px;text-align: right">主要内容</label>
-                                        <input class="form-control" name="point_word" style="width: 13%;display: inline">
+                                        <input class="form-control" name="point_word" style="width: 13%;display: inline" value="{{ result.point_word }}">
                                     </div>
                                     
                                     <div class="form-group">    
                                         <label style="width: 10%; height: 28px;text-align: right">发表期刊</label>
-                                        <input class="form-control" name="open_book" style="width: 13%;display: inline">
+                                        <input class="form-control" name="open_book" style="width: 13%;display: inline" value="{{ result.open_book }}">
                                         <label style="width: 10%; height: 28px;text-align: right">发表时间</label>
-                                        <input type="date" class="form-control" name="open_time" style="width: 13%;display: inline">
+                                        <input type="date" class="form-control" name="open_time" style="width: 13%;display: inline" value="{{ result.open_time }}">
                                     </div>
                                     
                                     <div class="form-group">
