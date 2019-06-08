@@ -568,6 +568,33 @@ def all_allin(request, table):
                         error_list.append('line %d' % all_count + last)
             return render(request, table + 'insert.html', {'all_success': '已成功插入%d/%d条数据，失败数据如下：' % (success_count, all_count), 'all_errors': error_list})
 
+def all_allout(request, table):
+    if request.method == 'POST':
+        try:
+            select_fields = set(json.loads(request.COOKIES.get('select_fields')).get(table, '').split(','))
+            select_conditions = json.loads(request.COOKIES.get('select_conditions')).get(table, {})
+        except json.decoder.JSONDecodeError:
+            select_fields = []
+            select_conditions = {}
+        select_fields.add('id')
+        select_fields.add('insert_time')
+        if len(select_fields) == 0:
+            if request.session['permission'] == '3':
+                return render(request, 'querylow.html')
+            else:
+                return render(request, 'queryhigh.html')
+
+        select_result = get_model(table).objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
+        res = HttpResponse(content_type='application/octet-stream')
+        res.write(','.join(list(select_fields)) + '\n')
+        for column in select_result:
+            c = [str(column[field]) for field in select_fields]
+            res.write(','.join(c) + '\n')
+        #res['Content_Type'] = 'application/octet-stream'
+        res['Content-Disposition'] = 'attachment;filename="%s.csv"' % table
+        return res
+
+
 @check_login('literatureselect')
 def literature_select(request):
     return render(request, 'literatureselect.html')
