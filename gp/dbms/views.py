@@ -480,14 +480,11 @@ def all_update(request, id, table):
             if content is not None and content != '':
                 input_dic[attr] = check_type(input_lists[table + '_list'][attr], content, ret_dic)
 
-        if (input_dic.get('main_elem') is not None \
-        and input_dic.get('second_elem') is not None) \
-        or input_dic.get('alloy_grade') is not None:
-            if len(ret_dic['errors']) == 0:
-                get_model(table).objects.filter(id=id).update(**input_dic)
-                return redirect('/dbms/' + table + 'query')
+        check_input(table, input_dic, ret_dic)
+        if len(ret_dic['errors']) == 0:
+            get_model(table).objects.filter(id=id).update(**input_dic)
+            return redirect('/dbms/' + table + 'query')
         else:
-            ret_dic['errors'].append('合金牌号或主元素与次元素必须填写\n')
             result = model_to_dict(get_model(table).objects.filter(id=id).first())
             for (k, v) in result.items():
                 if v is None:
