@@ -404,6 +404,8 @@ def all_query(request, table):
                 return render(request, 'queryhigh.html')
 
         select_result = get_model(table).objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
+        for s in select_result:
+            print(s['literature'])
         select_fields.remove('id')
         select_fields.remove('insert_time')
         field_names = [input_lists[table + '_list'][name][0] for name in select_fields]
