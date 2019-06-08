@@ -398,7 +398,7 @@ def all_query(request, table, upde = 0):
     else:
         if upde // 2 == 1:
             update_on = False
-        else：
+        else:
             update_on = True
         delete_on = True
     if upde % 2 == 1:
