@@ -7,7 +7,7 @@ class UserInfo(models.Model):
     permission = models.CharField(max_length=1)
 
 class Literature(models.Model):
-    serial_num = models.IntegerField(primary_key=True)
+    serial_num = models.CharField(max_length=255, primary_key=True)
     p_name = models.CharField(max_length=255)
     author = models.CharField(max_length=255, null=True)
     point_word = models.CharField(max_length=255, null=True)
