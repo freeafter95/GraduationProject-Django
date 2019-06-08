@@ -319,10 +319,6 @@ def main_graph(request):
     print(request.path)
     return render(request, 'maingraph.html')
 
-@check_login('crystalselect')
-def crystal_select(request):
-    return render(request, 'crystalselect.html')
-
 def all_insert(request, table):
     if request.method == 'GET':
         return render(request, table + 'insert.html')
@@ -537,6 +533,34 @@ def all_allin(request, table):
                     else:
                         error_list.append('line %d' % all_count + last)
             return render(request, table + 'insert.html', {'all_success': '已成功插入%d/%d条数据，失败数据如下：' % (success_count, all_count), 'all_errors': error_list})
+
+@check_login('literatureselect')
+def literature_select(request):
+    return render(request, 'literatureselect.html')
+
+@check_login('literatureinsert', 2)
+def literature_insert(request):
+    return all_insert(request, 'literature')
+
+@check_login('literaturequery')
+def literature_query(request):
+    return all_query(request, 'literature')
+
+@check_login('literaturedelete', 2)
+def literature_delete(request, id):
+    return all_delete(request, id, 'literature')
+
+@check_login('literatureupdate', 2)
+def literature_update(request, id):
+    return all_update(request, id, 'literature')
+
+@check_login('literatureinsert', 2)
+def literature_allin(request):
+    return all_allin(request, 'literature')
+
+@check_login('crystalselect')
+def crystal_select(request):
+    return render(request, 'crystalselect.html')
 
 @check_login('crystalinsert', 2)
 def crystal_insert(request):
