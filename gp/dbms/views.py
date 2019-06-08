@@ -415,6 +415,8 @@ def all_query(request, table, upde = 0):
             select_conditions = {}
         select_fields.add('id')
         select_fields.add('insert_time')
+        if pic_on and table != 'picture':
+            select_fields.add('picture')
         if len(select_fields) == 0:
             return render(request, 'query.html', {'update_on': update_on, 'delete_on': delete_on, 'pic_on': pic_on})
 
@@ -424,9 +426,15 @@ def all_query(request, table, upde = 0):
                 print(k, v)
         select_fields.remove('id')
         select_fields.remove('insert_time')
+        select_fields.remove('picture')
         field_names = [input_lists[table + '_list'][name][0] for name in select_fields]
-        result = [{'id': columns['id'], 'time': columns['insert_time'],'value': [columns[field] for field in select_fields]} for columns in select_result]
-
+        if pic_on:
+            if table == 'picture':
+                result = [{'picture': columns['id'], 'id': columns['id'], 'time': columns['insert_time'],'value': [columns[field] for field in select_fields]} for columns in select_result]
+            else:
+                result = [{'picture': columns['picture'], 'id': columns['id'], 'time': columns['insert_time'],'value': [columns[field] for field in select_fields]} for columns in select_result]
+        else:
+            result = [{'id': columns['id'], 'time': columns['insert_time'],'value': [columns[field] for field in select_fields]} for columns in select_result]
         res = render(request, 'query.html', {'update_on': update_on, 'delete_on': delete_on, 'pic_on': pic_on, 'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
         return res
     else:
@@ -457,8 +465,14 @@ def all_query(request, table, upde = 0):
         select_fields.remove('id')
         select_fields.remove('insert_time')
         field_names = [input_lists[table + '_list'][name][0] for name in select_fields]
-        result = [{'id': columns['id'], 'time': columns['insert_time'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
-        
+        if pic_on:
+            if table == 'picture':
+                result = [{'picture': columns['id'], 'id': columns['id'], 'time': columns['insert_time'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
+            else:
+                result = [{'picture': columns['picture'], 'id': columns['id'], 'time': columns['insert_time'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
+        else:
+            result = [{'id': columns['id'], 'time': columns['insert_time'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
+
         res = render(request, 'query.html', {'update_on': update_on, 'delete_on': delete_on, 'pic_on': pic_on, 'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
         sf = request.COOKIES.get('select_fields')
         if sf is not None:
