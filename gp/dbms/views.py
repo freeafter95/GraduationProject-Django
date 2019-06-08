@@ -774,8 +774,8 @@ def radiation_allout(request):
 
 @check_login('')
 def show_pic(request, id):
-    path = models.Picture.objects.filter(id=id).first()['pic_path']
-    with open(path, 'rb') as file:
+    item = models.Picture.objects.filter(id=id).first()
+    with open(dict(item)['pic_path'], 'rb') as file:
         pic = file.read()
     return HttpResponse(pic, content_type='image/jpeg')
 
