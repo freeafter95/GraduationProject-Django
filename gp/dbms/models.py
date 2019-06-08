@@ -29,7 +29,7 @@ class Djbasicnatu(models.Model):
     main_elem  = models.CharField(max_length=255, null=True)
     second_elem  = models.CharField(max_length=255, null=True)
     trace_elem  = models.CharField(max_length=255, null=True)
-    literature = models.ForeignKey(Literature.serial_num, on_delete=models.SET_NULL, null=True)
+    literature = models.ForeignKey(Literature, to_field='serial_num', on_delete=models.SET_NULL, null=True)
     info_source = models.CharField(max_length=255, null=True)
     structure_Id  = models.CharField(max_length=255, null=True)
     space_group = models.FloatField(null=True)
