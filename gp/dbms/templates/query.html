@@ -74,7 +74,10 @@
                     {% endfor %}
                     <td style="text-align: center;width: 100px">{{ columns.time }}</td>
                     {% if pic_on %}
-                    <td style="text-align: center;width: 100px"><a href="http://39.106.148.96/dbms/showpic-{{ columns.picid }}/" data-id="11" class="btn_delete" target="_blank">显示</a></td>
+                    {% if columns.picture %}
+                    <td style="text-align: center;width: 100px"><a href="http://39.106.148.96/dbms/showpic-{{ columns.picture }}/" data-id="11" class="btn_delete" target="_blank">显示</a></td>
+                    {% else %}
+                    <td style="text-align: center;width: 100px">None</td>
                     {% endif %}
                     {% if update_on %}
                     <td style="text-align: center;width: 100px"><a href="http://39.106.148.96/dbms/{{ querytype }}update-{{ columns.id }}/" data-id="11" class="btn_delete">修改</a></td>

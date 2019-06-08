@@ -427,7 +427,7 @@ def all_query(request, table, upde = 0):
         field_names = [input_lists[table + '_list'][name][0] for name in select_fields]
         result = [{'id': columns['id'], 'time': columns['insert_time'],'value': [columns[field] for field in select_fields]} for columns in select_result]
 
-        res = render(request, 'querylow.html', {'update_on': update_on, 'delete_on': delete_on, 'pic_on': pic_on, 'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
+        res = render(request, 'query.html', {'update_on': update_on, 'delete_on': delete_on, 'pic_on': pic_on, 'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
         return res
     else:
         select_fields = set()
@@ -459,7 +459,7 @@ def all_query(request, table, upde = 0):
         field_names = [input_lists[table + '_list'][name][0] for name in select_fields]
         result = [{'id': columns['id'], 'time': columns['insert_time'], 'value': [columns[field] for field in select_fields]} for columns in select_result]
         
-        res = render(request, 'querylow.html', {'update_on': update_on, 'delete_on': delete_on, 'pic_on': pic_on, 'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
+        res = render(request, 'query.html', {'update_on': update_on, 'delete_on': delete_on, 'pic_on': pic_on, 'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
         sf = request.COOKIES.get('select_fields')
         if sf is not None:
             sf_map = json.loads(sf)
