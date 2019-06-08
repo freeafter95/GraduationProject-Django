@@ -210,7 +210,7 @@ def check_type(input_info, content, ret_dic):
             elif '/' in content:
                 t = time.strptime(content, '%Y/%m/%d')
             else:
-                t = time.strptime(content, '%Y/%m/%d')
+                t = time.strptime(content, '%Y %m %d')
             return time.strftime('%Y-%m-%d', t)
         except:
             ret_dic['errors'].append('%s应该为以\'-\'或\'/\'或空格分割的时间类型\n' % input_info[0])
