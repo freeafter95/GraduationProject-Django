@@ -369,10 +369,16 @@ def all_insert(request, table):
         ret_dic = {'errors': []}
         print(request.POST)
         for attr in input_lists[table + '_list'].keys():
-            print(attr)
             content = request.POST.get(attr).strip()
             if content is not None and content != '':
-                input_dic[attr] = check_type(input_lists[table + '_list'][attr], content, ret_dic)
+                if attr == 'literature':
+                    l = models.Literature.objects.get(serial_num=content).first()
+                    if l:
+                        input_dic[attr] = l
+                    else:
+                        ret_dic['errors'].append('文献编号在数据库中未查询到')
+                else:
+                    input_dic[attr] = check_type(input_lists[table + '_list'][attr], content, ret_dic)
 
         check_input(table, input_dic, ret_dic)
         if len(ret_dic['errors']) == 0:
