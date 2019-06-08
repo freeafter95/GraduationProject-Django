@@ -405,7 +405,8 @@ def all_query(request, table):
 
         select_result = get_model(table).objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
         for s in select_result:
-            print(s['literature'])
+            for k, v in s.items():
+                print(k, v)
         select_fields.remove('id')
         select_fields.remove('insert_time')
         field_names = [input_lists[table + '_list'][name][0] for name in select_fields]
