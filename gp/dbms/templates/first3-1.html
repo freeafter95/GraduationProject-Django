@@ -64,11 +64,11 @@
                                             <label><font color="steelblue">原子坐标类型</font></label>
                                             <select class="form-control" name="atomicCoordinateType">
                                                 <option>Direct</option>
-                                                {{% if 'Cartesian' in save_para.atomicCoordinateType %}}
+                                                {% if 'Cartesian' in save_para.atomicCoordinateType %}
                                                 <option selected>Cartesian</option>
-                                                {{% else %}}
+                                                {% else %}
                                                 <option>Cartesian</option>
-                                                {{% endif %}}
+                                                {% endif %}
                                             </select>
                                         </div>
                                         <div class="form-group" >
@@ -79,20 +79,20 @@
                                         <div class="form-group">
                                             <div class="radio">
                                                 <label>
-                                                    {{% if 'PAW_PBE' in save_para.possession %}}
+                                                    {% if 'PAW_PBE' in save_para.possession %}
                                                     <input type="radio" name="possession" id="optionsRadios1" value="PAW_PBE" checked>PAW_PBE
-                                                    {{% else %}}
+                                                    {% else %}
                                                     <input type="radio" name="possession" id="optionsRadios1" value="PAW_PBE">PAW_PBE
-                                                    {{% endif %}}
+                                                    {% endif %}
                                                 </label>
                                             </div>
                                             <div class="radio">
                                                 <label>
-                                                    {{% if 'PAW_LDA' in save_para.possession %}}
+                                                    {% if 'PAW_LDA' in save_para.possession %}
                                                     <input type="radio" name="possession" id="optionsRadios4" value="PAW_LDA" checked>PAW_LDA
-                                                    {{% else %}}
+                                                    {% else %}
                                                     <input type="radio" name="possession" id="optionsRadios4" value="PAW_LDA">PAW_LDA
-                                                    {{% endif %}}
+                                                    {% endif %}
                                                 </label>
                                             </div>
                                         </div>
