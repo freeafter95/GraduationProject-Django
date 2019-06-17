@@ -49,38 +49,50 @@
                                         <h2 style="color: steelblue">结构</h2>
                                         <div class="form-group" >
                                             <label><font color="steelblue">基矢的缩放系数</font></label>
-                                            <input class="form-control" name="sfxs">
+                                            <input class="form-control" name="sfxs" value="{{ save_para.sfxs.0 }}">
                                         </div>
                                         <div class="form-group" >
                                             <label><font color="steelblue">基矢除以缩放系数后，与上一行一起定义晶矢（a,b,c）</font></label>
-                                            <textarea class="form-control" rows="3" name="jingshi"></textarea>
+                                            <textarea class="form-control" rows="3" name="jingshi" value="{{ save_para.jingshi.0 }}"></textarea>
                                         </div>
                                         <div class="form-group" >
                                             <label><font color="steelblue">各类原子数目</font></label>
-                                            <input class="form-control" name="atomnumber">
+                                            <input class="form-control" name="atomnumber" value="{{ save_para.atomnumber.0 }}">
                                         </div>
                                         
                                         <div class="form-group">
                                             <label><font color="steelblue">原子坐标类型</font></label>
                                             <select class="form-control" name="atomicCoordinateType">
                                                 <option>Direct</option>
+                                                {{% if 'Cartesian' in save_para.atomicCoordinateType %}}
+                                                <option selected>Cartesian</option>
+                                                {{% else %}}
                                                 <option>Cartesian</option>
+                                                {{% endif %}}
                                             </select>
                                         </div>
                                         <div class="form-group" >
                                             <label><font color="steelblue">原子坐标</font></label>
-                                            <textarea class="form-control" rows="4" name="yzzb"></textarea>
+                                            <textarea class="form-control" rows="4" name="yzzb" value="{{ save_para.yzzb.0 }}"></textarea>
                                         </div>
                                         <h2 style="color: steelblue">赝势</h2>
                                         <div class="form-group">
                                             <div class="radio">
                                                 <label>
+                                                    {{% if 'PAW_PBE' in save_para.possession %}}
                                                     <input type="radio" name="possession" id="optionsRadios1" value="PAW_PBE" checked>PAW_PBE
+                                                    {{% else %}}
+                                                    <input type="radio" name="possession" id="optionsRadios1" value="PAW_PBE">PAW_PBE
+                                                    {{% endif %}}
                                                 </label>
                                             </div>
                                             <div class="radio">
                                                 <label>
+                                                    {{% if 'PAW_LDA' in save_para.possession %}}
+                                                    <input type="radio" name="possession" id="optionsRadios4" value="PAW_LDA" checked>PAW_LDA
+                                                    {{% else %}}
                                                     <input type="radio" name="possession" id="optionsRadios4" value="PAW_LDA">PAW_LDA
+                                                    {{% endif %}}
                                                 </label>
                                             </div>
                                         </div>

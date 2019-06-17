@@ -48,24 +48,24 @@
                                     <form role="form" enctype="multipart/form-data" action="ANNCMServlet" method="post">
                                         <div class="form-group">
                                             <label style="color: steelblue; width: 20%">神经网络层数</label>
-                                            <input class="form-control" name="Neural_Net_Layer" value="3" style="width: 50%; display: inline;">
+                                            <input class="form-control" name="Neural_Net_Layer" value="{{ save_para.Neural_Net_Layer.0 }}" style="width: 50%; display: inline;">
                                         </div>
                                         <div class="form-group">
                                             <label style="color: steelblue; width: 20%">隐层神经元个数</label>
-                                            <input class="form-control" name="Hidden_Layer_Neurons" value="5" style="width: 50%; display: inline;">
+                                            <input class="form-control" name="Hidden_Layer_Neurons" value="{{ save_para.Hidden_Layer_Neurons.0 }}" style="width: 50%; display: inline;">
                                         </div>
                                         <div class="form-group">
                                             <label style="color: steelblue; width: 20%">循环次数</label>
-                                            <input class="form-control" name="Cycle_Times" value="800" style="width: 50%; display: inline;">
+                                            <input class="form-control" name="Cycle_Times" value="{{ save_para.Cycle_Times.0 }}" style="width: 50%; display: inline;">
                                         </div>
                                         <div class="form-group">
                                             <label style="color: steelblue; width: 20%">学习率</label>
-                                            <input class="form-control" name="Learn_Rate" value="0.3" style="width: 50%; display: inline;">
+                                            <input class="form-control" name="Learn_Rate" value="{{ save_para.Learn_Rate.0 }}" style="width: 50%; display: inline;">
                                         </div>
 
                                         <div class="form-group">
                                             <label style="color: steelblue; width: 20%">精度控制参数</label>
-                                            <input class="form-control" name="Precision_Control" value="0.00001" style="width: 50%; display: inline;">
+                                            <input class="form-control" name="Precision_Control" value="{{ save_para.Precision_Control.0 }}" style="width: 50%; display: inline;">
                                         </div>
 
                                         <button type="submit" class="btn btn-default"  style="width: 15%; color: white; background-color: steelblue;">保 存</button>

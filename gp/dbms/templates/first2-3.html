@@ -48,11 +48,11 @@
                                     <form role="form" enctype="multipart/form-data" action="http://39.106.148.96/dbms/first2-3/" method="post">
                                         <div class="form-group">
                                             <label><font color="steelblue">载荷(Gpa)</font></label>
-                                            <textarea class="form-control" id="zaiheid" rows="3" name="zaihe"></textarea>
+                                            <textarea class="form-control" id="zaiheid" rows="3" name="test_zaihe" value="{{ save_para.test_zaihe.0 }}"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label><font color="steelblue">温度(K)</font></label>
-                                            <input class="form-control" name="Temp" value="300">
+                                            <input class="form-control" name="Temp" value="{{ save_para.Temp.0 }}">
                                         </div>
                                         <button type="submit" name="save" class="btn btn-default" style="width: 10%; color: white; background-color: steelblue;">保 存</button>
                                     <button type="submit" name="reset" class="btn btn-default" style="width: 10%; color: white; background-color: steelblue; margin-left: 40px">恢 复</button>
@@ -75,10 +75,6 @@
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
-
-<script>
-    document.getElementById("zaiheid").value="0 0 0 \n0 0 0 \n0 0 0"
-</script>
 
 </body>
 

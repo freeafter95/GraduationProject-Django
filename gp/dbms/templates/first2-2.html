@@ -107,19 +107,19 @@
                                             </div>
                                             <div class="form-group">
                                                 <label><font color="steelblue">温度</font>(K)</label>
-                                                <input class="form-control" name="wd" value="{{ save_para.wd }}">
+                                                <input class="form-control" name="wd" value="{{ save_para.wd.0 }}">
                                             </div>
                                             <div class="form-group">
                                                 <label><font color="steelblue">压力(Gpa)</font></label>
-                                                <input class="form-control" name="yl" value="{{ save_para.yl }}">
+                                                <input class="form-control" name="yl" value="{{ save_para.yl.0 }}">
                                             </div>
                                             <div class="form-group">
                                                 <label><font color="steelblue">V加热时间(h)</font></label>
-                                                <input class="form-control" name="jrsj" value="{{ save_para.jrsj }}">
+                                                <input class="form-control" name="jrsj" value="{{ save_para.jrsj.0 }}">
                                             </div>
                                             <div class="form-group">
                                                 <label><font color="steelblue">载荷(Gpa) (3*3)</font></label>
-                                                <textarea class="form-control" rows="3" id="zaiheid" name="zaihe" value="{{ save_para.zaihe }}"></textarea>
+                                                <textarea class="form-control" rows="3" id="zaiheid" name="zaihe" value="{{ save_para.zaihe.0 }}"></textarea>
                                             </div>
                                         </div>
                                     <button type="submit" name="save" class="btn btn-default" style="width: 10%; color: white; background-color: steelblue;">保 存</button>
