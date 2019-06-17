@@ -54,7 +54,7 @@
                                         <label style="width: 40%;text-align: left; color:steelblue">含量取值范围(单位%)</label>
                                         <label style="width: 30%;text-align: left;color:steelblue">间隔</label>
 
-                                            <select class="form-control" id="test-selectm" name="main_comprise" selectedIndex=3 style="width: 14%; display: inline">
+                                            <select class="form-control" id="test-selectm" name="main_comprise" style="width: 14%; display: inline">
                                                 
 
 <option>Fe</option><option>H</option><option>He</option>
@@ -67,8 +67,8 @@
 
 
                                             </select>
-                                            <input class="form-control" id="test-inputm"  name="main_elem" type="text" value="78-82" style="display: inline; width: 40%">
-                                            <input class="form-control" id="test-intervalm"  name="main_interval" type="text" value="2" style="display: inline; width: 30%">
+                                            <input class="form-control" id="test-inputm"  name="main_elem" type="text" value="{{ save_para.main_elem }}" style="display: inline; width: 40%">
+                                            <input class="form-control" id="test-intervalm"  name="main_interval" type="text" value="{{ save_para.main_interval }}" style="display: inline; width: 30%">
                                         </div>
                                     <div class="form-group">
                                         <label style="width: 15%;text-align: left;color:steelblue">次要组成</label>
@@ -76,7 +76,7 @@
                                         <label style="width: 30%;text-align: left;color:steelblue">间隔</label>
 
 
-                                        <select class="form-control" id="test-selects" style="width: 14%; display: inline">
+                                        <select class="form-control" id="test-selects" name="second_comprise1" style="width: 14%; display: inline">
 
 <option>Cr</option><option>H</option><option>He</option>
 <option>Li</option><option>Be</option><option>B</option><option>C</option><option>N</option><option>O</option><option>F</option><option>Ne</option>
@@ -88,15 +88,15 @@
 
 
                                         </select>
-                                        <input class="form-control" id="test-inputs" name="second_elem1" type="text" value="13-17" style="display: inline; width: 40%">
-                                        <input class="form-control" id="test-intervals" name="second_interval1" type="text" value="2" style="display: inline; width: 30%">
+                                        <input class="form-control" id="test-inputs" name="second_elem1" type="text" value="{{ save_para.second_elem1 }}" style="display: inline; width: 40%">
+                                        <input class="form-control" id="test-intervals" name="second_interval1" type="text" value="{{ save_para.second_interval1 }}" style="display: inline; width: 30%">
                                     </div>
                                     <div class="form-group">
                                         <label style="width: 15%;text-align: left;color:steelblue">次要组成</label>
                                         <label style="width: 40%;text-align: left;color:steelblue">含量取值范围(单位%)</label>
                                         <label style="width: 30%;text-align: left;color:steelblue">间隔</label>
 
-                                        <select class="form-control" id="test-select1" style="width: 14%; display: inline">
+                                        <select class="form-control" id="test-select1" name="second_comprise2" style="width: 14%; display: inline">
                                             
 <option>Al</option><option>Cr</option><option>H</option><option>He</option>
 <option>Li</option><option>Be</option><option>B</option><option>C</option><option>N</option><option>O</option><option>F</option><option>Ne</option>
@@ -108,15 +108,15 @@
 
 
                                         </select>
-                                        <input class="form-control" id="test-input1"  name="second_elem2" type="text" value="1-9" style="display: inline; width: 40%">
-                                        <input class="form-control" id="test-interval1"  name="second_interval2" type="text" value="2" style="display: inline; width: 30%">
+                                        <input class="form-control" id="test-input1"  name="second_elem2" type="text" value="{{ save_para.second_elem2 }}" style="display: inline; width: 40%">
+                                        <input class="form-control" id="test-interval1"  name="second_interval2" type="text" value="{{ save_para.second_interval2 }}" style="display: inline; width: 30%">
                                     </div>
                                     <div class="form-group">
                                         <label style="width: 15%;text-align: left;color:steelblue">微量组成</label>
                                         <label style="width: 40%;text-align: left;color:steelblue">含量取值范围(单位%)</label>
                                         <label style="width: 30%;text-align: left;color:steelblue">间隔</label>
 
-                                            <select class="form-control" id="test-selectt" style="width: 14%; display: inline">
+                                            <select class="form-control" id="test-selectt" name="trace_comprise" style="width: 14%; display: inline">
                                                 
 <option></option><option>Al</option><option>Cr</option><option>H</option><option>He</option>
 <option>Li</option><option>Be</option><option>B</option><option>C</option><option>N</option><option>O</option><option>F</option><option>Ne</option>
@@ -128,8 +128,8 @@
 
 
                                             </select>
-                                            <input class="form-control" id="test-inputt"  name="trace_elem" type="text" style="display: inline; width: 40%">
-                                            <input class="form-control" id="test-intervalt"  name="trace_interval" type="text" style="display: inline; width: 30%">
+                                            <input class="form-control" id="test-inputt"  name="trace_elem" type="text" value="{{ save_para.trace_elem }}" style="display: inline; width: 40%">
+                                            <input class="form-control" id="test-intervalt"  name="trace_interval" type="text" value="{{ save_para.trace_interval }}" style="display: inline; width: 30%">
                                         </div>
                                     <button type="submit" name="save" class="btn btn-default" style="width: 10%; color: white; background-color: steelblue;">保 存</button>
                                     <button type="submit" name="reset" class="btn btn-default" style="width: 10%; color: white; background-color: steelblue; margin-left: 40px">恢 复</button>

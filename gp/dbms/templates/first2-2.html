@@ -45,58 +45,91 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6" >
-                                    <form role="form" enctype="multipart/form-data" action="JggyServlet" method="post">
+                                    <form role="form" enctype="multipart/form-data" action="http://39.106.148.96/dbms/first2-2/" method="post">
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label class="checkbox-inline">
-                                                    <input type="checkbox" id="check-1-1" name="SolidiFication"value="1"/>凝  固
+                                                    {% if 'SolidiFication' in save_para.craft %}
+                                                    <input type="checkbox" id="check-1-1" name="craft"value="SolidiFication" checked />凝  固
+                                                    {% else %}
+                                                    <input type="checkbox" id="check-1-1" name="craft"value="SolidiFication"/>凝  固
+                                                    {% endif %}
                                                 </label>
                                                     
                                                 <label class="checkbox-inline">
-                                                    <input type="checkbox" id="check-1-2" name="Sintering"value="2" />烧  结
+                                                    {% if 'Sintering' in save_para.craft %}
+                                                    <input type="checkbox" id="check-1-2" name="craft"value="Sintering" checked/>烧  结
+                                                    {% else %}
+                                                    <input type="checkbox" id="check-1-2" name="craft"value="Sintering" />烧  结
+                                                    {% endif %}
                                                 </label>
                                                 
                                            <label class="checkbox-inline">
-                                                    <input type="checkbox" id="check-1-3" name="Rolling" value="3" class=""/>轧  制
+                                                {% if 'Rolling' in save_para.craft %}
+                                                    <input type="checkbox" id="check-1-3" name="craft" value="Rolling" class="" checked />轧  制
+                                                    {% else %}
+                                                    <input type="checkbox" id="check-1-3" name="craft" value="Rolling" class=""/>轧  制
+                                                    {% endif %}
                                            </label>
                                                     
                                               <label class="checkbox-inline">
-                                                    <input type="checkbox" id="check-1-4" name="HeatTreatment"value="4" checked/>热处理
+                                                {% if 'HeatTreatment' in save_para.craft %}
+                                                    <input type="checkbox" id="check-1-4" name="craft"value="HeatTreatment" checked/>热处理
+                                                    {% else %}
+                                                    <input type="checkbox" id="check-1-4" name="craft"value="HeatTreatment"/>热处理
+                                                    {% endif %}
                                               </label>
                                                     
                                             <label class="checkbox-inline">
-                                                    <input type="checkbox" id="check-1-5" name="Forging" value="5" />锻  造
+                                                {% if 'Forging' in save_para.craft %}
+                                                    <input type="checkbox" id="check-1-5" name="craft" value="Forging" checked />锻  造
+                                                    {% else %}
+                                                    <input type="checkbox" id="check-1-5" name="craft" value="Forging" />锻  造
+                                                    {% endif %}
                                             </label>
                                                     
                                                 <label class="checkbox-inline">
-                                                    <input type="checkbox" id="check-1-6" name="Piggyback" value="6" />甩  带
+                                                    {% if 'Piggyback' in save_para.craft %}
+                                                    <input type="checkbox" id="check-1-6" name="craft" value="Piggyback" checked />甩  带
+                                                    {% else %}
+                                                    <input type="checkbox" id="check-1-6" name="craft" value="Piggyback" />甩  带
+                                                    {% endif %}
                                                 </label>
                                                     
                                                 <label class="checkbox-inline">
-                                                    <input type="checkbox" id="check-1-7" name="DeeplyCold" value="7" />深过冷
+                                                    {% if 'DeeplyCold' in save_para.craft %}
+                                                    <input type="checkbox" id="check-1-7" name="craft" value="DeeplyCold" checked />深过冷
+                                                    {% else %}
+                                                    <input type="checkbox" id="check-1-7" name="craft" value="DeeplyCold" />深过冷
+                                                    {% endif %}
                                                     
                                                 </label>
                                             </div>
                                             <div class="form-group">
                                                 <label><font color="steelblue">温度</font>(K)</label>
-                                                <input class="form-control" name="wd" value="300">
+                                                <input class="form-control" name="wd" value="{{ save_para.wd }}">
                                             </div>
                                             <div class="form-group">
                                                 <label><font color="steelblue">压力(Gpa)</font></label>
-                                                <input class="form-control" name="yl" value="0.0001">
+                                                <input class="form-control" name="yl" value="{{ save_para.yl }}">
                                             </div>
                                             <div class="form-group">
-                                                <label<font color="steelblue">V加热时间(h)</label<font></label>
-                                                <input class="form-control" name="jrsj" value="1.0">
+                                                <label><font color="steelblue">V加热时间(h)</font></label>
+                                                <input class="form-control" name="jrsj" value="{{ save_para.jrsj }}">
                                             </div>
                                             <div class="form-group">
                                                 <label><font color="steelblue">载荷(Gpa) (3*3)</font></label>
-                                                <textarea class="form-control" rows="3" id="zaiheid" name="zaihe"></textarea>
+                                                <textarea class="form-control" rows="3" id="zaiheid" name="zaihe" value="{{ save_para.zaihe }}"></textarea>
                                             </div>
                                         </div>
-                                    <button type="submit" class="btn btn-default" style="width: 15%; color: white; background-color: steelblue;">保 存</button>
-                                        <button type="reset" class="btn btn-default" style="width: 15%; color: white; background-color: steelblue; margin-left: 70px">恢 复</button>
-                                    </form>
+                                    <button type="submit" name="save" class="btn btn-default" style="width: 10%; color: white; background-color: steelblue;">保 存</button>
+                                    <button type="submit" name="reset" class="btn btn-default" style="width: 10%; color: white; background-color: steelblue; margin-left: 40px">恢 复</button>
+                                </form>
+                                <div class="">
+                                    <div style="text-align: center">
+                                        <font color="green" size="2" style="text-align: center;margin: 0 40%">{{ success }}</font>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             <!-- /.row (nested) -->
@@ -110,9 +143,6 @@
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
-<script>
-    document.getElementById("zaiheid").value="1 0 0 \n0 1 0 \n0 0 1"
-</script>
 </body>
 
 </html>
