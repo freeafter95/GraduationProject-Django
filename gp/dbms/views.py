@@ -563,11 +563,14 @@ def all_allin(request, table):
                     if file_type == 'json':
                         try:
                             input_dic = json.loads(line)
+                            if 'literature' in input_dic.keys():
+                                l = models.Literature.objects.filter(serial_num=input_list['literature']).first()
+                                if l:
+                                    input_dic['literature'] = l
+                            
                             mc.objects.create(**input_dic)
                             success_count += 1
-                        except TypeError:
-                            error_list.append('line %d' % all_count + line)
-                        except ValueError:
+                        except:
                             error_list.append('line %d' % all_count + line)
                     else:
                         if len(header) == 0:
@@ -578,9 +581,16 @@ def all_allin(request, table):
                             input_list = line.split(',')
                             ret_dic = {'errors': []}
                             if len(input_list) > 0:
-                                print(input_list, header)
+                                #print(input_list, header)
                                 for i in range(len(input_list)):
-                                    input_dic[header[i]] = check_type(input_lists[table + '_list'][header[i]], input_list[i], ret_dic)
+                                    if header[i] == 'literature':
+                                        l = models.Literature.objects.filter(serial_num=input_list[i]).first()
+                                        if l:
+                                            input_dic[header[i]] = l
+                                        else:
+                                            ret_dic['errors'].append('文献编号在数据库中未查询到')
+                                    else:
+                                        input_dic[header[i]] = check_type(input_lists[table + '_list'][header[i]], input_list[i], ret_dic)
                                 if len(ret_dic['errors']) == 0:
                                     mc.objects.create(**input_dic)
                                     success_count += 1
