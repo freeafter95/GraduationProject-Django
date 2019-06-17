@@ -578,6 +578,7 @@ def all_allin(request, table):
                             input_list = line.split(',')
                             ret_dic = {'errors': []}
                             if len(input_list) > 0:
+                                print(input_list, header)
                                 for i in range(len(input_list)):
                                     input_dic[header[i]] = check_type(input_lists[table + '_list'][header[i]], input_list[i], ret_dic)
                                 if len(ret_dic['errors']) == 0:
