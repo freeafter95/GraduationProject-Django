@@ -441,6 +441,8 @@ def all_query(request, table, upde = 0):
                 result = [{'picture': columns['picture'], 'id': columns['id'], 'time': columns['insert_time'],'value': [columns[field] for field in select_fields]} for columns in select_result]
         else:
             result = [{'id': columns['id'], 'time': columns['insert_time'],'value': [columns[field] for field in select_fields]} for columns in select_result]
+        print(len(result))
+        print(result)
         res = render(request, 'query.html', {'update_on': update_on, 'delete_on': delete_on, 'pic_on': pic_on, 'name_ch': get_table_ch(table), 'querytype': table, 'fields': field_names, 'result': result})
         return res
     else:
