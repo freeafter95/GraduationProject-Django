@@ -214,11 +214,13 @@ def check_type(input_info, content, ret_dic):
                 t = time.strptime(content, '%Y-%m-%d')
             elif '/' in content:
                 t = time.strptime(content, '%Y/%m/%d')
-            else:
+            elif ' ' in content:
                 t = time.strptime(content, '%Y %m %d')
+            else:
+                t = time.strptime(content, '%Y%m%d')
             return time.strftime('%Y-%m-%d', t)
         except:
-            ret_dic['errors'].append('%s应该为以\'-\'或\'/\'或空格分割的时间类型\n' % input_info[0])
+            ret_dic['errors'].append('%s应该为以\'-\'或\'/\'或\' \'或不分割的时间类型\n' % input_info[0])
             return ''
 
     return content
@@ -857,7 +859,19 @@ def compute(request):
     if request.method == 'GET':
         return render(request, 'compute.html')
     else:
+        file = request.FILES.get('datafile')
+        if file is None:
+            return render(request, 'compute.html', {'error': '请上传计算数据压缩包'})
         para = request.COOKIES.get('save_para', '{}')
+        if not os.path.isdir('compute'):
+            os.makedirs('compute', exist_ok=True)
+        current_str = datetime.datetime.now(timezone('Asia/Shanghai')).strftime("%Y%m%d%H%M%S")
+        os.makedirs('compute/' + current_str, exist_ok=True)
+        with open('compute/' + current_str + '/config', 'w+') as write_file:
+            write_file.write(para)
+        with open('compute/' + current_str + '/data', 'wb+') as write_file:
+            write_file.write(file.read())
+
         path = compute_return(json.loads(para))
         print(path)
         if path:
