@@ -867,7 +867,7 @@ def compute(request):
             os.makedirs('compute', exist_ok=True)
         current_str = datetime.datetime.now(timezone('Asia/Shanghai')).strftime("%Y%m%d%H%M%S")
         os.makedirs('compute/' + current_str, exist_ok=True)
-        with open('compute/' + current_str + '/config', 'w+') as write_file:
+        with open('compute/' + current_str + '/config.json', 'w+') as write_file:
             write_file.write(para)
         with open('compute/' + current_str + '/data', 'wb+') as write_file:
             write_file.write(file.read())
