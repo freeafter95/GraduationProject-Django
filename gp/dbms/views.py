@@ -447,6 +447,7 @@ def all_query(request, table, upde = 0):
     else:
         select_fields = set()
         select_conditions = {}
+        print(request.POST)
         for k, v in request.POST.items():
             if k == 'select':
                 continue
@@ -455,7 +456,7 @@ def all_query(request, table, upde = 0):
                     select_fields.add(k[0:-1])
                     if k == 'second_elem1':
                         select_conditions['second_elem__icontains'] = '[%]'.join(v.strip().split(' '))
-                        print(select_conditions['second_elem__icontains'])
+                        #print(select_conditions['second_elem__icontains'])
                     else:
                         select_conditions[k[0:-1] + '__icontains'] = v.strip()
             else:
