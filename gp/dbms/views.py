@@ -447,7 +447,7 @@ def all_query(request, table, upde = 0):
     else:
         select_fields = set()
         select_conditions = {}
-        print(request.POST)
+        #print(request.POST)
         for k, v in request.POST.items():
             if k == 'select':
                 continue
@@ -472,8 +472,6 @@ def all_query(request, table, upde = 0):
         if pic_on and table != 'picture':
             select_fields.add('picture')
 
-        print(select_fields)
-        print(select_conditions)
         select_result = get_model(table).objects.filter(**select_conditions).order_by('-insert_time').values(*select_fields)
         select_fields.remove('id')
         select_fields.remove('insert_time')
