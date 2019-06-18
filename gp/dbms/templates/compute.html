@@ -46,7 +46,11 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form" action="http://39.106.148.96/dbms/compute/" method="post">
+                                    <form role="form" enctype="multipart/form-data" action="http://39.106.148.96/dbms/compute/" method="post">
+                                        <div class="form-group" >
+                                        <label style="color: steelblue; width: 30%;">上传文件</label>
+                                        <input type="file" name="datafile" style="width: 50%;display: inline">
+                                    </div>
                                        <button type="submit" class="btn btn-default" name="shangchuan" style="width: 15%; color: white; background-color: steelblue">确认上传
                                        </button>
                                         <div class="form-group">
