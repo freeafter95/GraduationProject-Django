@@ -567,7 +567,7 @@ def all_allin(request, table):
                             if l:
                                 input_dic['literature'] = l
                         if 'picture' in input_dic.keys():
-                            l = models.Literature.objects.filter(id=input_dic['picture']).first()
+                            l = models.Picture.objects.filter(id=input_dic['picture']).first()
                             if l:
                                 input_dic['picture'] = l
                         
@@ -610,7 +610,7 @@ def all_allin(request, table):
                             if l:
                                 input_dic['literature'] = l
                         if 'picture' in input_dic.keys():
-                            l = models.Literature.objects.filter(id=input_dic['picture']).first()
+                            l = models.Picture.objects.filter(id=input_dic['picture']).first()
                             if l:
                                 input_dic['picture'] = l
                         mc.objects.create(**input_dic)
