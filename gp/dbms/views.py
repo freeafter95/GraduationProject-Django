@@ -20,6 +20,8 @@ import time
 
 cache = Cache()
 
+project_path = '/root/git/GraduationProject-Django/'
+
 input_lists = {
     'literature_list': {
         'serial_num': ('文献编号', 'char'),
@@ -809,7 +811,7 @@ def radiation_allout(request):
 @check_login('')
 def show_pic(request, id):
     path = models.Picture.objects.get(id=id).__dict__['pic_path']
-    with open(path, 'rb') as file:
+    with open(project_path + path, 'rb') as file:
         pic = file.read()
     return HttpResponse(pic, content_type='image/jpeg')
 
@@ -880,15 +882,15 @@ def compute(request):
             os.makedirs('compute', exist_ok=True)
         current_str = datetime.datetime.now(timezone('Asia/Shanghai')).strftime("%Y%m%d%H%M%S")
         os.makedirs('compute/' + current_str, exist_ok=True)
-        with open('compute/' + current_str + '/config.json', 'w+') as write_file:
+        with open(project_path + 'compute/' + current_str + '/config.json', 'w+') as write_file:
             write_file.write(para)
-        with open('compute/' + current_str + '/data', 'wb+') as write_file:
+        with open(project_path + 'compute/' + current_str + '/data', 'wb+') as write_file:
             write_file.write(file.read())
 
         path = compute_return(json.loads(para))
         print(path)
         if path:
-            with open(path, 'rb') as file:
+            with open(project_path + path, 'rb') as file:
                 file_content = file.read()
             res = HttpResponse(content_type='application/octet-stream')
             res.write(file_content)
