@@ -560,21 +560,21 @@ def all_allin(request, table):
                 for line in lines:
                     all_count += 1
                     if file_type == 'json':
-                        try:
-                            input_dic = json.loads(line)
-                            if 'literature' in input_dic.keys():
-                                l = models.Literature.objects.filter(serial_num=input_list['literature']).first()
-                                if l:
-                                    input_dic['literature'] = l
-                            if 'picture' in input_dic.keys():
-                                l = models.Literature.objects.filter(id=input_list['picture']).first()
-                                if l:
-                                    input_dic['picture'] = l
-                            
-                            mc.objects.create(**input_dic)
-                            success_count += 1
-                        except:
-                            error_list.append('line %d' % all_count + line)
+                        #try:
+                        input_dic = json.loads(line)
+                        if 'literature' in input_dic.keys():
+                            l = models.Literature.objects.filter(serial_num=input_list['literature']).first()
+                            if l:
+                                input_dic['literature'] = l
+                        if 'picture' in input_dic.keys():
+                            l = models.Literature.objects.filter(id=input_list['picture']).first()
+                            if l:
+                                input_dic['picture'] = l
+                        
+                        mc.objects.create(**input_dic)
+                        success_count += 1
+                        # except:
+                        #     error_list.append('line %d' % all_count + line)
                     else:
                         if len(header) == 0:
                             header = line.split(',')
