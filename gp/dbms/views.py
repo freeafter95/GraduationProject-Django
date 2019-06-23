@@ -890,7 +890,7 @@ def compute(request):
         path = compute_return(json.loads(para))
         print(path)
         if path:
-            with open(project_path + path, 'rb') as file:
+            with open(path, 'rb') as file:
                 file_content = file.read()
             res = HttpResponse(content_type='application/octet-stream')
             res.write(file_content)
