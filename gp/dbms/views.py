@@ -862,9 +862,9 @@ def compute_return(para):
     path = None
     if para.get('cllb') is not None:
         current_str = datetime.datetime.now(timezone('Asia/Shanghai')).strftime("%Y%m%d%H%M%S")
-        if not os.path.isdir('graph_result'):
-            os.makedirs('graph_result', exist_ok=True)
-        path = 'graph_result/' + current_str + '.jpeg'
+        if not os.path.isdir(project_path + 'graph_result'):
+            os.makedirs(project_path + 'graph_result', exist_ok=True)
+        path = project_path + 'graph_result/' + current_str + '.jpeg'
         generate_graph.gs_graph(None, path)
 
     return path
@@ -878,10 +878,10 @@ def compute(request):
         if file is None:
             return render(request, 'compute.html', {'error': '请上传计算数据压缩包'})
         para = request.COOKIES.get('save_para', '{}')
-        if not os.path.isdir('compute'):
-            os.makedirs('compute', exist_ok=True)
+        if not os.path.isdir(project_path + 'compute'):
+            os.makedirs(project_path + 'compute', exist_ok=True)
         current_str = datetime.datetime.now(timezone('Asia/Shanghai')).strftime("%Y%m%d%H%M%S")
-        os.makedirs('compute/' + current_str, exist_ok=True)
+        os.makedirs(project_path + 'compute/' + current_str, exist_ok=True)
         with open(project_path + 'compute/' + current_str + '/config.json', 'w+') as write_file:
             write_file.write(para)
         with open(project_path + 'compute/' + current_str + '/data', 'wb+') as write_file:
